@@ -1,0 +1,249 @@
+%+----------------------------------------------------------------------------+
+%| SLIDES: 
+%| Chapter: Results of the paper with L. Ryvkin
+%| Author: Antonio miti
+%| Event: PHD preliminary Defence
+%+----------------------------------------------------------------------------+
+
+%- HandOut Flag -----------------------------------------------------------------------------------------
+\newif\ifHandout
+
+%- D0cum3nt ----------------------------------------------------------------------------------------------
+\documentclass[beamer,10pt]{standalone}   
+%\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
+
+%- HandOut Flag -----------------------------------------------------------------------------------------
+\ifHandout
+	\setbeameroption{show notes} %print notes   
+\fi
+
+	
+%- Packages ----------------------------------------------------------------------------------------------
+\usepackage{custom-style}
+
+%--Beamer Style-----------------------------------------------------------------------------------------------
+\usetheme{toninus}
+
+
+
+
+\renewcommand{\action}{\circlearrowleft}
+
+\newcommand*{\TakeFourierOrnament}[1]{{%
+\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+\newcommand*{\danger}{\TakeFourierOrnament{66}}
+
+
+
+
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+%- D0cum3nt ----------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Problem: Geometric interpretation of cohomological obstructions}\label{frame:introcohoobstruction}
+	Given a multisymplectic group action $\vartheta:G\action (M,\omega)$ 
+	
+	How to determine if $\vartheta$ admits a HCMM?
+	
+	\vfill
+	\begin{tcolorbox}
+		$\exists$ auxiliary complex encoding a HCMM
+		\begin{displaymath}
+			C_{\mathfrak{g}} := CE(\mathfrak{g})\otimes \Omega(M) = 
+			\text{tot}\Big(\Lambda^{\geq 1} 
+		\mathfrak{g}^*\otimes \Omega^\bullet(M),~ \delta_\text{CE},~d~\Big)
+		\end{displaymath}
+	\end{tcolorbox}
+
+		HCMM are in 1:1 with primitives of a certain cocycle \hyperlink{frame:AppCohomoObstructions}{(constructed out of $\omega$ and $v$)}
+	%
+	\pause
+	
+\tcbset{colback=white,
+	colbacktitle=white,
+	colframe=blue!70!black,
+	boxrule=1pt,
+	colupper=blue!70!black,
+	arc=15pt,
+	}
+\begin{tcolorbox}[sidebyside,righthand width=7cm]
+	Prop: \cite{Ryvkin2015}+\cite{Fregier2015}
+\tcblower
+	$\exists$ HCMM 
+	$\Leftrightarrow ~ \lbrack\tilde{\omega}\rbrack=0\in H^{n+1}(C_\mathfrak g)$
+\end{tcolorbox}
+
+	\pause
+	\vfill
+	Disadvantages:
+	\begin{itemize}
+		\item \danger purely algebraic \danger
+		\item Desirable to translate it in a cohomology theory pertaining to the geometrical data.
+	\end{itemize}
+
+
+\end{frame}
+\note[itemize]{
+	\item idea: 	
+		A HCMM is a sequence of multilinear maps $f_k \in Hom(\wedge^k \mathfrak{g},\Omega^{n-k}(M))\subset C_\mathfrak{g}^n$
+	\item
+		
+	\item equivariant cohomology = "cohomology theory applying to topological spaces with group actions"
+
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Cohomological obstructions for compact groups}\label{frame:obstructioncompactgroups}
+\tcbset{colback=white,
+	colbacktitle=white,
+	colframe=blue!70!black,
+	boxrule=1pt,
+	colupper=blue!70!black,
+	arc=15pt,
+	}
+\begin{tcolorbox}[sidebyside,righthand width=7cm]
+	Prop: \cite{Callies2016}+\cite{Fregier2015}
+\tcblower
+	Translation of $[\tilde{\omega}]$ in terms of the \emph{Bott-Shulman-Stasheff} and \emph{Cartan} models of 
+	\tikz[baseline,remember picture]{\node[rounded corners,
+                        fill=orange!10,draw=orange!30,anchor=base]            
+            			(target) {\hyperlink{frame:EquivariantCohomology}{equivariant cohomology}};
+            	}					
+\end{tcolorbox}
+	\pause
+		\tikz[overlay,remember picture]
+		{
+			\node[rounded corners,
+                 fill=orange!10,draw=orange!30,anchor=base]            
+            	 (base) at ($(current page.north east)-(2.25,3.25)$) [rotate=-0,text width=4cm,align=center] {\footnotesize{cohomology theory for group actions on topological spaces}};
+		}	
+	\begin{tikzpicture}[overlay,remember picture]
+    	\path[->] (base.north) edge[bend right,red](target.east);
+    \end{tikzpicture}	
+
+	\pause	
+	\vfill
+	Disadvantages:
+	\begin{itemize}
+		\item difficult to compute
+		\item dependent on the models.
+	\end{itemize}
+	\pause
+
+	\begin{tcolorbox}[
+		enhanced,frame hidden,
+		borderline={0.5pt}{0pt}{purple!70!black,dashed},
+		sidebyside,righthand width=9cm,colframe=purple!70!black]	
+	\alert{Goal:}
+	\tcblower
+	 Read obstructions in a simpler (more geometrical) cohomology theory (at least in simpler cases)
+	\end{tcolorbox}
+	\pause
+	\vfill
+	\vspace{1em}
+	Let $\vartheta:G\times M\to M$ be a compact Lie group action:
+	\begin{thmblock}[\cite{Miti2019}]
+	\hyperlink{frame:cohomologicalproposition}{
+	\vspace{-1em}
+	$$\vartheta ~\text{admits HCMM}~ ~\Longleftrightarrow~  
+	 ~[\vartheta^*\omega-\pi^*\omega]=0\in H^{n+1}_{dR}(G\times M)$$ 
+	 }
+	 \vspace{-1.5em}
+	\end{thmblock}
+
+
+\end{frame}
+\note[itemize]{
+
+	
+	\item equivariant cohomology = "cohomology theory applying to topological spaces with group actions"
+
+	\item corollaries:
+		\begin{itemize}
+			\item if $\omega$ has invariant potential $\Rightarrow$ $\exists$ HCMM.
+			\item if $\omega$ can be extended to a \emph{equivariant cohomology class} $\Rightarrow$ $\exists$ HCMM.
+		\end{itemize}
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{HCMM for actions on spheres}\label{frame:leoresults}
+	Corollaries:
+	\begin{itemize}
+		\item if $\omega$ admits a $G$-invariant potential, then there is a HCMM;
+		\item if $\tilde{\omega}$ can be extended to an equivariant cohomology class $\tilde{\omega}\in H_g^{k+1}(M)$ then there is a HCMM;
+		\item If $G_i$ admits HCMM on $(M_i,\omega_i)$ for $i=1,2$ then $(M_1\times M_2, \pi_1^\ast \omega_1 + \pi_2^\ast \omega_2)$;
+		% and $(M_1\times M_2, \pi_1^\ast \omega_1 \wedge \pi_2^\ast \omega_2)$ admit HCMM.
+	\end{itemize}
+	%
+	\vfill
+	\pause
+	%
+	\begin{thmblock}[\hyperlink{frame:LeoThmProof}{Classification of multisymplectic actions on spheres} \cite{Miti2019}]
+		Let $M= (S^n,\omega)$ be the $n$-dimensional sphere with the standard volume,
+		\\
+		$\vartheta:G\times S^n \to S^n$ be an \emph{effective}, \emph{compact}, \emph{multisymplectic} action:
+		\vspace{-.5em}
+		\begin{displaymath}
+			\vartheta ~\text{admits HCMM}~ ~\Longleftrightarrow~ 
+			\begin{cases}
+				n ~\text{is even}~
+				\\
+				\quad \text{\scriptsize{-\emph{ or }-}}
+				\\
+				\vartheta ~\text{is non-transitive}
+			\end{cases}					
+		\end{displaymath}
+	\end{thmblock}	
+	%
+	\pause
+	\begin{columns}[T]
+		\begin{column}{.2\linewidth}
+			Examples:
+		\end{column}
+		%
+		\begin{column}{.6\linewidth}
+			\begin{itemize}
+				\item[\cmark] \hyperlink{frame:TransExample}{$SO(2n+1) \circlearrowleft S^{2n}$}
+				\item[\xmark] $SO(2n) \circlearrowleft S^{2n-1}$
+				\item[\cmark] \hyperlink{frame:LeoNonTransExample}{$SO(n) \circlearrowleft S^{n}$}
+			\end{itemize}				
+		\end{column}
+	\end{columns}
+
+
+\end{frame}
+\note[itemize]{
+	\item	
+	Unlike the symplectic case, the converse statement does not hold in general. 
+	Even if a (pre-)multisymplectic action of $G$ on $(M,\omega)$ admits a comoment, $[\omega]$ does not need to come from an equivariant cocycle. 
+	
+	\item Consider: $S^n$ multisymplectic w.r.t the standard volume 
+		$\omega$.
+	\item $G$ compact Lie group acting effectively and preserving the volume.
+		This action admits HCMM if and only if $n$ is even or the action is not transitive.	
+	\item The obstructions found do not prevent existence of \emph{weak homotopy co moment maps}.
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------------
+\end{document}
+%----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+

@@ -1,0 +1,2003 @@
+%+----------------------------------------------------------------------------+
+%| SLIDES: 
+%| Chapter: Complementary material - details on eventual questions
+%| Author: Antonio miti
+%| Event: PHD preliminary Defence
+%+----------------------------------------------------------------------------+
+
+%- HandOut Flag -----------------------------------------------------------------------------------------
+\newif\ifHandout
+
+%- D0cum3nt ----------------------------------------------------------------------------------------------
+\documentclass[beamer,10pt]{standalone}   
+%\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
+
+%- HandOut Flag -----------------------------------------------------------------------------------------
+\ifHandout
+	\setbeameroption{show notes} %print notes   
+\fi
+
+	
+%- Packages ----------------------------------------------------------------------------------------------
+\usepackage{custom-style}
+
+%--Beamer Style-----------------------------------------------------------------------------------------------
+\usetheme{toninus}
+
+
+
+\providecommand{\blank}{\text{\textvisiblespace}}
+
+
+\newcommand{\subsectiontitle}{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+    \usebeamerfont{title}\insertsubsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\providecommand{\blank}{\text{\textvisiblespace}}
+
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+%- D0cum3nt ----------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------------------------------------------
+
+%##################################################################################
+\begin{frame}
+	\begin{center}
+	\Huge\emph{Complementary Material}
+	\end{center}
+\end{frame}
+\addtocounter{framenumber}{-1}
+%##################################################################################
+
+
+
+
+
+%===================================================================================
+\section{Background}
+%===================================================================================
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Symplectic Manifolds}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Symplectic geometry}
+\begin{columns}[T]
+	\begin{column}{.50\linewidth}
+		\centering
+		\textit{ "geometric approach" to mechanics \dots}
+		%
+		\begin{columns}
+			\begin{column}{.50\linewidth}
+				\begin{center}
+					\includegraphics[width=0.8\linewidth]{Pictures/pendulum13}			
+				\end{center}
+			\end{column}	
+			\begin{column}{.50\linewidth}
+				\begin{center}
+					\includegraphics[width=0.45\linewidth]{Pictures/pendulum-phase-space}			
+				\end{center}
+			\end{column}	
+		\end{columns}
+		%
+		\begin{defblock}[Symplectic Manifold]
+			\includestandalone[width=0.95\textwidth]{Pictures/Figure_sym}	
+		\end{defblock}
+		%
+		\begin{exblock}[$M = T^\ast Q$ is symplectic]
+			$\omega = d \theta $ with
+			$$ \left.\theta\right\vert_{(q,p)} (v) = p (\pi_\ast v) ~.$$
+		\end{exblock}
+	\end{column}
+	\vrule{}
+	\pause
+	\begin{column}{.50\linewidth}
+		\centering
+		\textit{ "algebraic approach" to mechanics \dots}
+		\vspace{1em}	
+		\begin{defblock}[Classical Observables]
+			Unital, associative, commutative algebra $C^\infty(M)$.
+		\end{defblock}
+		%
+		\vspace{1em}
+		\pause
+		\begin{defblock}[Hamiltonian vector fields]
+			$v_f \in \mathfrak{X}(M)$ such that:
+			$$\iota_{v_f} \omega = -df \quad \text{(exact)}$$ %$\in B^1(M)$
+			\small$v_f$ = \emph{Ham.v.f. pertaining to $f\in C^\infty(M)$}.
+		\end{defblock}
+		%
+		\begin{defblock}[Poisson Algebra of Observables]
+			$C^\infty(M)$ is a Poisson algebra with
+			$$\{f,g\} = \iota_{v_g} \iota_{v_f} \omega = \omega(v_f,v_g) ~.$$
+		\end{defblock}
+	\end{column}
+\end{columns}
+\end{frame}
+\note[itemize]{
+	\footnotesize
+
+	\item We work in the framework of multisymplectic geometry which is one of the possible generalizations of the well-established field of symplectic geometry.
+	
+	\item To recall what symplectic geometry is let me assume a particular point of view: mechanics.
+	\\
+	Idea:"
+	Symplectic geometry is a branch of differential geometry studying symplectic manifolds; it originated as a formalization of the mathematical apparatus of classical mechanics and geometric optics."{\href{https://ncatlab.org/nlab/show/symplectic+geometry}{nlab}}
+	
+	Namely, a sym. mfd. is the geometric structure encoding the phase space of conservative, ordinary, classical, mechanical systems.
+	
+	\item $\theta$ = \emph{tautological 1-form}.
+		$\theta$ evaluated at $p\in T^*Q$ in the fibre of $q\in Q$ and contracted with $v$ coincides with the form $p$ evaluated at $q$ and contracted with the push forward of $v$.
+	
+	\item We identify a special class of vector fields.
+		Out of them one can define a Lie bracket.
+	
+	\item Poisson is a Lie algebra with the extra property of compatibility with the associative product (Leibniz rule)
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+% Frame inspired by Leonid: passing from moment maps to comoment maps
+\begin{frame}[fragile]{Reminder: Moment maps in symplectic geometry}
+	Let $(M,\omega)$ be a symplectic manifold, $\vartheta: G\times M \to M$ a Lie group action preserving $\omega$ and $v:\mathfrak{g}\to \mathfrak{X}(M)$ the corresponding infinitesimal action
+	%
+		\begin{defblock}[Moment map pertaining to $\vartheta$]
+			Smooth map $ \mu: M \to \mathfrak{g}^\ast$ such that: \stackunder{$d \langle\mu , \xi \rangle = \iota_{v_\xi}\omega \scriptstyle\quad \forall \xi \in \mathfrak{g}$}{$f (\vartheta_g(x)) = Ad^\ast_g (f(x)) \scriptstyle\quad \forall g \in G, x \in M$}
+		\end{defblock}
+	%
+	\vfill
+	\emph{... from a dual perspective (assuming $G$ connected) ...}
+			\begin{defblock}[Comoment map pertaining to $v$]
+				\begin{columns}
+					\begin{column}{.5\linewidth}	
+			Lie algebra morphism \qquad $ f: \mathfrak{g} \to C^\infty(M) $
+			\\
+			such that \qquad $ d~f (x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$
+					\end{column}
+					\begin{column}{.4\linewidth}	
+						\begin{displaymath}
+							\begin{tikzcd}
+								& C^{\infty}(M,\omega) \ar[d]
+								\\
+								\mathfrak{g} \ar[ur,dashed,"(f)"]\ar[r,"v"']& \mathfrak{X}(M)
+							\end{tikzcd}	
+						\end{displaymath}
+					\end{column}
+				\end{columns}
+		\end{defblock}		
+	%
+	\vfill
+	\emph{... a tool encoding conserved quantities ...}
+	\begin{propblock}[Noether Theorem]
+		\small Fixed $H\in C^\infty_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant) ,
+				$$\mathcal{L}_{v_H} f(x) = 0 \qquad \forall x \in \mathfrak{g}$$
+	\end{propblock}
+\end{frame}
+%\note[itemize]{
+%	\item comoment map is a Lie algebra morphism projecting to $v$. (Triangle diagram in Lie algebra category).
+%}
+
+
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Geometry of symmetries}\label{frame:geometrysymmetries}
+	Basic mechanical structures are encoded in geometry. but there is another complementary geometrical property that's natural in physics: symmetry!
+	\begin{alertblock}{Upshot}
+		Continous symmetries are described by actions of a Lie group on $M$.
+	\end{alertblock}
+	\begin{block}{Noether}
+		Presence of symmetries $\quad \Rightarrow \quad$ existence of conserved quantities.
+	\end{block}	
+	\begin{block}{Key concept:}
+		Noether current are encoded in a \emph{moment map}  $\mu :M \rightarrow \mathfrak{g}^*$ (the dual of the comoment map $f$. 
+	\end{block}
+  \begin{columns}[T]
+   	\begin{column}{.6\textwidth}
+			\begin{block}{Symplectic reduction:}
+			\begin{itemize}
+				\item System dynamics should be restricted to level set of conserved observables in order to efficiently store dynamical properties.
+				\item Under certain assumptions, $\mu^{-1}( 0 )/G$ is a symplectic manifold with an "induced" symplectic structure.
+			\end{itemize}
+			\end{block}
+    \end{column}
+    \begin{column}{.4\textwidth}	
+			\includegraphics[width=\textwidth]{Pictures/Reduction} 
+  	\end{column}
+	\end{columns}			
+\end{frame}
+%------------------------------------------------------------------------------------------------
+
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{MultiSymplectic Manifolds}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{MS geometry and classical field mechanics}
+		Consider a smooth manifold $Y$,
+		\begin{columns}
+			\hfill
+			\begin{column}{.5\linewidth}
+				\emph{Multicotangent bundle} $\bigwedge = \bigwedge^n T^\ast Y$\\
+				is naturally $n$-plectic
+			\end{column}
+			\begin{column}{.4\linewidth}
+				\[
+				\begin{tikzcd}
+					\Lambda \ar[d,"\pi"'] & T \Lambda \ar[d,"T \pi"] \ar[l] \\
+					Y								& T Y \ar[l]
+				\end{tikzcd}	
+				\]
+			\end{column}
+		\end{columns}
+	\pause
+	\begin{defblock}[Tautological $n$-form]
+		$\theta \in \Omega^n(\Lambda)$ such that:
+		\begin{displaymath}
+		\begin{split}
+			\left[ \iota_{u_1 \wedge \ldots \wedge u_n} \theta \right]_\eta 
+			&= \iota_{(T \pi)_\ast u_1 \wedge \ldots \wedge (T \pi)_\ast u_n} \eta \\
+			&= \iota_{u_1 \wedge \ldots \wedge u_n} \pi^\ast \eta 
+			\qquad \qquad \forall \eta \in \Lambda \, , \: \forall u_i \in T_\eta \Lambda 		
+		\end{split}
+		\end{displaymath}
+	\end{defblock}
+	\vfill
+	\begin{columns}
+		\begin{column}{.6\linewidth}
+			\begin{defblock}[Tautological (multisymplectic) (n+1)-form]
+				$$\omega := d \theta$$
+			\end{defblock}
+		\end{column}
+		\begin{column}{.4\linewidth}
+		 	\begin{claimblock}$\omega$ is not degenerate.\end{claimblock}	
+		\end{column}
+	\end{columns}	
+	\pause
+	\begin{keywordblock}
+		\begin{tabular}{|c|c|c|}
+			\hline 
+			point-particles mechanics & $\rightsquigarrow$ & classical fields mechanics \\
+			%(finite discrete DOF) & & (finite dimensional continuous DOF) \\
+			\hline 
+			symplectic & $\rightsquigarrow$ & multisymplectic \\ 
+			\hline 
+			Observables (Poisson) algebra & $\rightsquigarrow$ & Observables $L-\infty$ algebra
+			 \\ 
+			\hline 
+			Co-moment map & $\rightsquigarrow$ & Homotopy co-momentum map \\ 
+			\hline 
+		\end{tabular} 
+	\end{keywordblock}
+
+	
+\end{frame}
+\note[itemize]{
+	\item This example is significant from the perspective of geometric classical field theory:
+		\begin{displaymath}
+			\frac{\text{classical mechanics}}{\text{symplectic geo.}} =
+			\frac{\text{classical field mechanics}}{\text{multisymplectic geo.}}
+		\end{displaymath}
+	\item Multicotangent bundle is the \emph{Higher analogue} of the cotangent bundle.
+	(but it is not yet the analogue of a \emph{phase space}.)
+\item The multiphase space is the sub-bundle of $n$-forms vanishing when contracted with 2 vertical fields.
+  	\item The reason why this sub-bundle has a particular role is that it can be proved to be isomorphic to a suitable dual of the first Jet bundle.
+  	\item For further details see Gotay et al. \href{https://arxiv.org/abs/physics/9801019}{arXiv:physics/9801019}. For a pictorial representation of all the structures involved in the geometric mechanics of I order classical field theories see appendix, pag: \ref{frame:Gimmsy}.
+}
+%------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+  \begin{frame}[fragile]{GIMMSY construction} \label{frame:Gimmsy}
+  		\includestandalone[width=0.90\textwidth]{Pictures/Figure_ms_landscape}  	
+  \end{frame}
+  \note{}
+%------------------------------------------------------------------------------------------------
+
+	
+	
+	
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Special classes of smooth objects} 
+  	\begin{columns}
+		\begin{column}[t]{.42\linewidth}		
+			\begin{defblock}[Hamiltonian v.f.]
+				$\mathfrak{X}_{ham} =  \left\lbrace X \in  \mathfrak{X} \right\vert \left. \iota_x \omega \textrm{ exact}  \right\rbrace$ 			
+			\end{defblock}
+			\begin{defblock}[Multisymplectic v.f.]
+				$\mathfrak{X}_{ms} =  \left\lbrace X \in  \mathfrak{X} \right\vert \left. \mathcal{L}_X \omega = 0  \right\rbrace$ 	
+			\end{defblock}
+		\end{column}
+		\begin{column}[t]{.58\linewidth}		
+			\begin{defblock}[Hamiltonian $(n$-$1)-$forms]
+				\begin{displaymath}
+					\Omega^{n-1}_{ham} 	:=
+					\biggr\{ H \in  \Omega^{n-1} \; \left\vert \; 
+					\stackanchor{$\exists X \in \mathfrak{X}_{ham}$}{: $d H = -\iota_X \omega$} \right\} 
+			\end{displaymath}
+			\end{defblock}		
+		\end{column}
+  	\end{columns}
+  	%
+  	\vspace{0.5em}
+  	%
+  	\onslide<2->{
+  	\begin{columns}
+		\begin{column}[t]{.5\linewidth}	
+			\centering\emph{Global symmetries}
+			\begin{defblock}[Multisymplectic (Lie group) action]
+				$\Phi: G \circlearrowright (M, \omega)$ \emph{right action} s.t. \\
+				$$\hat{\Phi}(g)_\ast \omega = \omega \quad \forall g \in G$$
+			\end{defblock}
+		\end{column}
+		\begin{column}[t]{.5\linewidth}			
+			\centering\emph{Infinitesimal symmetries}
+			\begin{defblock}[Multisymplectic (Lie algebra) action]
+				$V: \mathfrak{g} \rightarrow \mathfrak{X} (M)$ \emph{Lie algebra morphism} s.t. \\
+				$$\mathcal{L}_{V_\xi} \omega = 0 \quad \forall \xi \in \mathfrak{g}$$	
+			\end{defblock}
+		\end{column}
+  	\end{columns}
+  	}
+  	%
+  	\onslide<3->{		
+	  	\begin{asideblock}[Hierarchy of conserved quantities]%Shades of...
+	  		\begin{table}[] % http://tablesgenerator.com/
+			\begin{tabular}{lllll}
+					& strictly conserved & & & $\mathcal{L}_X \alpha= 0$ \\
+				$\alpha \in \Omega^\bullet$ & globally conserved & along $X \in \mathfrak{X}$ & $\Leftrightarrow$ & $\mathcal{L}_X \alpha\in B $ (exact) \\
+				  & locally conserved  & & & $\mathcal{L}_X \alpha\in Z $ (closed)                                
+			\end{tabular}
+			\end{table}
+	  	\end{asideblock}
+  	}
+  	
+  \end{frame}
+  \note[itemize]{
+  	\item Exactly as it happens in symplectic geometry, fixing a smooth form $\omega$ on $M$ yields a criterion for classifying vector fields and differential forms.
+  	\\(Pay attention to the sign convention in defining the Hamiltonian vector fields)
+  	\item Also, we can naturally select a special class of symmetries (global and infinitesimal) which preserve the fixed multisymplectic form.
+  	\item Aside, we can start to see that, in this setting, measurable quantities are not only smooth functions but also differential forms with degree greater then zero.
+  	For such objects can be defined weaker notions of conservation along a flow.
+  	\item The idea to consider forms of various degree as observables do not fall out of the sky. 
+  		For instance in a string there will be two kind of measurable quantities: extensive observable (1-forms), like the density, and intensive observables (0-forms), like the tension. 
+ 		%\href{https://en.wikipedia.org/wiki/Intensive_and_extensive_properties#Intensive_properties}{(wiki link on this terminology)}
+  	\item Starting from this observation we can define the space of all possible observables (see next slide).
+  }
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{$L_\infty$-algebras}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink]{Unwrapping the \emph{higher Jacobi equations}}\label{Frame:unwapping-Jacobi}
+\underline{Slogan:} \emph{Jacobi identity satisfied up to an higher coherent homotopy}
+		%
+		\vspace{1.5em}
+		\begin{columns}[c]
+			\hfill
+			\begin{column}{0.5\linewidth}
+				Higher Jacobi implies:
+				\begin{itemize}  \setlength\itemsep{1em}
+					\item Underlying chain-complex $(L,\mu_1)$ with differential $d=\mu_1$;
+					\item \color{red} $\mu_2 = [\cdot,\cdot]$ is a chain map $L^{\otimes 2} \to L$;
+					\item \color{green!20!black}$\mu_3=j(\cdot,\cdot,\cdot)$ is a chain homotopy 
+						$\mu_2\circ\mu_2 \Rightarrow 0$;
+						\\ i.e. between the usual Jacobiator ${[[\cdot,\cdot],\cdot]} \circ P_{\text{unsh}}$ and the $0$ map 
+					\item \color{purple}higher analogues...	
+					\\ e.g. $\mu_4$, is a second order chain-homotopy between the two chain homotopies  ${[j(\cdot,\cdot ,\cdot]),\cdot]}\circ P_{\text{unsh}}$ and ${j([\cdot , \cdot],\cdot,\cdot)}\circ P_{\text{unsh}}$
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.45\linewidth}
+				\includestandalone[width=0.9\linewidth]{Pictures/Figure_Linfinity_diagram}
+			\end{column}	
+		\end{columns}	
+		\vspace{1.5em}
+		Notation: $P_{\text{unsh}}$ = sum on all the possibile unshuffled permutation.
+
+\end{frame}
+\note[itemize]{
+  \item Regarding any $l_k$ as a tree with $k$ entries and 1 output, the $k$-th generalized Jacobi equation is produced summing all the possible way to obtain a $k+1$-ary tree by composing two other trees (not more then two!).
+  \item Can be regarded as
+  	\begin{displaymath}
+  		\sum_{i+j = k} l_j \circ ( l_j \otimes \mathbb{I}) \circ P_{\text{unsh}}
+  	\end{displaymath}
+  	Where $P_{\text{unsh}} : L^{\otimes(k-1)} \rightarrow L^{\otimes(k-1)} $ is the $(i,j)$-unshuffolator.
+  	\\(you consider only unshuffles to avoid the redundancies given by the fact that any $l_i$ has fixed symmetry.
+  \item Examples of unshuffles: \\
+  \begin{displaymath}
+  \begin{split}
+  	(12)(3)\quad(13)(2)\quad(23)(1)\\
+  	(123)(4)\quad(234)(1)\quad(134)(2)\quad(124)(3)\\
+  	(12)(34)\quad(23)(14)\quad(13)(24)\quad(14)(23)\quad(24)(13)
+  \end{split}
+  \end{displaymath}
+	\item When regarding the L$\infty$ structure as a chain complex with homotopies you get a neat intepretation of the Jacobi identity at the price that \emph{graded skew-symmetry} definition is more obscure than in the presentation with graded vector spaces.
+}
+%------------------------------------------------------------------------------------------------
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Observables $L_\infty$-algebra}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Lie $\infty$-algebra of Observables \emph{(Rogers)}}
+	\begin{defblock}[$L_\infty$-algebra \emph{(Lada, Stasheff) \cite{Lada1993}}]
+		\includestandalone{Pictures/Figure_Linfinitydef}
+	\end{defblock}	
+	%
+	\pause
+	\vfill
+	\begin{thmblock}[Rogers \cite{Rogers2010}]
+		The \emph{higher observable algebra} $L_{\infty}(M,\omega)$ 	forms an honest $L_\infty$ algebra.
+		\footnotetext{Take $[\cdot]_1$ equal to the deRham differential.}
+	\end{thmblock}
+\end{frame}
+\note[itemize]{
+	\item $L_\infty$-algebra is the notion obtained from a Lie algebra requiring that the Jacobi identity is satisfied only up to a higher coherent chain homotopy.
+	\item The Lie-n algebra mentioned before is a $L_\infty$ algebra with underlying graded vector space concentrated in degrees $0,1...n$.
+	
+	\item Definition. We say that a permutation $\sigma \in S_n$ is a $(j,n-j)$-unshuffle, $0\leq j \le1 n$  if $\sigma(1)< \dots < \sigma(j)$ and $\sigma(j+1)<\dots<\sigma(n)$.
+	\\
+	You can also say that $\sigma$ is a $(j,n-j)$-unshuffle if $\sigma(i)< \sigma(i+1)$ when $i\neq j$.
+
+	\item 	Alternatively, the Jacobiators can be also denoted as $$\displaystyle J_m=\sum_{i+j=m+1}(-)^{i(j+1)} 	\mu_i \circ \mu_j = 0$$
+	employing the so-called \emph{ Richardson-Nijenhuis product}
+		 $\mu_i\circ \mu_j := \frac{1}{j!(i-1)!}\mu_i\cdot\mu_j \cdot \mathcal{A}~, \qquad \mathcal{A} =$ (graded) total skew-symmetrizator.
+		 
+	\item see frame extra-\ref{Frame:unwapping-Jacobi} for a slightly demystification of the higher Jacobi equations.
+
+	\item more precisely this statement is a proposition/definition
+
+}
+%------------------------------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------------------------------
+%Slide by Leonid
+\begin{frame}[fragile]{Why the $L_\infty$ algebra of observable is so "simple"}
+	\textit{(in the sense that the higher brackets are defined only on $L^0$, i.e. "grounded")}
+	 \\
+	 \vfill
+	Extend the underlying cochain complex
+	\begin{displaymath}
+		\begin{tikzcd}
+			C^{\infty}(M) \ar[r,"d"] &
+			\cdots \ar[r,"d"] &
+			\Omega^{n-2}(M) \ar[r,"d"] &
+			\Omega^{n-1}_{Ham}(M,\omega) \ar[r,dashed] &
+			\mathfrak{X}_{Ham}(M,\omega)
+		\end{tikzcd}
+	\end{displaymath}
+	Consider 
+	\begin{displaymath}
+		\begin{tikzcd}[column sep= small,row sep=0ex]
+			\{\cdot,\cdot\}_2 ~\colon&[-1em] \left(\Omega^{n-1}_{\textrm{Ham}}(M,\omega)\right)^{\otimes 2} 	\arrow[r]& 				\Omega^{n-1}(M) \\[-1ex]
+			& \sigma_1\otimes\sigma_1 	\ar[r, mapsto]& 	-
+			\iota_{\mathscr{v}_{\sigma_1}}\iota_{\mathscr{v}_{\sigma_2}}\omega 
+		\end{tikzcd}
+	\end{displaymath}
+	%
+	\vfill
+	\begin{thmblock}[Barnich, Fulp, Lada, Stasheff \cite{Barnich1998}]
+		 Let $L^\bullet = (\cdots \rightarrow L^{-1} \rightarrow L^0 \rightarrow \mathfrak{g})$ be a resolution of the Lie
+		algebra $\mathfrak{g}$.
+		\begin{itemize}
+			\item a skew symmetric $\ell_2:L^0\times L^0 \to L^0$ covering the Lie bracket of $\mathfrak{g}$ can extended to a $L_\infty$-algebra structure $\{\ell_k\}$ on $L_\bullet$.
+			\item If $\ell_2$ is zero on boundaries, then the structure can be chosen such that $\ell_i$, for $i\geq 2$, are non-zero only on $L^0$.
+		\end{itemize}
+	\end{thmblock}
+
+
+\end{frame}
+\note[itemize]{
+	\item resolution in the sense that the $0$-th homology group is isomorphic to $\mathfrak{g}$ and all other cohomology groups are trivial (\cite[\S 2.1]{Barnich1998})
+	\item the extended complex is a resolution only if $M$ is contractible. In other terms, such a resolution exists locally on any multisymplectic smooth manifold.
+
+}
+
+
+
+%------------------------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Homotopy comoment maps}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+\begin{frame}{Comoment maps}
+	Consider a Lie algebra action $v:\mathfrak{g} \to \mathfrak{X}(M)$  preserving the $n$-plectic form $\omega$,
+	\vfill
+	\begin{columns}
+		\begin{column}{.5\linewidth}	
+	\textbf{Symplectic case $(n=1)$}
+		\begin{defblock}[Comoment map pertaining to $v$]
+			Lie algebra morphism
+			$$ f: \mathfrak{g} \to C^\infty(M) $$
+			such that
+			$$ d~f (x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$$
+		\end{defblock}		
+		\end{column}
+		\begin{column}{.5\linewidth}	
+	\textbf{Multi-symplectic case $(n\geq 1)$}
+		\begin{defblock}[Homotopy comoment map \tiny (HCMM)]
+			$L_\infty$-morphism 
+			$$ (f_k) : \mathfrak{g} \to L_\infty (M,\omega)$$
+			such that
+			$$ d~f_1(x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$$
+		\end{defblock}		
+		\end{column}
+	\end{columns}	
+	%
+	\pause
+	\centering \textbf{-- Conserved quantities --}
+	%
+	\begin{columns}
+		\begin{column}{.5\linewidth}		
+			\begin{propblock}[Noether Theorem]
+				\small Fixed $H\in C^\infty_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant) ,
+				$$\mathcal{L}_{v_H} f(x) = 0 \qquad \forall x \in \mathfrak{g}$$
+			\end{propblock}
+		\end{column}
+		\begin{column}{.5\linewidth}			
+			\begin{propblock}[RWZ16 Theorem]
+				\small Fixed $H\in \Omega^{n-1}_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant),
+				$$\mathcal{L}_{v_H} f_k(p) \in B^k(M) \qquad \forall p \in Z_k(\mathfrak{g})$$			
+			\end{propblock}
+		\end{column}
+	\end{columns}
+
+
+
+\end{frame}
+\note[itemize]{
+	\item  An infinitesimal symmetry is a lie algebra morphism such that $\mathcal{L}_{v_x} \omega = 0 ~ \forall x \in \mathfrak{g}$.
+	\\ (It is also call an infinitesimal multisymplectic action and $v_x$ is the infinitesimal generator of the action, corresponding to $x \in \mathfrak g$.) 
+	\item Essentially, admitting a comoment maps mean that $v$ acts via Hamiltonian vector fields.
+	\item In mechanical terms, a moment map is a tool associated with a Hamiltonian action of a Lie group on a symplectic manifold, used to construct conserved quantities for the action.
+	\item The name derives from the special case given by angular momentum in the dynamics of rigid bodies, 
+	\item Notation [RWZ16]: H is called \emph{strictly invariant} and $f_k(p)$ are \emph{globally invariant}.
+	\\
+	$B^k(M)$ are exact differential k-forms and $Z_k(\mathfrak{g}$ are Eilenberg Chevalley homology k-cycles.
+	
+	\item Details about Reduction in frame \ref{frame:geometrysymmetries} of the  appendix.
+	
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+  \begin{frame}[fragile,t]{Chevalley-Eilenberg Complex \qquad\hyperlink{frame:hcmm-main}{\beamerreturnbutton{}}}\label{frame:CE-complex}
+  	Consider $\mathfrak{g}$, Lie Algebra.
+  	\begin{defblock}[Eilenberg-Chevalley Complex]
+  		Chain Complex
+			\begin{center}
+				\begin{tikzcd}[column sep= small,row sep=0.25ex]
+					\ldots \ar[r,"\partial"] & \wedge^k \mathfrak{g} \ar[r,"\partial"] & 
+					\wedge^{k-1} \mathfrak{g} \ar[r,"\partial"] & \ldots
+			\end{tikzcd}	
+			\end{center}
+			with chain group
+			\begin{displaymath}
+				C^k := \wedge^k \mathfrak{g} \equiv 
+				\big\{ c : \mathfrak{g}^\ast\times\ldots\mathfrak{g}^\ast \to \mathbb{R}\:\big\vert\, \textrm{alternating, k-linear} \big\}
+			\end{displaymath}
+			and boundary operator defined as
+			$\partial \equiv \partial^k :  \Lambda^{k} {\mathfrak g} \to \Lambda^{k-1} {\mathfrak g}$  via
+			$$
+				\partial (\xi_1 \wedge \xi_2 \wedge \dots \wedge \xi_k) := \sum_{1\leq i< j \leq k} (-1)^{i+j}\, [\xi_i, \xi_j] \wedge \xi_1 \wedge \dots {\hat \xi}_i \wedge \dots \wedge {\hat \xi}_j \wedge \dots \xi_k
+			$$
+			where $\hat{}$ denoting deletion and with $\partial_0 = 0$.
+  	\end{defblock}
+		\begin{claimblock}
+			$$\partial^2 = 0$$
+		\end{claimblock}		
+  \end{frame}
+ % \note{{frame:hcmm-main}}
+%----------------------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Homotopy co-moment maps \emph{(Callies, Fregier, Rogers, Zambon)}}
+	Consider a multisymplectic action $G \circlearrowright (M, \omega)$,
+	\pause
+	\begin{lemblock}[HCMM unfolded  \cite{Callies2016}]
+			%
+			HCMM is a sequence of (graded-skew) multilinear maps:
+			\begin{displaymath}
+				(f)  = \big\lbrace f_k: \; \Lambda^k{\mathfrak g} \to L^{1-k} \subseteq \Omega^{n-k} 
+				\;\big\vert\; 0\leq k \leq n+1  \big\rbrace
+			\end{displaymath}
+			%
+			\vspace{-.5em}	
+			\includestandalone[width=0.9\textwidth]{Pictures/Frame_HCMM}
+			
+			\vspace{-1em}		
+			\emph{fulfilling:}%\emph{such that:}
+			\begin{itemize}
+				\item<2-> $f_0 = 0 $, $f_{n+1} = 0$
+				\item<3-> $d f_k (p) = f_{k-1} (\partial p)  - (-1)^{\frac{k(k+1)}{2}} \iota(v_p) \omega 
+				\qquad\scriptstyle \forall p \in \Lambda^k(\mathfrak{g}),\; \forall k=1,\dots n+1$
+			\end{itemize}
+		\end{lemblock}
+
+
+
+\end{frame}
+\note[itemize]{
+	%\item 		Consider:  $v:\mathfrak g\to \mathfrak X(M)$  a Lie algebra morphism  s.t. $\mathcal{L}_{v_x}\omega=0 \quad  \forall x\in\mathfrak g$ (i.e infinitesimal multisymplectic Lie algebra action $\mathfrak{g}\circlearrowleft (M,\omega)$)
+	\item More conceptually, a comoment is an $L_\infty$-morphism $(f):\mathfrak{g}\to L_\infty(M,\omega)$ lifting the action $v:\mathfrak{g}\to \mathfrak{X}(M)$, 
+i.e. making the diagram commute in the $L_\infty$-algebras category.
+	\item The vertical arrow is the trivial $L_\infty$-extension of the function mapping any Hamiltonian form to the unique corresponding Hamiltonian vector field (an it is zero elsewhere)
+		\\
+		(Note that any Lie algebra can be seen as an $L_\infty$-algebra concentrated in degree $0$, therefore any $L_\infty$-morphism $L\to\mathfrak{g}$ is simply given by a linear map $L_0 \to \mathfrak{g}$ preserving the binary brackets.)
+	\item We will make use of an explicit version of this definition which is expressed by the lemma.
+	 Practically speaking, a HCMM is given by several multilinear maps ...
+	 \item In the equation we have tacitly set $\Lambda^{-1}(M) = 0$
+	 %\item Notation: \qquad $\partial =$ Chevalley-Eilenberg boundary operator.
+	%\item Notice that a HCMM pertains to an "infinitesimal" action of ${\mathfrak g}$ on $M$ with ${\mathfrak g}$ being the Lie algebra of a generic Lie group $G$, acting on $M$ by $\omega$-preserving vector fields.
+		\item (Notation) $ p = \xi_1 \wedge \xi_2 \wedge \dots \wedge \xi_k$, 
+			then $v_p = v_1 \wedge v_2 \wedge \dots \wedge v_k$ 
+			where $v_i \equiv v_{\xi_i}$ are the fundamental vector fields associated to the action $G \circlearrowright M$.
+	%	\item (Notation) $\iota(v_p) \omega = \iota(v_k)\dots\iota(v_1) \omega$
+	%	\item $\varsigma(k) := - (-1)^{\frac{k(k+1)}{2}}$ 
+		\item (Notation) $(\iota^{k}_{\mathfrak{g}}\omega)(p):= \iota(v_p) \omega = \iota(v_k)\dots\iota(v_1) \omega$
+		\item $\partial \equiv \partial_k:  \Lambda^{k} {\mathfrak g} \to \Lambda^{k-1} {\mathfrak g}$  is the usual Eilenberg-Chevalley complex boundary operator (see appendix, pag: \ref{frame:CE-complex});
+%		\item The definition tells us that the {\it closed} forms
+%			$$\mu_k := f_{k-1} (\partial p) +  \varsigma(k) \iota(v_p) \omega 	$$
+%			must actually be {\it exact}, with potential $-f_k(p)$.  	
+		\item The last equation tells us that an HCMM is not a chain complex morphism but is rather a chain complex homotopy between 0 and the multicontraction $\alpha=(\iota^{k}_{\mathfrak{g}}\omega)$ (see next slide).
+		is a chain map by lemma 2.18 \cite{Ryvkin2016}).
+}
+%---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%===================================================================================
+\section{Foreground}
+%===================================================================================
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Work Done with Leonid}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsectiontitle
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Cohomological obstruction to HCMM \qquad\hyperlink{frame:introcohoobstruction}{\beamerreturnbutton{}}}\label{frame:AppCohomoObstructions}
+	Let $(M,\omega)$ multisymplectic and $\vartheta: M \times G \to M$ preserves $\omega$. 
+	\vfill
+	A HCMM is a sequence of linear maps:
+	\vspace{-.5em}
+	\begin{displaymath}
+		(f)  = \big\lbrace f_k: \; \Lambda^k{\mathfrak g} \to L_{k-1} \subseteq \Omega^{n-k} 
+		\;\big\vert\; 0\leq k \leq n+1  \big\rbrace
+	\end{displaymath}	
+	\vfill		
+	\emph{It can be interpreted as primitives of a certain cocycle in the total complex of}
+	\vspace{-.5em}
+	\begin{displaymath}
+		\Big(C_\mathfrak{g}^{\bullet,\bullet} = \Lambda^{\geq 1} 
+		\mathfrak{g}^*\otimes \Omega^\bullet(M) 
+		\cong Hom(\Lambda^\bullet \mathfrak{g},\Omega^\bullet),~\delta_\text{CE},~d\Big)
+		~,	
+	\end{displaymath}
+	\vfill
+	%
+	\pause
+	\begin{propblock}[$\vartheta ~\text{admits HCMM}~ ~\Longleftrightarrow~ \lbrack\tilde{\omega}\rbrack=0\in H^{n+1}(C_\mathfrak g^\bullet,d_ {tot})$	
+	]
+		Where:
+		\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{displaymath}
+				\tilde{\omega} = \sum_{k=1}^{n+1} (-1)^{k-1} \iota^k_\mathfrak{g} \omega \in C_\mathfrak{g}^{n+1},
+			\end{displaymath}		
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{align*}
+				\iota^k_\mathfrak{g} \colon \Omega^\bullet(M)
+				&\to \Lambda^k \mathfrak{g}^\ast \otimes \Omega^{\bullet-k}(M)
+				\\ \omega&\mapsto \omega_k = 
+				\left(p \mapsto \iota_{v_p} \omega  \right) ,
+			\end{align*}
+		\end{column}		
+		\end{columns} 
+	\end{propblock}
+	%
+\end{frame}
+\note[itemize]{
+	\item 
+	The  corresponding total complex is given by
+	\begin{displaymath}
+		(C_\mathfrak{g}^{\bullet}, d_\text{tot} = 
+		\delta_\text{CE}\otimes \text{id} + \text{id}\otimes d),
+	\end{displaymath}
+	where $d$ denotes the de Rham differential and $\delta_{CE}:\Lambda^k\mathfrak g^*\to \Lambda^{k+1}\mathfrak g^*$ the Lie algebra cohomology differential.
+	According to the Koszul sign convention, $d_{\text{tot}}$ acts on an element of $\Lambda^k \mathfrak{g}^*\otimes \Omega^\bullet(M)$ as $\delta_\text{CE} + (-1)^k d$.
+	
+	\item the multicontraction $\alpha=(\iota^{k}_{\mathfrak{g}}\omega)$ 	is a chain map by lemma 2.18 \cite{Ryvkin2016}).
+
+	\item PROP: the primitives of the natural cocycle $\tilde{\omega}$ are in one-to-one correspondence with comoments of $v$.
+	
+
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Cohomological obstructions for compact groups \qquad\hyperlink{frame:obstructioncompactgroups}{\beamerreturnbutton{}}}\label{frame:cohomologicalproposition}
+	Let $\vartheta:G\times M\to M$ be a compact Lie group acting on a pre-multisymplectic manifold, preserving the pre-multisymplectic form $\omega$. 
+	%
+	\begin{propblock}
+		[ $\exists$ (HCMM) $ 
+			~\Leftrightarrow~ 
+			\lbrack\vartheta^*\omega-\pi^*\omega\rbrack=0\in H^{n+1}(G\times M)$]
+		Based on the sequence of isomorphisms:
+		\begin{center}
+			\begin{tikzcd}
+	 			\Omega^\bullet(M,\vartheta) \ar[d,"\vartheta^\ast-\pi^\ast"] &\quad
+				 & H_\text{dR}(M) \ar[d,"\vartheta^\ast-\pi^\ast"]  
+				 & \lbrack \omega \rbrack \ar[d,mapsto]
+				 \\ 
+				 \Omega^\bullet(G\times M, r\times id) \ar["\cong",leftrightarrow]{d} &\quad
+				 & H_\text{dR}(G\times M) \ar[leftrightarrow,"\cong"]{d}[swap]{\text{\tiny (K\"unneth)}} 
+				 & \lbrack \vartheta^\ast \omega - \pi^\ast \omega \rbrack \ar[ddd,mapsto]
+				 \\ 
+				 \Omega^\bullet(G,r) \otimes \Omega^\bullet(M) \ar["\cong",leftrightarrow]{d}[swap]{} &\quad
+				 & H_\text{dR}(G) \otimes  H_\text{dR}(M) \ar[d,"\cong",leftrightarrow]
+				 \\ 
+				 \Lambda^\bullet \mathfrak{g}^* \otimes \Omega^\bullet(M)\ar["\cong",leftrightarrow]{d} &\quad
+				 & H_\text{CE}(\mathfrak{g}) \otimes  H_\text{dR}(M) 
+				 \ar["\cong",leftrightarrow]{d} & 
+				 \\
+				 C_\mathfrak{g}^\bullet \oplus ( \mathbb{R}\otimes \Omega^\bullet(M))&\quad 
+				 & H(C_\mathfrak{g}^\bullet)\oplus H_\text{dR}(M)
+				 & \lbrack \tilde{\omega}\rbrack
+			\end{tikzcd}
+		\end{center}						
+	\end{propblock}
+\end{frame}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Hints to the relation with equivariant cohomology \qquad\hyperlink{frame:obstructioncompactgroups}{\beamerreturnbutton{}}}\label{frame:EquivariantCohomology}
+	\begin{itemize}
+	\item 	Let a compact Lie group $G$ act on a manifold $M$. Let $EG$ be a contractible space on which $G$ acts freely by $\vartheta^{EG}$. Then we define the equivariant cohomology of $M$ as $H^\bullet_G(M):=H^\bullet((M\times EG)/G)$, where $G$ acts on $M\times EG$ diagonally.
+
+	\item As $EG$ might not be a manifold, we have to interpret $H^\bullet(\cdot)$ as a suituable cohomology theory (e.g. singular cohomology with real coefficients) in the above definition.
+	
+	\item As $G$ is compact, when $\vartheta:G\times M\to M$ is a free action, we have $H_G^\bullet(M)=H^\bullet_{dR}(M/G)$. For a not necessarily free action $\vartheta$, we still have the following diagram
+	$$
+		G\times (M\times EG) \xrightarrow{\vartheta\times \vartheta^{EG}}
+		M\times EG \xrightarrow{q} (M\times EG)/G
+	$$
+	where $q$ is the projection to the orbits, which induces $q^*$ in cohomology.	
+	\end{itemize}
+		\vfill
+	%
+	Let $G\times M\to M$ be a compact Lie group preserving a pre-multisymplectic form $\omega$.
+	%
+	\begin{tcolorbox}
+	\begin{itemize}
+		\item[\CheckedBox]  Proved, without resorting on a specific model, that if $[\omega]\in H^\bullet(M)$ lies in the image of $q^*:H^\bullet_G(M)\to H^\bullet(M)$, then $\vartheta$ admits a comoment.
+	\end{itemize}
+	\end{tcolorbox}
+
+
+
+
+
+
+
+
+
+
+	
+
+
+\end{frame}
+\note[itemize]{
+
+
+	\item We gave	an intrinsic proof of Theorem which does not depend on the choice of a model for equivariant cohomology. 
+	
+
+
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{HCMM for actions on spheres}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{HCMM for actions on spheres \underline{(sketch of proof)}\qquad\hyperlink{frame:leoresults}{\beamerreturnbutton{}}}\label{frame:LeoThmProof}
+	%Idea of proof:
+	\begin{itemize}
+	\setlength\itemsep{1em}
+	%
+		\item Obstructions live in: \quad 
+			\begin{minipage}[t]{.5\textwidth}
+			 \vspace{-2em}
+			 \ifHandout
+				{
+				   \begin{alignat*}{3}
+					 &H^n(C_\mathfrak{g}) 
+					 :=
+					 &&
+					 {\phantom{\oplus}~ \cancel{H^{n-1}(S^n)\otimes H^1(G)}~\oplus}
+					 \\
+					 & &&
+					 {\oplus~ \cancel{H^{n-2}(S^n)\otimes H^2(G)}~\oplus}
+					 \\
+					 & &&
+					 \qquad \vdots
+					 \\
+					 & &&
+					 \oplus {\mathbb{R}}\otimes H^n(G) \phantom{\oplus}
+					 &&\onslide<2->{\cong H^n(G)}
+				\end{alignat*}		
+				}			 
+			 \else
+				{
+				   \begin{alignat*}{3}
+					 &C_\mathfrak{g}^n 
+					 :=
+					 &&
+					 \only<1>{\phantom{\oplus} H^{n-1}(S^n)\otimes H^1(G)\oplus}
+					 \only<2->{\phantom{\oplus} \cancel{H^{n-1}(S^n)\otimes H^1(G)}\oplus}
+					 \\
+					 & &&
+					 \only<1>{\oplus H^{n-2}(S^n)\otimes H^2(G) \oplus}
+					 \only<2->{\oplus \cancel{H^{n-2}(S^n)\otimes H^2(G)} \oplus}
+					 \\
+					 & &&
+					 \qquad \vdots
+					 \\
+					 & &&
+					 \oplus \only<1>{H^{0}(S^n)}\only<2->{\mathbb{R}}\otimes H^n(G) \phantom{\oplus}
+					 &&\onslide<2->{\cong H^n(G)}
+				\end{alignat*}		
+				}						 
+			 \fi
+			\end{minipage}
+		\item<3-> \textcolor{blue}{Lemma:} $\vartheta ~\text{admits HCMM}~ ~\Leftrightarrow~  \vartheta_p^\ast[\omega]= 0 \in H^n(G)$	
+			\begin{flushright}
+				( for some orbit map $\vartheta_p:G\to S^n,~ g \mapsto g \cdot p$)
+			\end{flushright}
+	\end{itemize}
+	%
+	\vfill
+	\begin{itemize}
+	\setlength\itemsep{1em}
+	%		
+		\item<4-> \textcolor{blue}{\textbf{Intransitive case:}} there exists an orbit $O = p\cdot G \subset S^n $ of $dim < n $,
+			\begin{flushright}
+				$\Rightarrow \vartheta^\ast_p[\omega] = \vartheta^\ast_p[\omega\vert_O] = 0$ (by dimensional reasons)
+			\end{flushright}
+		
+		\item<5-> \textcolor{blue}{\textbf{Transitive case:}} all possible compact effective actions are classified
+\begin{table}[]
+\begin{tabular}{ll}
+ $SO(n)/SO(n-1) = S^{n-1}$ & $G_2/ SU(3) = S^6$ \\
+ $SU(n)/SU(n-1) = S^{2n-1}$ & $Spin(7)/G_2 = S^7$ \\
+ $Sp(n)/Sp(n-1) = S^{4n-1}$ & $Spin(9)/Spin(7) = S^{15}$
+\end{tabular}
+\end{table}
+	prove whether or not $\vartheta_N^\ast[\omega]$ is a generator (thus nonzero) in $H^n(G)$.
+	\\
+	\small
+	(use \emph{Leray-Hirsch} theorem on $H \hookrightarrow G \twoheadrightarrow S^n$ for the action $G/H=S^n$.)
+	\end{itemize}
+	
+\end{frame}
+\note[itemize]{
+	\item Recall that the cohomology of the sphere is non zero only in the top and the zero degree.
+	\item Restricting to the action of compact groups  allows us to take advantage of the following isomorphism
+	$$ H_{dR}(G) \cong H(G,r) \cong H_{CE}(\mathfrak{g})$$ coming from the "avarage trick" for compact groups.
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Examples}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{HCMM for spheres \underline{(Intransitive example)} \qquad\hyperlink{frame:leoresults}{\beamerreturnbutton{}}}\label{frame:LeoNonTransExample}
+	\begin{claimblock}
+		Explicit HCMM for $SO(n) \circlearrowleft \left( S^{n}, \omega\right)$ \qquad\qquad $\scriptstyle (\forall n \geq 2)$	
+	\end{claimblock}
+	%
+	\vfill
+	\begin{center}
+			\begin{tikzcd}[every matrix/.append style={draw, inner ysep=0pt},column sep= small,row sep=0ex]
+				f_i \colon&[-4ex] \Lambda^i\mathfrak{so}(n) \arrow[r]& \Omega^{n-1-i}(S^n)\\
+				& q 	\ar[r, mapsto]& -j^\ast\iota(v_q)(\iota_E \beta)	
+			\end{tikzcd}	
+	\end{center}
+	%
+	\vfill
+	\begin{columns}[T]
+		\begin{column}{.6\linewidth}
+		\quad where: %$\quad \bullet \quad E$ Euler vector field
+	\begin{itemize}[<+->]
+		\setlength\itemsep{1em}
+				\item $E$ Euler vector field
+				\item $j:S^n\hookrightarrow \mathbb{R}^{n+1}$ (standard) embedding
+				\item $\iota_{v_{\xi_1\wedge\dots\wedge \xi_n}} = \iota_{v_{\xi_n}}\dots \iota_{v_{\xi_1}} \quad \scriptstyle ( \forall \xi_i \in \mathfrak{so}(n))$
+				\item $\beta = (\hat{\varphi}~x^0)~ d x^1\wedge\dots\wedge d x^n$ 
+				\\
+				{\tiny ($x^0,\dots x^n$ standard Euclidean coordinates in $\mathbb{R}^{n+1}$.)}
+				\item 
+						$
+						\displaystyle
+						\hat{\varphi}(x,r)  = 
+						\begin{cases}
+								\frac{\left(x (n+1) - r \arctan\left(\frac{x}{r}\right)\right)}
+								{\left((x)^2 + r^2\right)^{\frac{n+1}{2}}}
+								&~\scriptstyle r \neq 0
+								\\
+								\frac{(n+1)}{x^n} 
+								&~\scriptstyle r=0,~ x\neq 0
+						\end{cases}
+				$
+	\end{itemize}
+
+			\end{column}	
+	  	\hfill  	
+			\begin{column}{.35\linewidth}
+					\onslide<5->{
+						\begin{figure}[c]
+							\vspace{1.5em}
+							%https://www.wolframalpha.com/input/?i=%28x*%285%2B1%29-r*%28atan%28x%2Fr%29%29%29*%281%2F%28x**2%2Br**2%29%29**%28%285%2B1%29%2F2%29
+							\href{http://shorturl.at/hxFR5}{\includegraphics[width=\textwidth]{Pictures/Figure_primitivePlot.png}}
+	  					\caption{\small $\hat{\varphi}\in C^\infty (\mathbb{R}^{n+1}\setminus{0})$ \\ in cylindrical coordinates $(x=x^0,r)$}
+						\end{figure}		
+					}
+				%
+	 	 	\end{column}
+ 	 \end{columns}
+
+
+
+
+
+
+	
+
+
+\end{frame}
+\note[itemize]{
+	\item
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{HCMM for spheres \underline{(Transitive example)} \qquad\hyperlink{frame:leoresults}{\beamerreturnbutton{}}} \label{frame:TransExample}
+
+	\begin{claimblock}[]
+	Explicit HCMM for $SO(n+1) \circlearrowleft \left( S^{n}, \omega\right)$ \qquad($n$ even)
+	\end{claimblock}
+	\begin{columns}
+	%
+		\begin{column}{.4\linewidth}
+			\begin{itemize}
+				\item			Choose basis in $\mathfrak{so}(n)$:	
+			\end{itemize}		
+		\end{column}
+		%
+		\begin{column}{.65\linewidth}
+	\[
+	A_{a b} =(-)^{1+a+b}\left(
+	\resizebox{.35\linewidth}{!} 
+		{
+			\bordermatrix{
+								& &\scriptstyle a & & \scriptstyle b & \cr
+               	& 0 &    & \cdots &  & 0 \cr
+              \scriptstyle a	& 0  &  \cdots & 0 & 1 & 0\ \cr
+               	& 0 &   & \cdots &  & 0\cr
+              \scriptstyle b	& 0 & -1 & 0 & \cdots & 0 \cr
+               	& 0  &   & \cdots &  & 0 }
+		}
+  \right)
+  \]		
+		\end{column}
+	\end{columns}
+	%
+	\pause
+	\vfill
+	\begin{columns}
+		\begin{column}{.4\linewidth}
+			\begin{itemize}
+				\item 			Fundamental vector fields:
+			\end{itemize}
+		\end{column}
+		\begin{column}{.65\linewidth}
+			\[v_{A_{a b}}=  (-1)^{1+a+b}\left(x^a \partial_b - x^b \partial_a\right)\]
+		\end{column}	
+	\end{columns}
+	\pause
+	\vfill
+	\begin{columns}
+		\begin{column}{1.05\linewidth}
+			\begin{itemize}
+				\item From the vanishing of $H^1(G),H^2(G)$ one gets:
+				\begin{empheq}[box=\fbox]{align*}
+					f_1 (A_{a b}) &= 
+					- \iota(v_{F^1(A_{a b})}) \omega =
+				\dfrac{1}{n-2}\sum_{k=1}^n \iota(v_{A_{k b}})\iota(v_{A_{k a}})\omega.				
+					\\
+					f_2(A_{a b} \wedge A_{c d}) &= 
+					\dfrac{-1}{4}
+						\sum_{k=1}^n	
+					\left(
+						\iota(v_{A_{k a} \wedge A_{k b} \wedge A_{c d}}) - 
+						\iota(v_{A_{a b}\wedge A_{k c} \wedge A_{k d}})
+					\right)\omega\\
+					f_2(A_{j a} \wedge A_{j b}) &= \dfrac{-1}{n-2}
+					\sum_{k=1}^n	
+					\left(
+						\iota(v_{A_{k a}\wedge A_{j b}\wedge A_{k j}})
+					\right)\omega.
+				\end{empheq}
+				\pause
+				\item 	Construction of $f_k$ with $k\geq 3$ can be addressed numerically.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+
+
+
+\end{frame}
+\note[itemize]{
+	\item 	
+	First 2 component of HCMM for $SO(n+1)$ on $S^{n}$ (Going higher can be set up as a computational problem - we have a sketch of code in Python -, the first 2 component are easier due to the vanishing of the first two CE cohomology group of $G$)
+
+	\item Recall that $\mathfrak{so}(n)$ is the Lie sub-algebra of $\mathfrak{gl}(n,\mathbb{R})$ consisting of all skew-symmetric square matrices. A basis can be constructed as follows:
+\begin{equation}\label{eq:standard-basis}
+	\mathcal{B}\coloneqq \big\lbrace 	A_{a b} = (-1)^{1+a+b} \left( E_{a b} - E_{b a}\right)
+	\quad \vert \quad 1\leq a<b\leq n \big\rbrace
+\end{equation}
+where $E_{a b}$ is the matrix with all entries equal to zero and entry $(a,b)$ equal to one.
+\item The fundamental vector field of $A_{a b}$ associated to the linear action of $SO(n)$ on $\mathbb{R}^n$ reads as follows:
+\begin{displaymath}
+	v_{A_{a b}}= \sum_{i,j}[A_{a b}]_{i j}x^j \partial_i  = (-1)^{1+a+b}\left(x^a \partial_b - x^b \partial_a\right)
+\end{displaymath}
+	\item from the vanishing of the first cohomology group of $(SO(n))$ one can give the action of $f_1$ and of $f_2$ (given on the only two subset of generators such that the image does not vanish)
+	\item \textbf{$f_k$ for any $SO(n)$ and $k\geq 3$}:\\
+	We know from Theorem \ref{thm:son-cohomology} that $H^3(\mathfrak{so}(n))$ never vanishes... how can we proceed? Tony drafted a code in Python. The repository is still private
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+%===================================================================================
+\subsection{Work Done with Marco}
+%===================================================================================
+
+
+
+
+
+
+
+
+
+%===================================================================================
+\subsection{Work Done with Mauro}
+%===================================================================================
+
+%------------------------------------------------------------------------------------------------
+  \begin{frame}{Hydrodynamical homotopy co-momentum map (details 1) \qquad\hyperlink{frame:hydro2}{\beamerreturnbutton{}}}\label{frame:hydromomap-details}
+  	\begin{claimblock}
+  		Explicit construction of an HCMM for $SDiff_0 \circlearrowright (\mathbb{R}^3,\nu)$
+  	\end{claimblock}
+	\begin{columns}
+		\begin{column}[c]{.5\linewidth}
+		  	\begin{itemize}
+		  		\item The observables are  $$L= \Omega^1_{\textrm{ham}}(\mathbb{R}^3)\oplus\Omega^0(\mathbb{R}^3)$$
+		  		\item HCMM consists of a pair of functions:
+					\begin{align*}
+						f_1 &\colon \mathfrak{g} \rightarrow \Omega^1_{\textrm{ham}}(\mathbb{R}^3) \\
+						f_2 &\colon \mathfrak{g}\wedge\mathfrak{g} \rightarrow C^\infty(\mathbb{R}^3)
+					\end{align*}	
+		  	\end{itemize}
+		\end{column}	
+	  	\hfill  	
+		\begin{column}[c]{.5\linewidth}
+  		\includestandalone[width=\textwidth]{Pictures/Figure_Euclid_Trigger}
+ 	 	\end{column}
+ 	 \end{columns}
+ 	\begin{columns}
+		\begin{column}[c]{.8\linewidth}
+		 	 \begin{itemize}
+				\item Satisfying the following system:
+					\begin{displaymath}
+						\begin{cases}
+							\textrm{d} f_1(\xi) = \iota_\xi \nu = -\alpha^1(\xi) \\
+							\textrm{d} f_2(\xi_1 \wedge \xi_2) = f_1\left([\xi_1,\xi_2]\right) - \iota_{\xi_2}\iota_{\xi_1} \nu 
+							 := \mu_2(\xi_1,\xi_2)\\
+							f_2\left(\partial \xi_1 \wedge \xi_2 \wedge \xi_3 \right) = \iota_{\xi_3}\iota_{\xi_2}\iota_{\xi_1} \nu
+						\end{cases}
+					\end{displaymath}
+		 	 \end{itemize}
+ 	 	\end{column}
+		\begin{column}[c]{.2\linewidth}
+ 	 	\end{column}
+ 	 \end{columns}
+  \end{frame}
+	\note[itemize]{
+		\item (Regarding the diagram)
+		\item On the left there is the part of the Chevalley-Eilemberg complex that interact with the L-$\infty$ algebra of observables.
+		\item On the right there is the whole de Rham complex of the manifold $M=\mathbb{R}^3$.
+		\item Even if only $\Omega^1$ and $\Omega^0$ take part in the definition of a $HCMM$, the Riemmanian structure determine a correspondence with the rest of the de Rham complex.
+		\item In order to give an HCMM for this action is necessary to give a solution of the system of 3 equations below.
+		\item Recall: $ 	\ast: \Omega^k \rightarrow \Omega^{n-k}$ where $\ast \sigma$ is defined as the unique form such
+		 that $ \omega \wedge \ast \sigma = \nu \lbrace \omega, \sigma \rbrace$ where 
+		 $\langle,\rangle$ is the inner product on forms induced by the metric. 
+	}  
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%--------------------------------------------------------------------------------------------------------------------------------------------------- 
+  \begin{frame}[t]{Explicit Construction of the hydrodynamical HCMM \qquad\hyperlink{frame:hydro2}{\beamerreturnbutton{}}}
+		\begin{enumerate}
+			\item<1-> Fix $\vec{b} \in \mathfrak{g}$ and define $f_1(b) := -\vec{A}^\flat$.\\ 
+				The first equation is equivalent to solve
+				\begin{displaymath}
+					\tag{equation of magnetostatic}
+					{\rm curl}(\vec{A})=\vec{b}
+				\end{displaymath}
+				This equation admits a solution 
+				\begin{displaymath}
+					\tag{Biot-Savart law}
+					\vec{A}(r) = \int\frac{\vec{b}\times(\vec{r}-\vec{r}')}{|\vec{r}-\vec{r}'|^3}\textrm{d}r'
+				\end{displaymath}							
+				\alert {Defined up to a gradient \emph{(gauge freedom)}}. 
+			%
+			\item<2-> $\mu_2(\xi_1,\xi_2)$ is closed $\forall \xi\in\mathfrak{g}$ $\xRightarrow[\text{lemma}]{\text{Poincar\'e}}$ is exact.\\
+				%Hence it is also exact \emph{(Poincar\'e lemma)}.\\
+				Take as $f_2(\xi_1,\xi_2)$ a primitive $0$-form, \alert{determined up to a constant $c(\xi_1,\xi_2)$}.
+			%
+			\item<3-> Third equation is a priori only true up to a constant $c(\xi_1, \xi_2, \xi_3)$.\\
+				The constant is zero since $\nu(\xi_1, \xi_2, \xi_3)$ vanishes at infinity and 
+				the same is true for $f_2(\partial q)$ upon solving the related Poisson equation
+ 				\begin{displaymath}
+ 			 		\Delta f_2(\partial q) = \Delta \nu(\xi_1, \xi_2, \xi_3)			
+ 				\end{displaymath}
+		\end{enumerate}
+  \end{frame}
+  \note[enumerate]{
+  	\item	
+  		\begin{itemize}
+		  	\item Exploiting the correspondence between tangent fields and 1-form given by the metric is possible to recast the first equation in a simple vector calculus equation containing  the curl.
+		  	\item Such equation is the well-known equation of magnetostatic with admits solution by the Biot-Savart law.
+		  	\item In the context of hydrodynamic $A$ can be interpreted as a \emph{velocity field} and $b$ as the corresponding vorticity. (See slide for further details)  		
+  		\end{itemize}
+  	\item In the language of physics, such primitive form is often called "a potential".
+  	\item 
+  		\begin{itemize}
+  			\item (Notation) $q = \xi_1 \wedge \xi_2 \wedge x_3$.
+  			\item Last equation tells us that $f_2(\partial q)$ and $ \nu(q)$ differs by a constant. But since both of them vanish at infinity this constant has to be zero.
+  			\item The condition of vanishing at infinity has been imposed in order to fulfil the last equation.
+  		\end{itemize}
+  	\item[$\triangleright$] This construction can be generalized to oriented Riemannian manifolds with further cohomological condition. 
+  		See appendix, pag: \ref{frame:RiemannianGeneralization}.
+  }
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Hydrodynamics reinterpretation \qquad\hyperlink{frame:hydro2}{\beamerreturnbutton{}}}\label{frame:HydroHCMM-reinterpretation}
+	\label{frame:hydro-reinterpretation}
+		Consider the loop spaces $L{\mathbb R}^3$,\\
+		%
+		\begin{propblock}[HCMM for $G\circlearrowright(\mathbb{R}^3,\nu)$ induces \\an ordinary co-mo.map for $G\circlearrowright (LS,\nu^{\ell})$]
+			The HCMM $f \colon \mathfrak{g} \to L_{\infty}(\mathbb{R}^3,\nu)$ previously given
+			\emph{transgresses}	 to
+			\begin{displaymath}%\tag{Arnol'd-Marsden-Weinstein\\ hydrodynamical co-momentum map}
+				\begin{tikzcd}[column sep= small,row sep=0ex]
+					\lambda \colon& \mathfrak{g}	\arrow[r]& C^\infty(LS) \\
+					& {\mathbf b}	\arrow[r, mapsto]& \displaystyle \lambda_b(\textvisiblespace) =-\oint_{\textvisiblespace} A^\flat = - \oint_{\textvisiblespace} f_1({\mathbf b}) 
+					%	\quad \forall \gamma \in LS		
+				\end{tikzcd}	
+			\end{displaymath}
+			that is a  moment map for the induced action $G$ on the pre-symplectic loop space $(LM,\nu^{\ell})$. (Smooth space in the sense of Brylinski)
+		\end{propblock}
+		\begin{itemize}
+			\item $\lambda$ corresponds to \emph{Arnol'd-Marsden-Weinstein hydrodynamical co-momentum map}  defined on $\infty$-dim. manifolds.
+			\item<2-> $\Lambda = \left\lbrace \lambda_{\mathbf b} \right\rbrace_{{\mathbf b}\in\mathfrak{g}}$ is, up to sign, the {\it Rasetti-Regge current algebra}
+			\item<3-> There is a naturally defined {\it Poisson brackets} on $\Lambda$:
+				\begin{displaymath}
+					\{ f_1({\mathbf b}), f_1({\mathbf c}) \} (\cdot):= \iota_{\mathbf c} \iota_{\mathbf b} \nu (\cdot)=
+						\nu({\mathbf b}, {\mathbf c}, \cdot) = f_1([{\mathbf b},{\mathbf c}])
+					-df_2 ({\mathbf b} \wedge {\mathbf c})
+				\end{displaymath}
+				\centering\footnotesize(Note: $\lambda$ is (infinitesimally) $G$-equivariant, i.e. $	\{\lambda_{\mathbf b}, \lambda_{\mathbf c} \} = \lambda_{[{\mathbf b}, {\mathbf c}]}$)
+		\end{itemize}
+
+    
+\end{frame}
+\note[itemize]{
+  	\item[ ] \textbf{How all of this is relevant in Hydrodynamics?}
+  	\item The loop space is the manifold, in the sense of Brylinsky, consisting of all smooth loops in ${\mathbb R}^3$.
+  	\item Transgression can be seen as a pull-back along the evaluation map 
+  		$${\rm ev}: L{\mathbb R}^3 \times {\mathbb R} \ni (\gamma, t) \mapsto \gamma(t) \in {\mathbb R}^3$$
+  		  	For further details see appendix, pag: \ref{frame:LoopSpacesTransgression}.
+  	\item Note that the (RR) current pertaining to ${\mathbf b} \in {\mathfrak g}$  is independent of the choice of $B$.
+  			See appendix, pag: \ref{frame:RRcurrents} for other informations on this concept or \cite{Rasetti1975},\cite{Penna1992} for a deeper account.
+  	\item In \cite{Callies2016} is proved a general result asserting that, roughly speaking,
+			homotopy co-momentum maps transgress to homotopy co-momentum maps on loop (and even mapping) spaces. Further details in appendix, pag: \ref{frame:TransgressionHCMM}.
+	\item Actually, the ansatz for $f_1$ term in the previous construction has been precisely motivated by this phenomenon. 
+}
+%------------------------------------------------------------------------------------------------
+
+
+
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Non-Equivariance of the Hydrodynamical HCMM \qquad\hyperlink{frame:hydro2}{\beamerreturnbutton{}}} 
+	%
+ 	\begin{columns}
+		\begin{column}[c]{.5\linewidth}	
+			\begin{defblock}[$G$-equivariant HCMM]
+				$f_i\colon \Lambda^i\mathfrak g\to \Omega^{n-i}(M)$ \\ 
+				Ad(G)-equivariant $ \forall i\in\{1,...,n\}$.
+			\end{defblock}		
+		\end{column}
+		\begin{column}[c]{.5\linewidth}	
+			\begin{defblock}[$\mathfrak{g}$-equivariant HCMM]
+				$\mathcal{L}_{v_x}(f_i(q))=f_i([x,q])$ \\
+				\phantom{\hspace{2cm}}$\forall q\in \Lambda^{i}\mathfrak g , \: x\in \mathfrak g$\\
+				\footnotesize{Where $[x,\cdot]$ is $ad(x)$ acting  on $\Lambda^\bullet \mathfrak g$}
+				%$f_i\colon \Lambda^i\mathfrak g\to \Omega^{n-i}(M)$
+			\end{defblock}		
+		\end{column}
+	\end{columns}
+	\pause
+	\vfill
+	\begin{propblock}[$(f)$ is not $\mathfrak{g}$-equivariant]
+		\underline{Proof:} 
+		\footnotesize
+		Consider in particular $\xi = \vec{b} \in \mathfrak{g}$, one should check 
+		\begin{displaymath}
+			\begin{split}
+				0 = f_1\left( [\xi, \vec{b}] \right)
+				\stackrel{?}{=}
+				%=?=
+				{\mathcal L}_{\xi} f_1({\vec{b}})  = -{\mathcal L}_{\xi} \vec{A}^\flat &=
+					- d \iota_\xi \vec{A}^\flat = - d \langle \vec{A}, \vec{b} \rangle_g
+				\qquad \forall \xi \in \mathfrak{g} \\
+						\text{(vanishing at infinity condition)} &\Rightarrow \langle \vec{A}, \vec{b} \rangle_g = 0
+			\end{split}
+%		\begin{split}
+%					f_1\left( [\xi, \vec{b}] \right) &= 0 \\
+%					 ( \forall \xi\in \mathfrak{g}) \quad \parallel ? & \qquad\\
+%					{\mathcal L}_{\xi} f_1({\vec{b}})  &= -{\mathcal L}_{\xi} \vec{A}^\flat =
+%					- d \iota_\xi \vec{A}^\flat = - d \langle \vec{A}, \vec{b} \rangle_g
+%		\end{split}		
+		\end{displaymath}
+		%
+	 	\begin{columns}
+			\begin{column}[c]{.7\linewidth}
+				(By contradiction), consider $\vec{b}\in\mathfrak{g}$ supported on two linked flux tubes
+				$(\text{supp}(\vec{b}) = \Gamma_1 \cup \Gamma_2)$, one gets
+		\begin{displaymath}
+			\int \langle \vec{A}, \vec{b} \rangle_g = 2 \mathbf{n} \Phi_1 \Phi_2 
+			\qquad \text{with} \quad 
+			\Phi_i = \int_{S_i} \hat{n} \cdot \vec{b}\, d\sigma
+		\end{displaymath}
+		where $n \in \mathbb{N}$ \emph{(Gauss linking number)}, results
+		$$\mathbf{n} \neq 0 \qquad \Rightarrow \quad {\mathcal L}_{\xi} f_1({\vec{b}}) \neq 0  \quad \Rightarrow \quad\text{\faBomb}$$ 
+			\end{column}
+			\begin{column}[c]{.45\linewidth}	
+				\includegraphics[width=0.9\linewidth]{Pictures/VortexLink}
+			\end{column}
+		\end{columns}	
+	\end{propblock}
+
+		
+\end{frame}
+\note[itemize]{
+    \item We may also naturally ask the question whether the above map $(f)$ is (infinitesimally) {\it G-equivariant}, in the sense of \cite{RWZ}.
+    \item In the symplectic case, $G$ connected implies $G$-equivariance. This does not hold true in the multisymplectic case. (ask Leyli!)
+    \item In the proof, if $\vec{A}$ is the velocity field of the fluid, $\vec{b}$ is the associated vorticity, the quantity $\langle \vec{A}, \vec{b} \rangle_g$ is called \emph{Helicity}, see below (pag. \ref{Frame:VortexLinks}) for further details.
+    \item The proof is by contradiction by exhibiting an example of solenoidal field $\vec{b} = \text{curl}(\vec{A})$ with non vanishing helicity, i.e. not satisfying the condition.\\
+    Namely, consider a solenoidal field compactly supported  on a domain $D$ consisting in two disjoint, unknotted but linked closed tubes.
+    \item  See \cite{Moffatt-Ricca92} for further elucidation on the non vanishing of the Helicity in the cosidered case.
+    Notice that the argument does not depend on the choice of	$\vec{A}$ pertaining to the fixed $\vec{b}$.
+    \item The lack of $G$-equivariance is not surprising, since our construction involves Riemannian geometric features.	
+}
+%------------------------------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------------------------------
+  \begin{frame}[shrink]{Riemannian Generalization \qquad\hyperlink{frame:hydro2}{\beamerreturnbutton{}}}\label{frame:RiemannianGeneralization}
+			\begin{columns}
+				\begin{column}{.5\linewidth}
+					\begin{itemize}
+						\item  $(M,g)$ be a connected compact oriented Riemannian manifold of dimension $n+1$
+						\item such that the {\it de Rham} cohomology groups $H_{dR}^{k}(M)$ vanish for $k=1,2,\dots n-1$ 
+						\item endow it with the multisymplectic form $\nu$ given by its Riemannian volume form
+						\item consider $g_0$, lie algebra consisting of divergence-free vector fields vanishing at a point $x_0 \in M$.
+					\end{itemize}
+					\begin{claimblock}
+						$\exists (f)$, family of HCMM, pertaining to the infinitesimal action of $\mathfrak{g}_0$ on $M$
+					\end{claimblock}
+				\end{column}
+				\begin{column}{.5\linewidth}
+ 			 		\includestandalone[width=\textwidth]{Pictures/Figure_Riemann_Trigger}
+				\end{column}
+			\end{columns}
+		\textit{Sketch of proof:}\\
+			The defining formula triggers a recursive construction starting from $f_1$.\\
+			Take $ f_1(\xi) := -\Delta^{-1} \delta (\iota_{\xi} \nu)$
+			$\quad$ (...) (see \cite{Miti2018})
+  \end{frame}
+  		\note[itemize]{
+			%\item[(Thm)] A hydrodynamically flavoured HCMM can be similarly construed also for an $(n+1)$-dimensional connected, compact, orientable Riemannian manifold $(M,g)$, upon taking its Riemannian volume form $\nu$ as a multisymplectic form and again the group $G$ of volume preserving diffeomorphism group as symmetry group.
+			\item[(recall)] The divergence of a vector field $X$ is defined via ${\rm div}\, X := *d\!*\!X^{\flat} = -\delta X^{\flat} $.
+			\item The recursive construction start from $f_1$, up to topological obstructions  since we have a sequence of closed forms, which must be actually exact, together with the constraint $ f_n(\partial q) = (-1)^{\frac{(n+1)(n+2)}{2}}\nu(\xi_1,\dots\xi_{n+1})$, with $q= \xi_1 \wedge \dots \xi_{n+1}$, for the {\it constant} function $\mu_{n+1}(\cdot)$.
+				\item A natural candidate for the (n-1)-form $f_1$ can be manufactured via Hodge theory as 
+				$f_1(\xi) := -\Delta^{-1} \delta (\iota_{\xi} \nu)$
+			after imposing $\delta f_1({\xi}) = 0$ (the analogue of the Coulomb gauge condition).
+			\item Condition $H_{dR}^{n-1}(M) = 0$ assure one can safely invert the Hodge Laplacian $\Delta = d\delta + \delta d$;
+			\item The 	topological assumptions made ensure that the entire procedure goes through unimpeded due to the formula
+			$$
+			df_k (\xi_1 \wedge\dots \wedge \xi_k) = \mu_k (\xi_1 \wedge\dots \wedge \xi_k), \qquad \qquad k=2,3,\dots n
+			$$
+			\item Finally, one has to check that 
+			$$
+			f_n (\partial (\xi_1 \wedge\dots \wedge \xi_{n+1})) =  -\varsigma(n+1) \iota (\xi_1 \wedge\dots \wedge \xi_{n+1})\nu
+			$$
+			this is guaranteed by the vanishing of all fields at $x_0$.
+			% this is true once we notice that, since $c_{x_0} = 0$, the class $[c_x] = 0$ ( see \cite{Callies2016}, section 9).\qed
+		}
+%------------------------------------------------------------------------------------------------  
+
+
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{A connection with Knot theory \qquad\hyperlink{frame:hydro3}{\beamerreturnbutton{}}}\label{Frame:VortexLinks}
+ 	\centering$\Rightarrow$\emph{The bridge is the \alert{Vortex Dynamics}}$\Leftarrow$
+
+	\begin{columns}
+	\begin{column}[T]{.55\linewidth}
+		\vspace{1ex}
+ 		$\bullet$Consider a perfect (incompressible, inviscid) fluid permeating the  whole space $M=\mathbb{R}^3$.\\
+ 		\pause
+ 		$\bullet$ $\text{Physical state} \rightsquigarrow u \in sdiff_0(\mathbb{R}^3)$
+% 		\begin{displaymath}
+% 			\text{physical state} \rightsquigarrow u \in sdiff_0(\mathbb{R}^3)
+% 		\end{displaymath}
+ 		\begin{columns}
+ 		\begin{column}{.5\linewidth}	
+ 			\begin{defblock}[Vorticity]
+				$\displaystyle \omega := \textrm{curl}(u)$					
+ 			\end{defblock}
+ 		\end{column}
+  		\begin{column}{.5\linewidth}	
+ 			\begin{defblock}[Helicity]
+				$\displaystyle h = \int_{\mathbb{R}^3} u \cdot \omega  d^3x$		
+ 			\end{defblock} 		
+ 		\end{column}
+ 		\end{columns}
+ 				%
+  		\begin{columns}
+ 		\begin{column}{.5\linewidth}	
+ 			\pause
+			$\bullet$ Dynamics is ruled by the \emph{Euler equation}:
+			\begin{displaymath}
+				\frac{\partial \omega}{\partial t} = [\omega, u]				
+			\end{displaymath}
+ 		\end{column}
+  		\begin{column}{.5\linewidth}	
+			\begin{propblock}[Helicity is conserved]
+				$\frac{d}{dt}H = 0$
+			\end{propblock}
+ 		\end{column}
+ 		\end{columns}
+ 			\pause
+ 			\vspace{2ex}
+ 			$\bullet$
+ 			Consider $\omega$ localized in a flux loop $\mathcal{L}$.
+ 			\begin{propblock}[Vortex filaments are preserved]
+ 				$\text{supp}(\omega(0))\simeq \text{supp}(\omega(t)) \qquad \forall t$
+  			\end{propblock}
+	\end{column}
+	\begin{column}[T]{.40\linewidth}
+		\vspace{-1ex}
+		\pause
+		\begin{figure}[T]
+			\caption{Knotted vortex in water  (Klenecker \& Irvine \cite{Kleckner2013})}
+			\href{https://www.nature.com/articles/nphys2560}{\includegraphics[width=\linewidth]{Pictures/knottedwatervortex}}
+		\end{figure}
+			\vspace{-2ex}
+			\alert{Such fluid configurations are proved to exist both 
+			\underline{theoretically} and \underline{experimentally}!}
+	\end{column}
+	\end{columns} 
+\end{frame}
+\note[itemize]{
+	\item One of the  the main goal of our paper\cite{Miti2018} is to find an application of this construction in knot theory.
+	\item The cornerstone of this idea is to recognize the ubiquitous role of the group of preserving diffeomorphisms. 
+	The first step is to notice that conserved quantities can be associated to any fluid configurations (especially knotted ones).
+ 	\item The gist of the second proposition is that the topology of the support of the vorticity is conserved along the fluid evolution.
+ 	\item The image on the right represents a fluid configuration with knotted vorticity realized in the laboratory.
+}
+%------------------------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Basics of Knot theory}
+%-------------------------------------------------------------------------------------------------------------------------------------
+  \begin{frame}[fragile]{Basics of \emph{knots theory} \qquad\hyperlink{frame:hydro3}{\beamerreturnbutton{}}}
+		\begin{columns}
+			\begin{column}[T]{.4\linewidth}
+				\begin{figure}
+					\caption{Reidmeister's move}
+				\ifHandout
+				%	\includestandalonewithpath[width=\textwidth,keepaspectratio]{../MS-Knots/Pictures}{Figure_trefoil}
+				\else
+				%	\includestandalonewithpath[width=\textwidth,keepaspectratio]{../MS-Knots/Pictures}{Animation_trefoil}
+				\fi
+				\end{figure}
+			\end{column}
+				\hfill
+			\begin{column}[T]{.6\linewidth}
+				\begin{enumerate}
+					\item Knots = compact submanifolds of codimension 2 embedded in $\mathbb{R}^3$
+						\begin{defblock}[n-link]
+							%Disjoint union is written using \coprod, since it is in fact the coproduct in the category of sets.(\amalg)
+							$\gamma: {\displaystyle\coprod_1^n S^1 } \to \mathbb{R}^3 $ embedding.				
+						\end{defblock}
+					\item studied \emph{modulo "ambient isotopies"}
+						\begin{defblock}[Ambient isotopies]
+							%Disjoint union is written using \coprod, since it is in fact the coproduct in the category of sets.(\amalg)
+							$h : {\displaystyle\coprod_1^n S^1 }\times [0,1] \to \mathbb{R}^3 $ smooth homotopy
+							s.t. $\hat{h}(t) : {\displaystyle\coprod_1^n S^1 } \to \mathbb{R}^3$ is an embedding $\forall t$	.				
+						\end{defblock}	
+					\item Holy grail of knot theory: classify all non equivalent (by ambient isotopies) n-links.
+					\item \alert{These classes are invariant w.r.t. volume preserving diffeos.}
+				\end{enumerate}
+				%			
+  	  \end{column}
+    \end{columns}
+	%
+ \end{frame}
+\note{
+	\begin{itemize}
+		\item It is possible to build a bridge between knot theory and multisymplectic geometry exploiting the tight connection between both of them with hydrodynamics.\\
+		The cornerstone of this relationship is the ubiquitous role of the group of volume preserving diffeomorphisms.
+		\item Knot  theory is not simply an instance of studying the topology of loops but the ambient space takes a significant role"
+		\item Studying smooth knots is equivalent to study \href{http://mathworld.wolfram.com/PolygonalKnot.html}{tamed polygonal knots}.
+		\item choosing a smooth parametrization is tantamount to fix an orientation of the knot.
+	\end{itemize}
+}
+%-------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Intermezzo: Poincare duals}
+%------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Recall: De Rham currents \qquad\hyperlink{frame:hydro3}{\beamerreturnbutton{}}}
+	On smooth manifolds is possible to mimick the basic definition of distribution using differential forms:
+		\begin{defblock}[De Rham k-Currents]
+			\begin{displaymath}
+				\mathcal{D}_k(M)
+				:= 
+			\biggr\{\eta: \Omega^k_c(M)\rightarrow \mathbb{R} \; \left\vert \; \text{\stackanchor{(seq.) continuous}{linear functionals}} \right\} 
+				\cong
+				\left(\Omega^k_c (M) \right)^\ast
+			\end{displaymath}
+		\end{defblock}
+		%
+		\vspace{-2.5ex}
+		%
+  	\onslide<2->{
+  	\begin{columns}
+		\begin{column}[t]{.5\linewidth}	
+			\begin{defblock}[Annihilation set of $T \in \mathcal{D}$]
+				Open subset $A \subset M$ s.t. \\ 
+				$\langle T, \phi \rangle = 0 \quad \forall \phi 	
+				\text{ s.t. } \text{supp}(\phi) \subset A$
+			\end{defblock}
+		\end{column}
+		\begin{column}[t]{.5\linewidth}			
+			\begin{defblock}[Support of $T \in \mathcal{D}$]
+				$\text{supp}(T)$ = complement of the union of all open annihilation sets of $\eta$
+			\end{defblock}
+		\end{column}
+  	\end{columns}
+  	}		
+%
+  	\onslide<3->{
+	  	We have the analogue of \emph{regular distributions}
+			\begin{alignat*}{2}
+			  D:\Omega^k(M) & \longrightarrow & \mathcal{D}^{n-k}(M) & \\
+			  \eta & \longmapsto & D_\eta & \quad:\quad 
+			  \langle D_\eta, \text{\textvisiblespace} \rangle = 
+			  \int_M \blank \wedge \eta \\
+			  \text{d}\sigma& \longmapsto & D_{\text{d}\sigma} & \quad:\quad 
+			  \langle D_{\text{d}\sigma}, \blank \rangle = 
+			  (-)^{k} \int_M   \text{d}\blank \wedge\sigma
+			\end{alignat*}	  	
+  	}				
+		%
+		\vspace{-2.5ex}
+		%
+  	\onslide<4->{
+		\begin{defblock}[De Rham boundary operator]
+			\begin{displaymath}
+				\partial : \mathcal{D}_k(M) \rightarrow \mathcal{D}_{k-1}(M) \qquad \text{s.t.} \quad
+				\langle \partial T, \blank \rangle = (-)^{k} \langle T, \text{d}\blank \rangle
+			\end{displaymath}
+		\end{defblock}
+  	}							
+\end{frame}
+\note[itemize]{
+	\item this is the analogue of the theory of distribution on $\mathbb{R}^n$
+	\item Continuity in the sense of distributions means \emph{sequentially continuous} i.e
+		If a sequence $\omega_{k}$ of smooth forms, all supported in the same compact set, is such that all derivatives of all their coefficients tend uniformly to 0 when 
+		$k$ tends to infinity, then $T(\omega_{k})$ tends to 0.
+	\item $\Omega^k_c(M)$ stands for compact supported k-forms.
+	\item Recall the definition of \emph{support} of a differential form
+		$$
+			\text{supp}(\omega) := \overline{\lbrace p \in M \; \vert \: \omega_p = 0 \rbrace}
+		$$
+	\item from the definition of regular distribution we obtain the definition of boundary operator.	
+	\item De Rham distributions build up a chain complex which is dual (modulo a sign) to the de Rham co-chain complex.
+}
+%------------------------------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Recall:Poincaré duals \qquad\hyperlink{frame:hydro3}{\beamerreturnbutton{}}}
+	\label{frame:poinduals}
+	Given a compact, oriented embedded k-dim submanifold $\Sigma$ of $M$ (n-dim)
+	\begin{displaymath}
+		\left( i : 	\Sigma \hookrightarrow M \right) \in \text{Emb}_c(k)
+	\end{displaymath}		
+	you can associate a compactly supported \emph{DeRham current} $D_\Sigma$ defined as
+	\begin{displaymath}
+		\langle D_\Sigma, \omega\rangle = \int_\Sigma i^\ast (\omega) \qquad 
+		\forall \omega \in \Omega^k
+	\end{displaymath}
+		%
+		\vspace{-2.5ex}
+		%
+	\onslide<2->{
+  	\begin{columns}
+		\begin{column}[c]{.5\linewidth}	
+			\begin{claimblock}
+				$\partial D_\Sigma = (-)^{k-1} D_{\partial \Sigma}$ 
+			\end{claimblock}
+		\end{column}
+		\begin{column}[c]{.5\linewidth}			
+			\begin{claimblock}
+				$ D_{\Sigma_1} \wedge D_{\Sigma_2} = D_{\Sigma_1 \cap \Sigma_2}$
+			\end{claimblock}
+		\end{column}
+  	\end{columns}
+  }		
+	%
+	\onslide<3->{
+		\begin{table}[]
+		\begin{tabular}{lll}
+			Analogue of the Dirac delta function localized on $\Sigma$ & $\Rightarrow$ & 
+			\alert{\faWarning \quad not regular \quad \faWarning}
+		\end{tabular}
+		\end{table}
+
+		We're interested in a \emph{regular approximation} (regularization)
+		\begin{defblock}[a (smooth) Poincaré dual of $\Sigma$]
+		 $\eta_\Sigma \in \Omega^k$ supported on a tubular neighbourhood $T$ of $\Sigma$ s.t.
+		 \begin{displaymath}
+				\langle D_{\eta_\Sigma},\omega\rangle \equiv \int_M \omega \wedge \eta_\Sigma =
+				\int_T i^\ast \omega \sim 
+				\langle D_{\Sigma},\omega\rangle 
+		 \end{displaymath}
+		\end{defblock}		
+		  	\centering \alert{\faWarning  \; ( Not unique! ) \; \faWarning }
+
+  }		
+\end{frame}
+\note[itemize]{
+	\footnotesize
+	\item $\forall$ compact submanifold (dim=k) of $M$ (dim= n) one can associates a unique
+	 de Rham current. 
+	They can be understood as \emph{generalized} differential $(n-k)$-forms concentrated on $\Sigma$.
+	This is the analogue of the Dirac delta function localized on $\Sigma$.
+	\item Usual definition of Poincar\'e dual (in algebraic topology) is different:
+	\\
+		%\begin{defblock}[Poincaré dual of $\Sigma$]
+			Unique $[\eta_\Sigma ] \in H^{n-k}_c(M)$ s.t.
+			\begin{displaymath}
+				\int_\Sigma i^\ast \omega = \int_M \omega \wedge \eta_\Sigma \qquad \forall [\omega] \in H^k(M)
+			\end{displaymath}
+		%\end{defblock}
+		More conceptually, Poincaré duals can be seen as \emph{Thom Classes}.
+	
+	\item Proof of claim 1 is direct:
+		\begin{displaymath}
+			(-)^{k-1} \langle \partial D_\Sigma , \omega \rangle = 
+			\langle D_\Sigma, d\omega\rangle =
+			\int_\Sigma i^\ast d \omega = 
+			 \int_\Sigma d i^\ast \omega = 
+			 \int_{\partial \Sigma} i^\ast \omega =
+			\langle D_{\partial \Sigma}, \omega \rangle
+		\end{displaymath}
+	\item Claim 2 is better understood with smooth Poincarè duals:
+		\begin{displaymath}
+			\text{supp}(\eta_1 \wedge \eta_2) \subset
+			\text{supp}(\eta_1) \cap \text{supp}(\eta_2) \subset
+			T_{\Sigma_1 \cap \Sigma_2} \quad\Rightarrow\quad
+			\eta_1 \wedge \eta_2 = \eta_{\Sigma_1 \cap \Sigma_2}	
+		\end{displaymath}				
+		An example: 
+		Take as $\Sigma_1$ the $z$-line in $\mathbb{R}^3$, $\eta_1 = \delta_{\{x=y=0\}}	dx \wedge dy$, and as $\Sigma_2$ the $xy$-plane, $\eta_2= \delta_{\{z=0\}} dz$.
+		You get $\eta_1 \wedge \eta_2 = \delta_{\{x=y=z=0\}} dx \wedge dy \wedge dz = \eta_{\Sigma_1 \cap \Sigma_2}$
+}
+%------------------------------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Relation with Gauss linking number \qquad\hyperlink{frame:hydro3}{\beamerreturnbutton{}}}
+		%
+		\vspace{-2.5ex}
+		%
+  	\begin{columns}
+		\begin{column}[t]{.5\linewidth}	
+			\begin{defblock}[Chern-Simons 3-form]
+				$$
+					CS({L}) :=  v_{L} \wedge  \omega_{ L} 
+				$$
+			\end{defblock}
+		\end{column}
+		\begin{column}[t]{.5\linewidth}	
+			\begin{defblock}[Helicity]
+				$$
+ 					{\mathcal H}(L) = \int_{\mathbb{R}^3} CS({L})
+				$$
+			\end{defblock}						
+		\end{column}
+  	\end{columns}
+	\pause
+	\begin{propblock}[
+		Choosing a parametrization $\mathbf{r}_i$ (in standard coordinates) for each $L_i$ 
+		\begin{displaymath}
+			{\mathcal H}(L)  = 
+			\sum_{i,j=1}^n
+			\,\frac{1}{4\pi}
+			\oint_{\gamma_i}\oint_{\gamma_j}
+			\frac{\mathbf{r}_i - \mathbf{r}_j}{|\mathbf{r}_i - \mathbf{r}_j|^3}
+			\cdot (d\mathbf{r}_i \times d\mathbf{r}_j) =
+			\sum_{i,j=1}^n \ell(i,j)
+		\end{displaymath}
+			$\bullet$ $\ell(i,j) = \ell(j,i)$ : Gauss linking number of components $L_i$ and $L_j$ if $i\neq j$\\
+			$\bullet$ $\ell(j,j)$ : {\it framing} of $L_j$\\ 
+			\phantom{-------}\footnotesize{ (i.e. $\ell(L_j, L_j^{\prime})$ with $L_j^{\prime}$ being a section of the normal bundle of $L_j$.)}\normalsize
+
+		]
+	\pause
+  	\begin{columns}
+		\begin{column}[c]{.7\linewidth}	
+		\underline{Sketch}: Cosider a Hopf Link
+			\begin{displaymath}
+				L(C,C') = \eta_C \wedge \eta_{\Sigma'} + \eta_{C'} \wedge \eta_\Sigma =
+				\eta_{P'} + \eta_{P}
+			\end{displaymath}
+		\end{column}
+		\begin{column}[c]{.25\linewidth}	
+			\centering{
+			\includegraphics[width=0.75\linewidth]{../MS-Knots/Pictures/GaussLink}
+			}
+		\end{column}
+  	\end{columns}
+			Therefore $\int L(C,C') = \ell(C,C')$ is counting the times that a knot cross another Seifert surface with sign given by the orientation.
+		\end{propblock}
+		
+\end{frame}
+\note[itemize]{
+	\item Our previous construction is heavily dependent on a lot of choices 
+	but we end up with a quantity that only depends on the starting n-link.
+	\item ${\mathcal H}(L)$ is invariant under ambient isotopies.\\
+	However, non ambient isotopic links do not necessarily yield different linking numbers
+	(it is not an universal invariant!).
+  	\begin{columns}
+		\begin{column}[c]{.5\linewidth}	
+			\centering{
+			%\includegraphics[width=0.5\linewidth]{../Ms-Knots/Pictures/UnknotsGauss}
+			}
+		\end{column}
+		\begin{column}[c]{.5\linewidth}	
+			\centering{
+			\includegraphics[width=0.35\linewidth]{../MS-Knots/Pictures/WhiteheadGauss}
+			}
+		\end{column}
+  	\end{columns}	
+	\item
+		\begin{displaymath}
+	\begin{split}
+		\text{link}(\gamma_1,\gamma_2) &=\,\frac{1}{4\pi}
+		\oint_{\gamma_1}\oint_{\gamma_2}
+		\frac{\mathbf{r}_1 - \mathbf{r}_2}{|\mathbf{r}_1 - \mathbf{r}_2|^3}
+		\cdot (d\mathbf{r}_1 \times d\mathbf{r}_2)\\[4pt]
+		 &= \frac{1}{4\pi}\int_{S^1 \times S^1} \frac{\text{det}(\dot{\gamma_1}(s),
+	 \dot{\gamma_2}(t),\gamma_1(s)-\gamma_2(t))}{|\gamma_1(s)-\gamma_2(t)|^3}\, ds \, dt
+	\end{split}
+	\end{displaymath}			
+}
+%------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Cohomological interpretation of the linking number \qquad\hyperlink{frame:hydro3}{\beamerreturnbutton{}}}\label{frame:highorderlinking}
+		\vspace{2ex}
+  	\begin{columns}
+		\begin{column}[c]{.75\linewidth}	
+			$\bullet$ Choose a pair of linked knots (part of a more complex link).
+			Define
+			$$ \Xi_{1 2} := - v_{L_1} \wedge v_{L_2} \in \Omega^2(\mathbb{R}^3)$$
+			you get:
+			\begin{displaymath}
+				\begin{split}
+				d \Xi_{1 2} =& -\omega_1 \wedge v_2 + v_1 \wedge \omega_2 = CS({L_1\cup L_2}) - 
+				\text{"\stackanchor{self}{linking}"}
+				\\
+				&\Rightarrow \int d \Xi_{1 2} = \ell(1,2)
+				\end{split}
+			\end{displaymath}		
+		\end{column}
+		\begin{column}[c]{.20\linewidth}	
+			\centering{
+			\includegraphics[width=\linewidth]{../MS-Knots/Pictures/WhiteheadGauss}
+			}
+		\end{column}
+  	\end{columns}	
+	\pause	
+	\vspace{1ex}
+	$\bullet$ While $\Xi_{1 2}$ is not uniquely defined,it determines an unique class in the \emph{cohomology of the link}
+	(independent of the choices)
+	\begin{displaymath}
+		\langle L_1, L_2 	\rangle := 
+		\left[\Xi_{1 2}\big\vert_{S^3\setminus L} \right] \in H^2(S^3\setminus L)
+	\end{displaymath}
+	\pause
+	\vspace{-2ex}
+  	\begin{columns}
+		\begin{column}[c]{.7\linewidth}	
+			\begin{propblock}[$\ell(1,2)= 0 \Leftrightarrow \langle L_1, L_2 \rangle = 0$]
+				\vspace{-4ex}
+				\begin{displaymath}
+				\begin{split}
+					l(1,2)=0 ~&\Leftrightarrow~ d \Xi_{1 2} = 0 \in \Omega^2(\mathbb{R}^3)\\
+					\text{"Poincar\'e lemma"}	
+					~&\Rightarrow~ \exists v_{1 2} \;:\; d v_{1 2} = \Xi_{ 1 2}	\\
+					[ \Xi_{1 2} ] = 0 \in H^2(\mathbb{R}^3) ~&\Rightarrow~
+					\left[\Xi_{1 2}\big\rvert_{S^3\setminus L} \right] = 0 \in H^2(S^3\setminus L)
+				\end{split}
+				\end{displaymath}		
+			\end{propblock}
+		\end{column}
+		\begin{column}[c]{.4\linewidth}	
+	  	\begin{asideblock}[Cohomology groups of a n-Link]%Shades of...
+  			\begin{table}[] % http://tablesgenerator.com/
+					\begin{tabular}{l}
+						$H^0 (S^3 \setminus L) \cong {\mathbb R}$ \\
+						$H^1 (S^3 \setminus L) \cong {\mathbb R}^{n}$ \\
+						$H^2 (S^3 \setminus L) \cong {\mathbb R}^{n-1}$ \\
+						$H^3 (S^3 \setminus L) \cong 0$
+					\end{tabular}
+				\end{table}
+	  	\end{asideblock}
+		\end{column}
+  	\end{columns}			
+
+
+
+	
+
+\end{frame}
+\note[itemize]{
+	\item The cohomology of a n-link is the de Rham cohomology of $S^3 \setminus L$, 
+	where $S^3$ has to be understood as the compactification of the Euclidean space
+	\item Being $\Xi_{1 2}$ closed follows from the fact that 
+	$\text{supp}(d \Xi_{1 2}) \subseteq L$ \\
+	Similarly, you get that all the velocity 1-forms $v_i$ are closed.
+	The cohomology classes of these forms, one for each component of the link, 
+	are precisely the generators of $H^1 (S^3 \setminus L)$.
+	\item Why such a class is called a number? 
+	The name follows from the simplest case of $n=2$.
+	\item \underline{Upshot:} we can associate to any pair of knots in a link a  cohomology class.
+}
+%------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}[shrink]{Higher order linking numbers \qquad\hyperlink{frame:hydro3}{\beamerreturnbutton{}}}
+	\begin{itemize}
+		\item[•] Take a link with 3 or more components
+		\item[•] 	assume all ordinary mutual linking numbers vanish: $\langle L_i, L_j \rangle =0$
+		\item[•] Out of the primitives obtained in the previous proposition you can manufacture another closed 2-form
+	\end{itemize}
+		\vspace{-2ex}
+  	\begin{columns}
+		\begin{column}[c]{.5\linewidth}	
+			\begin{defblock}[Massey product]
+				$\Xi_{1 2 3} = - v_1 \wedge v_{2 3} - v_{1 2} \wedge v_3 
+				\in \Omega^2(\mathbb{R}^3)$
+			\end{defblock}
+		\end{column}
+		\begin{column}[c]{.5\linewidth}	
+			\begin{defblock}[Third order linking number (class)]
+				$\langle L_1, L_2, L_3 \rangle := 
+				\left[\Xi_{1 2 3}\big\rvert_{S^3\setminus L} \right]
+				\in H^2(S^3\setminus L)$
+			\end{defblock}
+		\end{column}
+  	\end{columns}			
+  	\pause
+	The procedure can be iterated (obstructed by the non vanishing of a higher linking number) yielding a hierarchy of pairs
+	\begin{displaymath}
+		\Xi_I \in \Omega^2 \qquad v_I \in \Omega^1
+	\end{displaymath}
+	\center
+	\footnotesize{(I = multi index constructed out of the set $\{1,\ldots,n\}$ of the $n$-link components)}\normalsize 
+
+	\footnotesize{
+	\pause 	\center 	\textbf{-- Applications --}
+  	\begin{columns}
+		\begin{column}[c]{.45\linewidth}
+			Distinguish different links with same (vanishing) Gauss linking number	
+			\center
+			\begin{tikzpicture}
+			\node[inner sep=0pt] (A) at (0,0)
+			    {\includegraphics[width=.35\textwidth]{../MS-Knots/Pictures/UnknotsGauss}};
+			\node[inner sep=0pt] (B) at (3,0)
+			    {\includegraphics[width=.35\textwidth]{../MS-Knots/Pictures/WhiteheadGauss}};
+			\draw[draw=none] (A) -- (B)
+			    node[midway,fill=white] {$ \not\sim $};
+			\end{tikzpicture}
+		\end{column}
+		\hspace{2ex}
+		\begin{column}[c]{.45\linewidth}	
+			Ascertain \emph{Brunnian character}
+			\centering{
+			\includegraphics[width=0.4\linewidth]{../MS-Knots/Pictures/BorromeanLink}
+			}
+		\end{column}
+  	\end{columns}			
+	}
+
+
+\end{frame}
+\note[itemize]{
+	\item $\Xi_I$ and $v_I$ can be again interpreted via Poincar\'e duality as the smooth Poincar\'e dual of an auxiliary trivial knot and of a corresponding Seifert surface respectively.
+	\item Below, two possible application of this machinery are mentioned .
+	\item This procedure can be used as a tool to distinguish knots with vanishing linking number. (Figure: two unknots versus a Whithead Link. The latter involve forth order linking numbers computing admitting indices repetition).
+	\item Ascertain the Brunnian character of a $n$-link. A link is \emph{Brunnian} 
+		or \emph{almost trivial} when it becomes trivial upon removing any component. 
+		(Figure: Borromean link).
+}
+%------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Massey products as Conserved quantities \qquad\hyperlink{frame:hydro3}{\beamerreturnbutton{}}}
+	%
+	\begin{propblock}[
+		\quad(1) $\Xi_I$ exact $\Rightarrow$ $v_I$ are hamiltonian (w.r.t volume form) \\
+		\phantom{-------------}(2) Massey 2-forms $\Xi_I$ are globally conserved
+		]
+		\vspace{-4ex}
+		\begin{displaymath}
+		\begin{split}
+			(1)&\quad d v_{I} = \Xi_{I} = \iota_{\xi_{I}} \text{Vol}_{\mathbb{R}^3} \qquad 
+			\text{defining}\quad \xi_{I} = \alpha^{-1}(\Xi_{I})
+			\qquad \Rightarrow \text{$v_{123}$ Hamiltonian}
+			\\
+			(2)&\quad \Xi_I \text{ closed} \quad \Rightarrow \quad \mathcal{L}_\xi \Xi_I = d \iota_xi \Xi_I \in B^2
+		\end{split}
+		\end{displaymath}
+
+	\end{propblock}	
+	By construction: the momenta associated to the divergence-free field $\xi_{I}$
+	 correspond to $v_I$
+		\begin{displaymath}
+			v_I = f_1(\xi_I)
+		\end{displaymath}
+	\pause \vfill
+	\begin{propblock}[
+		The 1-forms $v_I$ are {\rm first integrals in involution} with respect to the flow generated by the 
+		Hamiltonian vector field $\xi_{ L}$, i.e.
+		\begin{itemize}
+			\item ${\mathcal L}_{\xi_{ L}} v_I = 0$ ($v_I$'s are  {\rm strictly conserved})
+			\item $\{v_I, v_J \} = 0$ (for multiindices $I$ and $J$)
+		\end{itemize}
+	]
+
+
+	See Thm 6.2 \href{https://arxiv.org/abs/1805.01696}{arXiv: 1805.01696}
+	\end{propblock}	
+	
+	
+
+\end{frame}
+\note[itemize]{
+	\item $\xi_{123} = \alpha^{-1}(\Xi_{123})$, constructed resorting on the Hodge machinery of $\mathbb{R}^3$ can be regarded as the vorticity field concentrated on a auxiliary knot.
+	\item {\bf Proof. Thm 6.2} Using Cartan's formula, we get
+		$$
+			{\mathcal L}_{\xi_{ L}} v_I = d \iota_{\xi_{ L}} v_I + \iota_{\xi_{ L}} d v_I = 
+			d \iota_{\xi_{ L}} v_I  -  \iota_{\xi_{ L}} \iota_{\xi_{ I}} \nu,
+		$$
+		but the second summand vanishes in view of the general expression
+		$$
+			\{v_\xi, v_\eta \}(\cdot) = \nu (\xi, \eta, \cdot)
+		$$
+		and of the peculiar structure of the vector fields involved (they either partially coincide or have disjoint supports). 
+		By the same argument, one gets $\iota_{\xi_{ L}} v_I = 0$. From that the the {\it strict} conservation of the $v_I$'s is immediate.\par
+	\item  Poincar\'e dual interpretation $\Rightarrow$ $\iota_{\xi_{ L}} v_L = 0$
+		$\Rightarrow$ ${\mathcal L}_{\xi_{ L}} v_L = 0 $
+		\\
+		(this is {\it not} to be expected a priori in multisymplectic geometry)
+
+
+}
+%------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+%------------------------------------------------------------------------------------------------
+\end{document}

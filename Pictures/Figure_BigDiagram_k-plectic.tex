@@ -1,0 +1,46 @@
+%+------------------------------------------------------------------------+
+%| Diagram: Kiddo Diagram - k-plectic case
+%| Author: Antonio miti
+%+------------------------------------------------------------------------+
+
+
+\documentclass[border=5pt, tikz]{standalone}
+\usepackage{tikz-cd}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes.geometric,fit}
+\tikzset{
+   dashsquare/.style={rectangle,draw,dashed,inner sep=0pt,blue,fit={#1}}
+}
+
+
+\begin{document}
+	\begin{tikzcd}[
+   execute at end picture={
+     \node[label=below:{k-plectic Mfds.},dashsquare=(tikz@f@1-1-1)(tikz@f@1-5-1)]{};
+     \node[label=below:{Higher Courant Algebroids (aka Vinogradov)},dashsquare=(tikz@f@1-1-5)(tikz@f@1-5-5)]{};
+     \node[label=below:{Lie-k-Algebras},dashsquare=(tikz@f@1-5-2)(tikz@f@1-2-4)]{};
+		}]
+		(M,\omega) \ar[rrrr,rightsquigarrow,"\text{twisted standard Vinogradov algebroid}"]
+		\ar[dddd,rightsquigarrow,"\text{gauge transf.}"']
+		\ar[drr,rightsquigarrow,"\text{observables}"] & & & & 
+		(TM\oplus\bigwedge^{k-1}T^\ast M,\rho,\langle\cdot,\cdot\rangle,[\cdot,\cdot]_\omega) \ar[dl,rightsquigarrow]
+		\ar[dddd,"\text{B-transf.}"]
+		\\
+		& \phantom{\big(}& L_{\infty}(M,\omega)\ar[r]& 
+		L_{\infty}\big(\mathbb{T}M,[\cdot,\cdot]_\omega\big) \ar[dd]& 
+		\\
+		&\mathfrak{g} \ar[ur]\ar[dr]& & & 
+		\\
+		& &L_{\infty}(M,\tilde{\omega})\ar[r]
+		& 
+		L_{\infty}\big(\mathbb{T}M,[\cdot,\cdot]_{\tilde{\omega}}\big)&
+		\\
+		(M,\tilde{\omega}) \ar[rrrr,rightsquigarrow,"\text{ }"]
+		\ar[urr,rightsquigarrow,"\text{observables}"] & \phantom{\big(} & & & 
+		(TM\oplus\bigwedge^{k-1}T^\ast M,\rho,\langle\cdot,\cdot\rangle,[\cdot,\cdot]_{\tilde{\omega}}) \ar[ul,rightsquigarrow] 
+ 	\end{tikzcd}	
+\end{document}
+
+	

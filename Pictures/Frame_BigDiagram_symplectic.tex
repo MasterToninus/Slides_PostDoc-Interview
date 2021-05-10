@@ -1,0 +1,83 @@
+%+------------------------------------------------------------------------+
+%| Diagram with Overlays: Gauge square Diagram - symplectic case
+%| Author: Antonio miti
+%+------------------------------------------------------------------------+
+
+
+\documentclass[beamer,handout]{standalone}
+\usepackage{tikz-cd}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usetikzlibrary{decorations.pathmorphing}
+
+	%Credit: https://tex.stackexchange.com/questions/99119/beamer-problematic-use-of-visible-and-only-in-combination-with-tikz-to-draw-a
+  \tikzset{
+    invisible/.style={opacity=0},
+    visible on/.style={alt=#1{}{invisible}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+  }
+
+\definecolor{grey}{rgb}{0.30, 0.30, 0.30}
+
+\begin{document}
+	%
+	\begin{tikzcd}[column sep= small,row sep=small]
+%   execute at end picture={
+%     \node[label=below:{Symp.Mfds.},dashsquare=(tikz@f@1-1-1)(tikz@f@1-5-1)]{};
+%     \node[label=below:{Lie.Alg.oids},dashsquare=(tikz@f@1-1-5)(tikz@f@1-5-5)]{};
+%     \node[label=below:{Lie.Algs},dashsquare=(tikz@f@1-5-2)(tikz@f@1-2-4)]{};
+%		}
+		\color{grey}{(M,\omega)}
+		\ar[drr,grey,sloped,visible on=<2->,rightsquigarrow,"\text{observables}",shift right=.5em]
+		\ar[rrrrr,grey,visible on=<4->,rightsquigarrow,"\text{twisted standard Lie algebroid}"]
+		\ar[dddd,grey,visible on=<7->,rightsquigarrow,sloped,"\text{gauge transf.}"']
+		& & & & 
+		& |[visible on=<4->]|\color{grey}(TM \oplus \mathbb{R},\rho, [\cdot,\cdot]_\omega)
+		\ar[dl,grey,visible on=<5->,rightsquigarrow]
+		\ar[dddd,grey,visible on=<9->,sloped,"\text{B-transf.}"]
+%
+	\\
+%
+		& \phantom{\big(}
+		& |[visible on=<2->]|\big(C^\infty(M),\lbrace\cdot,\cdot\rbrace_\omega\big) 
+		\ar[rr,visible on=<12->,"\Psi"]
+		\ar[dr,visible on=<3-11>,sloped,"\text{Preq}_\theta",xshift=.5em]	
+		\ar[ddrr,visible on=<12->,phantom,blue,"\circlearrowright"]
+		&
+		& |[visible on=<5->]|\big(\Gamma(TM\oplus \mathbb{R}),[\cdot,\cdot]_\omega\big)
+		\ar[dd,sloped,"\sim",visible on=<10->]
+		&
+%		 
+	\\
+%
+		&|[visible on=<11->]|\mathfrak{g} \ar[ur,visible on=<11->]\ar[dr,visible on=<11->]& 
+		&
+		|[visible on=<3-11>]| Q(P,\theta) 
+		\ar[ur,visible on=<6-11>,hook] 
+		\ar[dr,visible on=<8-11>,hook]
+		& &
+%
+	\\
+%
+		& &|[visible on=<8->]|\big(C^\infty(M),\lbrace\cdot,\cdot\rbrace_{\tilde{\omega}}\big)
+		\ar[rr,visible on=<12->,"\Psi"]
+		\ar[ur,visible on=<8-11>,sloped,"\text{Preq}_\theta"',xshift=.5em]		
+		& 
+		&
+		|[visible on=<8->]|\big(\Gamma(TM\oplus \mathbb{R}),[\cdot,\cdot]_{\tilde{\omega}}\big)
+		&
+%		
+	\\
+%	
+		|[visible on=<7->]|\color{grey}(M,\tilde{\omega}) 
+		\ar[rrrrr,visible on=<8->,grey,rightsquigarrow,"\text{twisted standard Lie algebroid}"]
+		\ar[urr,visible on=<8->,grey,rightsquigarrow,sloped,"\text{observables}",shift left=.5em]
+		& \phantom{\big(} & & &
+		& |[visible on=<8->]|\color{grey}(TM \oplus \mathbb{R},\rho,[\cdot,\cdot]_{\tilde{\omega}}) 
+		\ar[ul,grey,visible on=<8->,rightsquigarrow]
+ 	\end{tikzcd}	
+\end{document}
+
+	
