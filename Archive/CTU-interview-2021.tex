@@ -1,9 +1,10 @@
 %+----------------------------------------------------------------------------+
-%| SLIDES: PostDoc interview presentation
-%| Contents: 7 slides
-%|					 (extimated duration 3 minutes per slide )
+%| SLIDES: PostDoc interview - CTU
+%|                https://euraxess.ec.europa.eu/jobs/612030
+%| Contents: 4 slides
+%|					 (extimated duration 1.5 minutes per slide )
 %| Author: Antonio miti
-%| Place: Leuven, Novembre 2020
+%| Place: Amandola, Giugno 2021
 %+----------------------------------------------------------------------------+
 
 
@@ -24,6 +25,14 @@
 %- Packages ----------------------------------------------------------------------------------------------
 \usepackage{custom-style}
 
+\usetikzlibrary{backgrounds}
+  \tikzset{
+    invisible/.style={opacity=0},
+    visible on/.style={alt=#1{}{invisible}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+  }
 
 %--Beamer Style-----------------------------------------------------------------------------------------------
 \usetheme{toninus}
@@ -32,31 +41,11 @@
 \usepackage{fontawesome}
 
 
+
 \AtBeginSubsection[]{}
 
 
-%--Beamer Style-----------------------------------------------------------------------------------------------
-\usetheme{toninus}
 
-%- T1tle P4g3 -------------------------------------------------------------------------------------------
-\title{Homotopy comomentum maps in Multisymplectic Geometry} 
-\subtitle{}
-%subtitle{\href{https://set.kuleuven.be/phd/sap/dualjoint/oral}{36th month presentation}}
-\author[AMM]{\href{https://dmf.unicatt.it/miti/}{Antonio Michele Miti}}
-\institute[UCSC and KU Leuven]{
-  \begin{tabular}[h]{ccc}
-      Università Cattolica del Sacro Cuore & $\qquad$ & KU Leuven \\
-      Brescia, Italy & & Leuven, Belgium \\
-      \href{https://dipartimenti.unicatt.it/dmf-home?rdeLocaleAttr=it}{\includegraphics[width=3.5cm]{Logos/UnicattBS-logo}} & & 
-      \href{https://wis.kuleuven.be/english}{\includegraphics[width=4cm]{Logos/KULeuven_logo}}
-  \end{tabular}      
-}
-\date[KULeuven_20] % (optional, should be abbreviation of conference name)
-{	
-%	\href{https://set.kuleuven.be/phd/sap/dualjoint/oral}{International Doctoral Programme in Science } \\
-	{\vskip 1ex}
-	UniBo Interview, January 28, 2021
-}
 
 
 
@@ -64,35 +53,184 @@
 
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------
-%- D0cum3nt ----------------------------------------------------------------------------------------------------------------------------------
+%- D0cum3nt -----------------------------------------------------------------------------------------------------------------------------------
 \begin{document}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{About the PostDoc Position at CTU}
+\textbf{My profile}
+\vspace{1em}
+\begin{itemize}
+	\item[•] Master degree in Physics \\ 
+	\small \qquad(focus on \emph{geometric mechanics} and \emph{algebraic quantum field theory}).
+	\item[•] Phd in Mathematics \\
+	\small \qquad (focus on \emph{multisymplectic geometry} and \emph{algebraic methods in differential geometry}).	
+\end{itemize}
+
+\pause
+\vfill
+\textbf{Expertise required}
+\vspace{1em}
+\begin{itemize}
+	\setlength\itemsep{1em}
+	\item superintegrability in classical and quantum mechanics;
+	\item\alert<3->{Lie groups/algebras and applications to symmetries in mathematical physics.}
+\end{itemize}
+\vfill
+\end{frame}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Recent Research Focus}
+\tikzstyle{every picture}+=[remember picture]
+	
+	\begin{center}
+		\large
+		 \tikz[baseline]{
+		            \node[fill=orange!20,anchor=base] (t1)
+		            {Hamiltonian actions};
+			}
+		on
+		 \tikz[baseline]{
+	            \node[fill=green!20,anchor=base] (t2)
+	            {multisymplectic manifolds};
+		}
+	\end{center}
+
+	\begin{columns}
+    	\begin{column}{.45\textwidth}
+ 		 \tikz[baseline]{
+	            \node[visible on=<3->,draw=orange!80,anchor=base,text width=5.5cm] (s1)
+	            {
+						\begin{itemize}
+							\item[•] Lie algebra action admitting a certain $L_\infty$-algebra lift.
+							\item[•] The lift is called \emph{Homotopy comomentum map}.
+							\item[•] Elements of the image can be interpreted as \emph{conserved quantities}.
+						\end{itemize}
+	            };
+		}		   	
+		\end{column}
+    	\begin{column}{.45\textwidth}
+		\tikz[baseline]{
+	            \node[visible on=<2->,draw=green!80,anchor=base,text width=5.5cm] (s2)
+	            {
+						\begin{itemize}
+							\item[•] Higher analogue of symplectic manifolds ($k$-forms instead of $2$-forms).
+							\item[•] Inspired by the geometric formulation of classical field theories.
+						\end{itemize}							            
+	            };
+		}	
+		\end{column}
+	\end{columns}
+
+
+
+	\begin{tikzpicture}[overlay]
+        \path[visible on=<3->,->,orange!80] (s1) edge [bend left] (t1);
+	     \path[visible on=<2->,->,green!80] (s2) edge [bend right] (t2);
+	\end{tikzpicture}
+
+	\vfill
+%	\onslide<4->{
+%		\begin{center}
+%			\large
+%			\bf
+%			Framework: \alert{\emph{Geometric Mechanics}}
+%		\end{center}
+%	}
+\end{frame}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\begin{frame}  % Alternative: \maketitle outside of frame
-	  \titlepage
-	  \ifHandout
-		  \tikz[overlay,remember picture]
-			{
-	    		%	\node at ($(current page.west)+(1.5,0)$) [rotate=90] {\Huge\textcolor{gray}{\today}};
-	    			\node[        draw,
-	        			shape border rotate=90,
-					isosceles triangle,
-			        isosceles triangle apex angle=90,
-	        			fill=yellow]
-	        		at ($(current page.north east)-(1,1)$) [rotate=-45] {\textcolor{red}{Handout version}};
-			}
-	\fi
-	\end{frame}
-	\addtocounter{framenumber}{-1}
-\note{
-			\textbf{\underline{OUTLINE}}:
-			\tableofcontents
-}
+	\begin{frame}{Results}
+		\vspace{1em}
+		
+		\begin{columns}
+			\begin{column}[T]{0.3\textwidth}
+				\centering
+				\onslide<1->{
+					\fbox{\includegraphics[width=.9\textwidth]{../Pictures/cover-JAMS}}
+				}
+			\end{column}		
+			\begin{column}[T]{0.7\textwidth}
+				\begin{itemize}
+					\item[-] Explicit \emph{Homotopy comomentum map} coming from hydrodynamics ( ideal fluid configurations as Lie algebra action)
+					\item[-] Relations with \emph{knot theory} (hydrodinamics interpretation: links as concentrated vortices).
+				\end{itemize}
+			\end{column}		
+		\end{columns}	
+		
+		\vspace{1em}
+		\begin{columns}[T]
+			\begin{column}{0.3\textwidth}
+				\centering
+				\onslide<2->{
+					\fbox{\includegraphics[width=.9\textwidth]{../Pictures/cover-JSG}}
+				}
+			\end{column}		
+			\begin{column}{0.7\textwidth}
+				\begin{itemize}
+					\item<2->[-] Complete classification of Hamiltonian actions on spheres (multisymplectic w.r.t. the canonical volume form.
+					\item<2->[-] Explicit expression of momenta for $SO(n)\circlearrowleft S^n$ and other cases.
+				\end{itemize}
+			\end{column}		
+		\end{columns}		
+		
+		\vspace{1em}
+		\begin{columns}[T]
+			\begin{column}{0.3\textwidth}
+				\centering
+				\onslide<3->{
+					\fbox{\includegraphics[width=.9\textwidth]{../Pictures/cover-Thesis}}
+				}
+			\end{column}		
+			\begin{column}{0.7\textwidth}
+				\begin{itemize}
+					\item<3->[-] Compatibility of \emph{Homotopy comomentum maps} w.r.t. gauge-related multisymplectic manifolds.
+					\item<3->[-] Relationship between the $L_\infty$-algebra of observables and \emph{higher courant algebroids.} 				\end{itemize}	
+			\end{column}		
+		\end{columns}
+		\vfill
+\end{frame}
 %---------------------------------------------------------------------------------------------------------------------------------------------------
-\outline
+
+
+%%-------------------------------------------------------------------------------------------------------------------------------------------------
+%	\begin{frame}{Skills transferable outside of the multisymplectic geometry context }
+%		\begin{itemize}
+%			\item Expertise in explicit constructions/computations involved homotopy structures
+%			\begin{itemize}
+%				\item borrowing tools from the context of \emph{deformation theory}.
+%				\item eventually computer-aided (via symbolic calculus).
+%			\end{itemize}
+%			\item Translation of field theoretic construction from the covariant phase framework (infinite dimensional) to the multisymplectic one.
+%		\end{itemize}
+%
+%	\end{frame}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
+
+
+
+
+
+
+%------------------------------------------------------------------------------------------------
+% APPENDIX
+%------------------------------------------------------------------------------------------------
+\appendix
+\part{EXTRA}
+%\sectionpage
+\begin{frame}
+	\begin{center}
+	\Huge\emph{Backup Slides}
+	\end{center}
+\end{frame}
+\addtocounter{framenumber}{-1}
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -108,7 +246,7 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \begin{frame}[fragile]{Multisymplectic manifolds} %Fragile -->workaround tikzcd
 	\begin{defblock}[$n$-plectic manifold ~\emph{(Cantrijn, Ibort, De Le\'on)}]
-	\includestandalone[width=0.95\textwidth]{Pictures/Figure_multisym}	
+	\includestandalone[width=0.95\textwidth]{../Pictures/Figure_multisym}	
 	\end{defblock}
 	%
 	\begin{defblock}[Non-degenerate $(n+1)$-form]
@@ -219,16 +357,16 @@
 		\vspace{-2.5em}
 		\begin{center}
 		\ifHandout
-			\includestandalone{Pictures/Figure_Observables}	
+			\includestandalone{../Pictures/Figure_Observables}	
 		\else
-			\includestandalone{Pictures/Frame_Observables}
+			\includestandalone{../Pictures/Frame_Observables}
 		\fi				
 		\end{center}
 		\onslide<2->{
 			\hspace{.25em} with $n$ (skew-symmetric) multibrackets $(2 \leq k \leq n+1)$\\
 			\vspace{-1.5em}
 			\begin{center}
-				\includestandalone{Pictures/Equation_Multibracket}	
+				\includestandalone{../Pictures/Equation_Multibracket}	
 			\end{center}
 		}
 		%
@@ -281,9 +419,9 @@
 	\vfill
 	\begin{defblock}[Homotopy comomentum map \emph{(Callies, Fregier, Rogers, Zambon)}]
 		\ifHandout
-			\includestandalone{Pictures/Figure_Lifting}
+			\includestandalone{../Pictures/Figure_Lifting}
 		\else
-			\includestandalone{Pictures/Frame_Lifting}
+			\includestandalone{../Pictures/Frame_Lifting}
 		\fi					
 	\end{defblock}
 	\vfill
@@ -453,7 +591,7 @@
 	Consider $(M,\omega)$ \alert{symplectic mfd.}
 	\only<3-11>{ and \alert{prequantizable} ($S^1$-bundle $P$, connection $\theta$)}
 	\vfill
-	\includestandalone[width=\textwidth]{Pictures/Frame_BigDiagram_symplectic}
+	\includestandalone[width=\textwidth]{../Pictures/Frame_BigDiagram_symplectic}
 	%
 	\begin{minipage}[t][2cm][t]{\textwidth}
 	\begin{itemize}
@@ -526,7 +664,7 @@
 	Consider now $\omega$ \alert{multisymplectic}
 	\vfill
 	%
-	\includestandalone[width=\textwidth]{Pictures/Frame_BigDiagram_k-plectic}
+	\includestandalone[width=\textwidth]{../Pictures/Frame_BigDiagram_k-plectic}
 	%
 	\vfill
 	%
@@ -566,153 +704,110 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-	\begin{frame}{}
-		\vfill
-	  \centering 
-	  {\Huge\color{red} 
-	  \emph{Thank you for your attention!}}
-		\vfill
-		%
-		\centering
-		\begin{columns}
-			\hfill
-			\begin{column}{0.05\linewidth}
-				\centering \includegraphics{beamericonarticle}
-			\end{column}
-			\begin{column}{0.8\linewidth}
-				\centering
-				\textbf{On some (multi)symplectic aspects of link invariants},
-				\\
-				\emph{AMM, Mauro Spera}, \href{https://arXiv.org/abs/1805.01696}{arxiv:1805.01696};\\
-				(To appear in \emph{Journal of the Australian Mathematical Society})	
-			\end{column}
-			\begin{column}{0.05\linewidth}
-				\centering \includegraphics{beamericonarticle}			
-			\end{column}
-			\hfill
-		\end{columns}
-		\vfill
-		\begin{columns}
-			\hfill
-			\begin{column}{0.05\linewidth}
-				\centering \includegraphics{beamericonarticle}
-			\end{column}
-			\begin{column}{0.8\linewidth}
-				\centering
-		\textbf{Derivation of the HOMFLYPT knot polynomial via helicity and geometric quantization},
-				\\
-		\emph{AMM, Mauro Spera}, \href{https://arxiv.org/abs/1910.13400}{arXiv:1910.13400};\\
-				(To appear in \emph{Bollettino dell'Unione Matematica Italiana})	
-			\end{column}				
-			\begin{column}{0.05\linewidth}
-				\centering \includegraphics{beamericonarticle}			
-			\end{column}
-			\hfill
-		\end{columns}
-		\vfill
-		\begin{columns}
-			\hfill
-			\begin{column}{0.05\linewidth}
-				\centering \includegraphics{beamericonarticle}
-			\end{column}
-			\begin{column}{0.8\linewidth}
-				\centering
-				\textbf{Observables of multisymplectic manifolds and higher Courant algebroids},
-				\\
-				\emph{AMM, Marco Zambon};% \href{https://arXiv.org/abs/1805.01696}{arxiv:1805.01696};\\
-				(To appear soon on \emph{arxiv})	
-			\end{column}
-			\begin{column}{0.05\linewidth}
-				\centering \includegraphics{beamericonarticle}			
-			\end{column}
-			\hfill
-		\end{columns}
-	\end{frame}
-
-  
 %------------------------------------------------------------------------------------------------
-% APPENDIX
-%------------------------------------------------------------------------------------------------
-\appendix
-\section{EXTRA}
-%\sectionpage
-\begin{frame}
-	\begin{center}
-	\Huge\emph{Backup Slides}
-	\end{center}
+\begin{frame}[fragile]{MS geometry and classical field mechanics}
+		Consider a smooth manifold $Y$,
+		\begin{columns}
+			\hfill
+			\begin{column}{.5\linewidth}
+				\emph{Multicotangent bundle} $\bigwedge = \bigwedge^n T^\ast Y$\\
+				is naturally $n$-plectic
+			\end{column}
+			\begin{column}{.4\linewidth}
+				\[
+				\begin{tikzcd}
+					\Lambda \ar[d,"\pi"'] & T \Lambda \ar[d,"T \pi"] \ar[l] \\
+					Y								& T Y \ar[l]
+				\end{tikzcd}	
+				\]
+			\end{column}
+		\end{columns}
+	\pause
+	\begin{defblock}[Tautological $n$-form]
+		$\theta \in \Omega^n(\Lambda)$ such that:
+		\begin{displaymath}
+		\begin{split}
+			\left[ \iota_{u_1 \wedge \ldots \wedge u_n} \theta \right]_\eta 
+			&= \iota_{(T \pi)_\ast u_1 \wedge \ldots \wedge (T \pi)_\ast u_n} \eta \\
+			&= \iota_{u_1 \wedge \ldots \wedge u_n} \pi^\ast \eta 
+			\qquad \qquad \forall \eta \in \Lambda \, , \: \forall u_i \in T_\eta \Lambda 		
+		\end{split}
+		\end{displaymath}
+	\end{defblock}
+	\vfill
+	\begin{columns}
+		\begin{column}{.6\linewidth}
+			\begin{defblock}[Tautological (multisymplectic) (n+1)-form]
+				$$\omega := d \theta$$
+			\end{defblock}
+		\end{column}
+		\begin{column}{.4\linewidth}
+		 	\begin{claimblock}$\omega$ is not degenerate.\end{claimblock}	
+		\end{column}
+	\end{columns}	
+	\pause
+	\begin{keywordblock}
+		\begin{tabular}{|c|c|c|}
+			\hline 
+			point-particles mechanics & $\rightsquigarrow$ & classical fields mechanics \\
+			%(finite discrete DOF) & & (finite dimensional continuous DOF) \\
+			\hline 
+			symplectic & $\rightsquigarrow$ & multisymplectic \\ 
+			\hline 
+			Observables (Poisson) algebra & $\rightsquigarrow$ & Observables $L-\infty$ algebra
+			 \\ 
+			\hline 
+			Co-moment map & $\rightsquigarrow$ & Homotopy co-momentum map \\ 
+			\hline 
+		\end{tabular} 
+	\end{keywordblock}
+
+	
 \end{frame}
-\addtocounter{framenumber}{-1}
-
-\input{./defence-spheres}
-
-\input{./defence-complementary-material}
-
-\begin{frame}[fragile]{Relation to higher Courant algebroids (Joint with M. Zambon)}
-
-\begin{displaymath}
-	\begin{tikzcd}
-		&
-		C^{\infty}(M)_\omega \ar[rr,dashed] \ar[dr,sloped,"\text{Preq}_\theta","\sim"']
-		&
-		&
-		\Gamma(TM\oplus\mathbb{R})_\omega \ar[dd,sloped,"\sim"]
-		\\
-		\mathfrak{g} \ar[ur,"J^\ast"]\ar[dr,"\tilde{J}^\ast"']
-		&
-		&
-		Q(P,\theta) \ar[ur,hook]\ar[dr,hook]
-		&
-		\\
-		&
-		C^{\infty}(M)_{\tilde{\omega}} \ar[rr,dashed] \ar[ur,sloped,"\text{Preq}_\theta"',"\sim"]
-		&
-		&
-		\Gamma(TM\oplus\mathbb{R})_{\tilde{\omega}}		
-	\end{tikzcd}
-\end{displaymath}
-
-
-\begin{displaymath}
-	\begin{tikzcd}
-		&
-		L_{\infty}(M,\omega) \ar[rr,dashed] 
-		&
-		&
-		L_\infty(E^n,\omega) \ar[dd,sloped,"\sim"]
-		\\
-		\mathfrak{g} \ar[ur,"(\tilde{f})"]\ar[dr,"(f)"']
-		&
-		&
-		\phantom{		Q(P,\theta)}
-		&
-		\\
-		&
-		L_{\infty}(M,\tilde{\omega}) \ar[rr,dashed] 
-		&
-		&
-		L_\infty(E^n,\tilde{\omega})	
-	\end{tikzcd}
-\end{displaymath}
-
-\end{frame}
-
+\note[itemize]{
+	\item This example is significant from the perspective of geometric classical field theory:
+		\begin{displaymath}
+			\frac{\text{classical mechanics}}{\text{symplectic geo.}} =
+			\frac{\text{classical field mechanics}}{\text{multisymplectic geo.}}
+		\end{displaymath}
+	\item Multicotangent bundle is the \emph{Higher analogue} of the cotangent bundle.
+	(but it is not yet the analogue of a \emph{phase space}.)
+\item The multiphase space is the sub-bundle of $n$-forms vanishing when contracted with 2 vertical fields.
+  	\item The reason why this sub-bundle has a particular role is that it can be proved to be isomorphic to a suitable dual of the first Jet bundle.
+  	\item For further details see Gotay et al. \href{https://arxiv.org/abs/physics/9801019}{arXiv:physics/9801019}. For a pictorial representation of all the structures involved in the geometric mechanics of I order classical field theories see appendix, pag: \ref{frame:Gimmsy}.
+}
+%------------------------------------------------------------------------------------------------
 
 %------------------------------------------------------------------------------------------------
-%\input{backup}
+  \begin{frame}[fragile]{GIMMSY construction} \label{frame:Gimmsy}
+  		\includestandalone[width=0.90\textwidth]{../Pictures/Figure_ms_landscape}  	
+  \end{frame}
+  \note{}
 %------------------------------------------------------------------------------------------------
+
+
+%\input{defence-spheres}
+
+
+
+
+
+
+
+
 %------------------------------------------------------------------------------------------------
 % https://en.wikibooks.org/wiki/LaTeX/Bibliographies_with_biblatex_and_biber
 \begin{frame}[t,allowframebreaks]{Extended Bibliography}
 	%\nocite{*}
 	\bibliographystyle{alpha}
-	\bibliography{bibfile}
+	\bibliography{../bibfile}
 \end{frame}
 %------------------------------------------------------------------------------------------------
 
-%------------------------------------------------------------------------------------------------
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
 \end{document}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
 
