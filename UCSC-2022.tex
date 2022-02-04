@@ -34,6 +34,24 @@
 }
 
 
+%- TEMP -----------------------------------------------------------------------------
+\newtcolorbox[auto counter,number within=section]{probox}[2][]{%
+	fonttitle= \footnotesize \bfseries,
+	title=#2,
+	fontupper=\footnotesize,%\sffamily,
+	colback=white,
+	colbacktitle=white,
+	coltitle=orange!70!black,
+	colframe=orange!70!black,
+	%boxrule=1pt,
+	titlerule=0pt,
+	toptitle=-0.2em,bottomtitle=-0.2em, %title spacing	
+	colback=white,
+	leftupper=-3mm,rightupper=0mm,top=0mm,bottom=0mm, 
+	#1,
+}
+
+\renewcommand{\action}{\curvearrowright}
 
 
 %- T1tle P4g3 -------------------------------------------------------------------------------------------
@@ -203,13 +221,7 @@
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Symmetries in \textbf{multisymplectic geometry}}
-
-\end{frame}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[t]{Comoment maps}
+\begin{frame}[t]{Symmetries in \textbf{multisymplectic geometry}}
 	Consider a Lie algebra action $v:\mathfrak{g} \to \mathfrak{X}(M)$  preserving the $n$-plectic form $\omega$,
 	\vfill
 
@@ -251,7 +263,7 @@
 	\centering 
 	\onslide<4->{\textbf{-- Conserved quantities --}}
 	%
-	\vspace{-1em}
+	\vspace{-.5em}
 	\begin{columns}[T]
 		\setlength{\belowdisplayskip}{5pt}
 		\begin{column}{.50\linewidth}
@@ -313,7 +325,7 @@
 			\end{column}		
 			\begin{column}{0.7\textwidth}
 				\begin{itemize}
-					\item<2->[-] Complete classification of Hamiltonian actions on spheres (multisymplectic w.r.t. the canonical volume form.
+					\item<2->[-] Complete classification of Hamiltonian actions on spheres (multisymplectic w.r.t. the canonical volume form).
 					\item<2->[-] Explicit expression of momenta for $SO(n)\circlearrowleft S^n$ and other cases.
 				\end{itemize}
 			\end{column}		
@@ -343,6 +355,93 @@
 \section{Research proposal: prospective future work}
 \checkpoint
 %-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Research proposal context: (multi)symplectic reduction}
+	\textbf{\color{UniGreen}Symplectic reduction:}~~
+	Procedure associating to any (suitably regular) pair of symplectic manifold and Hamiltonian action another symplectic manifold of smaller dimension.
+	\vfill
+	\pause
+	\begin{thmblock}[Marsden-Weinstein reduction]
+		\vspace{-.4em}
+		\begin{tabular}{l p{12cm}}
+		    Given: & $(M,\omega)$ symplectic
+		    \\
+		    & $G\curvearrowright M$ symplectic with equivariant momap. $J:M\to \mathfrak{g}^*$
+		    \\[.2em]
+		    Assume: & $\mu \in \mathfrak{g}^*$ regular value of $J$ 
+		    \qquad\quad \footnotesize \textcolor{gray}{($\Rightarrow$ $J^{-1}(\mu)\hookrightarrow M$ smooth embedding)}
+		    \\
+			& $G_\mu\action J^{-1}(\mu)$ free and proper
+			\quad \footnotesize \textcolor{gray}{($\Rightarrow$ $J^{-1}(\mu)/G_\mu$ smooth manifold)}
+			\\[.4em]
+			Then: & $\exists!$ symplectic structure $\omega_\mu$ in $M_\mu:= J^{-1}(\mu)/G_\mu$ \\
+			& s.t. $\pi^\ast \omega_\mu = j^\ast \omega$ with $j:M_\mu \hookrightarrow M$ and $\pi:M\twoheadrightarrow M_\mu$
+		\end{tabular}
+		\vspace{-.4em}
+	\end{thmblock}
+	%
+	\vfill
+	\pause
+	\begin{columns}
+		\begin{column}{0.40\textwidth}
+			\includegraphics[width=\textwidth]{Pictures/Reduction}
+		\end{column}	
+		
+		\begin{column}{0.6\textwidth}
+				\textbf{\color{UniGreen}In mechanics:}~~
+			it embodies the process of restricting the dynamics of the system to the level sets of the conserved quantities pertaining to the symmetry group.		
+			\\
+			\color{gray}\small( e.g. restricting to studying a point-like particle in a central potential by studying it in radial coordinates only)
+		\end{column}	
+	\end{columns}	
+
+
+\end{frame}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Research goals (2022-2023)}
+  	%
+	\begin{probox}[colback=white]{Multisymplectic regular reduction}
+		\begin{itemize}
+			\item[\cmark] Recent definition by Blacker:
+			\item[\smark] it involves a different notion of \emph{observables};
+			\item[\smark] reconcile with the $L_\infty$/homotopy framework.
+		\end{itemize}
+	\end{probox}
+	
+	\pause
+	\begin{probox}[]{Multisymplectic singular reduction}
+		\begin{itemize}
+			\item[\cmark] On-going collaboration with Blacker and Ryvkin:
+			\item[\smark] complete comparison with other known reduction schemes;
+			\item[\smark] higher analogue of \emph{cotangent reduction} theorems;
+			\item[\smark] relevant examples.
+		\end{itemize}
+	\end{probox}
+
+ 	\pause
+	\begin{probox}[colback=white]{Geometric mechanics perspective}
+		\begin{itemize}
+			\item[\cmark] MS. geometry stemmed from a geometric formulation of classical field theories:
+			\item[\smark] modern development yet to be %fruitfully
+			reconciled with physics;
+			\item[\smark] reduction of scalar field w.r.t. Poincarè yields the usual field momenta?
+			\item[\smark] Streamlined procedure to retrieve ordinary field observables from the multisym. framework.
+		\end{itemize}
+	\end{probox}  
+
+	\pause
+	\begin{probox}[colbacktitle=yellow!15!white ,colback=yellow!15!white]{{[Reduction, Quantization]=0} ?}
+		\begin{itemize}
+			\item[\cmark] Preliminary results on $2$-plectic prequantization due to Sevestre and Wurzbacher:
+			\item[\smark] Investigate compatibility of reduction and prequantization schemes in the multisym. framework.
+		\end{itemize}
+	\end{probox}	
+\end{frame}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
