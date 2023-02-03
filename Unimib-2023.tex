@@ -13,7 +13,7 @@
 
 	
 %- Packages ----------------------------------------------------------------------------------------------
-\usepackage{custom-style}
+\usepackage{./custom-style}
 
 
 
@@ -22,14 +22,13 @@
 
 %- Macros -------------------------------------------------------------------------------------------
 \providecommand{\vHam}{\mathscr{v}}
+
+
 \renewcommand{\checkpoint}[0]{
-	\setcounter{tocdepth}{1}
+	\setcounter{tocdepth}{2}
 	\addtocounter{framenumber}{-1}
  	\begin{frame}[t]{Outline}
-  		%\tableofcontents[currentsection,currentsubsection]
-  		%
-  		\tableofcontents[currentsection]
-		%
+			\tableofcontents[currentsection,currentsubsection]
 	\end{frame}
 }
 
@@ -55,22 +54,23 @@
 
 
 %- T1tle P4g3 -------------------------------------------------------------------------------------------
-\title{Research overview} 
-\subtitle{}
-\author[AMM]{\href{https://dmf.unicatt.it/miti/}{Antonio Michele Miti}}
-\institute[Mpim]{
-	\vspace{3em}
+\title{\LARGE Research overview \vspace{-.5em}} 
+%\subtitle{}
+\author[AMM]{\large \href{https://dmf.unicatt.it/miti/}{Antonio Michele Miti}}
+\institute[UCSC]{
+	\vspace{1em}
 	\\
-	MPIM, Bonn, Germany 
+	Dipartimento di Matematica e Fisica,\\
+	Universit\'a Cattolica del Sacro Cuore, 
+	Brescia, Italy 
 	\\
-	\vspace{.5em}
-	\href{https://www.mpim-bonn.mpg.de/}{\includegraphics[width=6cm]{./Logos/Mpim_logo}}
-	\vspace{3em}
+	\href{https://www.mpim-bonn.mpg.de/}{\includegraphics[width=5cm]{./Logos/Ucsc_logo}}
+	\vspace{1em}
 }
 \date[Mpim_22] % (optional, should be abbreviation of conference name)
 {	
 	{\vskip 1ex}
-	UCSC Interview, February 8, 2022
+	Unimib Interview, February 8, 2023
 }
 
 
@@ -84,22 +84,25 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-\section{Research statement: framework \& current results}
+\section{Research Statement}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Framework}
 \checkpoint
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \begin{frame}[t, fragile]{Research Framework:  \textbf{multisymplectic geometry}} %Fragile -->workaround tikzcd
 	\begin{center}
 		$-$ \emph{multisymplectic means \textbf{going higher} in the degree of $\omega$} $-$
 	\end{center}
-	\vfill
 	\pause
 	\begin{defblock}[$n$-plectic manifold ~\emph{(Cantrijn, Ibort, De Le\'on)} \cite{Cantrun2017}]
-		\includestandalone[width=0.95\textwidth]{Pictures/Figure_multisym}	
+		\includestandalone[width=0.95\textwidth]{./Pictures/Figure_multisym}	
 	\end{defblock}
 	%
 	\vfill
@@ -294,19 +297,17 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Results}
+\checkpoint
+%-------------------------------------------------------------------------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 	\begin{frame}{Results}
-		\vspace{1em}
-		
 		\begin{columns}
 			\begin{column}[T]{0.3\textwidth}
 				\centering
-				\onslide<1->{
-					\fbox{\includegraphics[width=.9\textwidth]{Pictures/cover-JAMS}}
-				}
+					\fbox{\includegraphics[width=.9\textwidth]{./Pictures/cover-JAMS}}
 			\end{column}		
 			\begin{column}[T]{0.7\textwidth}
 				\begin{itemize}
@@ -315,45 +316,72 @@
 				\end{itemize}
 			\end{column}		
 		\end{columns}	
-		
-		\vspace{1em}
-		\begin{columns}[T]
-			\begin{column}{0.3\textwidth}
-				\centering
-				\onslide<2->{
-					\fbox{\includegraphics[width=.9\textwidth]{Pictures/cover-JSG}}
-				}
-			\end{column}		
-			\begin{column}{0.7\textwidth}
-				\begin{itemize}
-					\item<2->[-] Complete classification of Hamiltonian actions on spheres (multisymplectic w.r.t. the canonical volume form).
-					\item<2->[-] Explicit expression of momenta for $SO(n)\circlearrowleft S^n$ and other cases.
-				\end{itemize}
-			\end{column}		
-		\end{columns}		
-		
-		\vspace{1em}
-		\begin{columns}[T]
-			\begin{column}{0.3\textwidth}
-				\centering
-				\onslide<3->{
-					\fbox{\includegraphics[width=.9\textwidth]{Pictures/cover-Thesis}}
-				}
-			\end{column}		
-			\begin{column}{0.7\textwidth}
-				\begin{itemize}
-					\item<3->[-] Compatibility of \emph{Homotopy comomentum maps} w.r.t. gauge-related multisymplectic manifolds.
-					\item<3->[-] Relationship between the $L_\infty$-algebra of observables and \emph{higher courant algebroids.} 				
-				\end{itemize}	
-			\end{column}		
-		\end{columns}
-		\vfill
 \end{frame}
 %---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-\section{Research proposal: prospective future work}
+	\begin{frame}{Results}
+		\begin{columns}[T]
+			\begin{column}{0.3\textwidth}
+				\centering
+					\fbox{\includegraphics[width=.9\textwidth]{./Pictures/cover-JSG}}
+
+			\end{column}		
+			\begin{column}{0.7\textwidth}
+				\begin{itemize}
+					\item[-] Complete classification of Hamiltonian actions on spheres (multisymplectic w.r.t. the canonical volume form).
+					\item[-] Explicit expression of momenta for $SO(n)\circlearrowleft S^n$ and other cases.
+				\end{itemize}
+			\end{column}		
+		\end{columns}				
+\end{frame}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+	\begin{frame}{Results}
+		\begin{columns}[T]
+			\begin{column}{0.3\textwidth}
+				\centering
+					\fbox{\includegraphics[width=.9\textwidth]{./Pictures/cover-Thesis}}
+					
+					\vspace{1em}
+					\fbox{\includegraphics[width=.9\textwidth]{./Pictures/cover-Selecta}}
+			\end{column}		
+			\begin{column}{0.7\textwidth}
+				\begin{itemize}
+					\item<1->[-] Compatibility of \emph{Homotopy comomentum maps} w.r.t. gauge-related multisymplectic manifolds.
+					\item<1->[-] Relationship between the $L_\infty$-algebra of observables and \emph{higher courant algebroids.} 				
+				\end{itemize}	
+			\end{column}		
+		\end{columns}
+\end{frame}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+	\begin{frame}{Results}
+		\begin{columns}[T]
+			\begin{column}{0.3\textwidth}
+				\centering
+					\fbox{\includegraphics[width=.9\textwidth]{./Pictures/cover-PJM}}
+			\end{column}		
+			\begin{column}{0.7\textwidth}
+				\begin{itemize}
+					\item<1->[-] .
+					\item<1->[-] .			
+				\end{itemize}	
+			\end{column}		
+		\end{columns}
+\end{frame}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\section{Research Proposal}
+\subsection{Ongoing projects}
 \checkpoint
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -386,7 +414,7 @@
 	\pause
 	\begin{columns}
 		\begin{column}{0.40\textwidth}
-			\includegraphics[width=\textwidth]{Pictures/Reduction}
+			\includegraphics[width=\textwidth]{./Pictures/LessigReduction-pic}
 		\end{column}	
 		
 		\begin{column}{0.6\textwidth}
@@ -398,14 +426,12 @@
 	\end{columns}	
 
 
-\end{frame}
+<\end{frame}
 %---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------
 \begin{frame}{Research goals (2022-2023)}
-  	%
-  	\vspace{-.5em}
   	%
 	\begin{probox}[colback=white]{Multisymplectic regular reduction}
 		\begin{itemize}
@@ -473,7 +499,7 @@
 		\hspace{.25em} Is a cochain-complex $(L,\{\cdot\}_1)$ \\
 		\vspace{-1em}
 		\begin{center}
-			\includestandalone{Pictures/Frame_Observables}
+			\includestandalone{./Pictures/Frame_Observables}
 		\end{center}
 		\onslide<2->{
 			\bigskip
@@ -481,7 +507,7 @@
 			\vspace{-1em}
 			\onslide<3->{
 				\begin{center}
-					\includestandalone{Pictures/Equation_Multibracket}	
+					\includestandalone{./Pictures/Equation_Multibracket}	
 				\end{center}
 			}
 			\medskip
@@ -497,7 +523,7 @@
 	Consider a Lie algebra action $v:\mathfrak{g} \to \mathfrak{X}(M)$  \underline{preserving the $n$-plectic form $\omega$}.
 	\vfill
 	\begin{defblock}[Homotopy comomentum map \emph{(Callies, Fregier, Rogers, Zambon)} \cite{Callies2016}]
-			\includestandalone{Pictures/Frame_Lifting}
+			\includestandalone{./Pictures/Frame_Lifting}
 	\end{defblock}
 	\onslide<4->{
 	\begin{lemblock}[HCMM unfolded  \cite{Callies2016}]
