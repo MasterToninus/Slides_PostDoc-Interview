@@ -17,7 +17,7 @@
 %- D0cum3nt ----------------------------------------------------------------------------------------------
 \ifHandout
 	\documentclass[handout,10pt]{beamer}   
-	% \setbeameroption{show notes} %print notes   
+	 \setbeameroption{show notes} %print notes   
 \else
 	\documentclass[10pt]{beamer}
 \fi
@@ -28,6 +28,7 @@
 \usepackage{./math}
 \usepackage{textpos,eso-pic}
 \usepackage{fontawesome}
+\usepackage{stmaryrd}
 
 
 %--Beamer Style-----------------------------------------------------------------------------------------------
@@ -637,7 +638,10 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{JW LeoCas}
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\begin{frame}[t]{Results}
+	\begin{frame}[t,fragile]{Results}
+	%
+	\tikzstyle{every picture}+=[remember picture]
+	%
 		\begin{columns}[T]
 			\begin{column}{0.2\textwidth}
 				\centering
@@ -677,23 +681,23 @@
 
 		The \emph{reduced observables}  $L_\infty$-algebra is
 		\begin{columns}
-			\begin{column}{.65\linewidth}
+			\begin{column}{.80\linewidth}
 			 	\begin{displaymath}
 			 		\Ham_\infty(M,\omega)_N = 
 			 		\frac{
 			 			\tikz[baseline]{
-			 				\node[fill=blue!20,anchor=base] (t1) 
+			 				\node[fill=orange!20, ellipse, anchor=base] (t1) 
 			 				{$ \Ham_\infty(M,\omega)_{[N]}$};}
 			 		}{
 			 			\tikz[baseline]{
-			 				\node[fill=red!20, ellipse,anchor=base] (t2)
+			 				\node[fill=blue!20, ellipse,anchor=base] (t2)
 			 				{$I_{\Ham_\infty}(N)$};
 			 			}
 			 		}
 			 		~.
 			 	\end{displaymath}
 			\end{column}
-			\begin{column}{.45\linewidth}
+			\begin{column}{.3\linewidth}
 								\tikz[baseline]{
 		            				\node[draw=orange!40,anchor=base,text width=.95\linewidth] (s1)
 		            				{obs. \textbf{reducible}\\ along $N$,};
@@ -721,484 +725,7 @@
 %---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Singular Reduction: Roadmap}
-	%
-	\begin{block}{Data:}
-			\begin{itemize}
-				\item A \emph{constraint set} $N$ (possibly singular),
-				\item An infinitesimal action preserving $N$.
-			\end{itemize}
-	\end{block}
-	%
-	\vfill
-	\pause
-	%
-	\begin{block}{Goal:}
-		\begin{itemize}
-			\item Obtain a "reduced" observables algebra out of the data.
-		\end{itemize}
-	\end{block}
-	%
-	\vfill
-	\pause
-	%
-	\begin{block}{Strategy:}
-		\begin{enumerate}
-			\item Define smooth fields/forms \emph{tangent to $N$},
-			\item define smooth fields/forms \emph{vanishing along $N$},
-			\item define \emph{reducible fields} requiring the preservation of the vanishing objects,
-			\item define \emph{reducible forms} requiring their conservation w.r.t. the infinitesimal action,
-			\item define \emph{reducible and vanishing observables},
-			\item \textbf{quotient}
-		\end{enumerate}
-	\end{block}
 
-
-
-
-
-
-\end{frame}
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[shrink]{Smooth objects on a singular set}
-	Consider $N$ closed subset of $M$.
-	\vfill
-	\pause
-	\begin{defblock}
-	 $I_N$ = ideal of smooth functions vanishing over $N$.
-	\end{defblock}
-	\vfill
-	\pause
-
-	\begin{columns}[T]
-		\setlength{\belowdisplayskip}{5pt}
-		\begin{column}{.65\linewidth}
-			%
-			\centering \it
-				\begin{defblock}[v.f tangent to $N$]
-					\begin{displaymath}
-						\X_N(M):=
-						\left\lbrace
-							v \in \X(M)
-						~\Big\vert~
-							\L_v(I_N) \subseteq I_N
-						\right\rbrace
-					\end{displaymath}
-				\end{defblock}
-				\begin{defblock}[v.f vanishing on $N$]
-					\begin{displaymath}
-						I_\X(N):=
-						\left\lbrace
-							v \in \X(M)
-						~\Big\vert~
-							\L_v(C^\infty(M)) \subseteq I_N
-						\right\rbrace
-					\end{displaymath}				
-				\end{defblock}				
-		\end{column}	
-		%
-		%
-		\begin{column}{.35\linewidth}
-			\centering 
-			\includestandalone[width=0.8\textwidth]{Pictures/Figure_VfTangentN}			
-		\end{column}	
-	\end{columns}			
-	%	
-	\pause
-
-				%
-
-				%	
-		\begin{tcolorbox}[
-		enhanced,frame hidden,borderline={0.5pt}{0pt}{blue},
-		arc=5pt,colback=white,
-		colbacktitle=white,]
-			\color{blue}{\textbf{Lem}:} If $N$ is smoothly embedded,  $\X(N)\cong {X_N(M)}/{I_\X}$.
-		\end{tcolorbox}
-
-		\pause
-
-		\begin{defblock}[Differential form vanishing on $N$]
-			\begin{displaymath}
-				I_{\Omega(N)}:=
-				\left\lbrace
-					\alpha\in\Omega^k(M
-				~\left\vert~
-					\begin{array}{l r}
-						k\geq 0,~		\\		
-						\alpha(u_1,\ldots,u_k) \in I_N & \forall u_i \in\X_N(M)
-					\end{array}
-				\right\rbrace\right.
-			\end{displaymath}
-		\end{defblock}
-
-\end{frame}
-\note[itemize]{
- \item $N$ is not a submanifold in general. An example is $N=\mu^{-1}(0)$ for a certain smooth map $N$.
- \item observe that if $N$ is a smooth embedded submanifold, one has that $\X(N)\cong \frac{X_N(M)}{I_\X}$  
-
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\subsection{Multisymplectic singular reduction}
-\begin{frame}{Reducible smooth objects \quad \small (w.r.t. $N$ and $\g\action M$)}
-	Consider $\g \action M$ by vector fields tangent to $N$ % \hfill( fond. distribution $\underline{\g}\subseteq \X_N(M)$)
-	\\
-	\vfill
-	Denote by :  
-	\hspace{1em} $\underline{\g}\subseteq \X_N(M)$ the fundamental distribution,
-	\\
-	\hspace{6.5em}  $\X_g$ the $C^\infty$-module generated by $\underline{\g}$.
-	\\
-	\vfill
-	\begin{defblock}[Reducible v.fields ]
-			\begin{displaymath}
-				\X(M)_{[N]} :=
-				\left\lbrace
-					v \in \X(M)
-				~\left\vert~
-					\begin{array}{l}
-						\L_v (I_N) \subseteq I_N	\\		
-						\L_v (\X_g) \subseteq \X_g + I_\X
-					\end{array}
-				\right\rbrace\right.
-			\end{displaymath}
-%			\blfootnote{
-%			 $\X_g$ = $C^\infty(M)$-module generated by the fundamental distribution.
-%			}	
-
-	\end{defblock}	
-	%
-	\pause
-	%
-	\begin{defblock}[Reducible forms ]
-		\begin{displaymath}
-			\Omega(M)_{[N]} :=
-			\left\lbrace
-				\alpha \in \Omega(M)
-			~\left\vert~
-				\begin{array}{l r}
-					\L_\underline{\xi} \,\alpha \in I_{\Omega(N)}	\\		
-					\iota_\underline{\xi} \,\alpha \in I_{\Omega(N)}	& \forall \xi \in \g				\end{array}
-			\right\rbrace\right.
-		\end{displaymath}	
-	\end{defblock}	
-	%
-	\pause
-	%
-	\begin{defblock}[Reducible Hamiltonian forms]
-		\begin{displaymath}
-			(\Omega(M)_{ham}^{n-1})_{[N]} :=
-			\left\lbrace
-				\alpha \in \Omega(M)_{ham}^{n-1}
-			~\left\vert~
-				\begin{array}{l r}
-					\alpha \text{ is a reducible form} \\
-					\vHam_\alpha \text{ is a reducible v.field}
-				\end{array}
-			\right\rbrace\right.
-		\end{displaymath}	
-	\end{defblock}		
-
-	
-\end{frame}
-\note[itemize]{
- \item $\g\action M$ by vector field tangent to $N$ means that $\underline{\xi}\in\X_n(M) \forall \xi \in \g$
- \item Spelling out the definition: reducible vector fields are 
- \\i) v.f. tangent to N 
- \\ii) such that their commutator with any $\underline{\xi}$ lies in $\X_\g$ along $N$.
- \item more algebraically, they stabilize both $I_N$ and $\X_g + I_\X$.
- \item observe that $\L_v I_\X \subseteq I_\X$ since , $\forall u \in I_\X$ $\forall f \in C^\infty(M)$ one has\\
- $(\L_v u) f = \L_{[v,u]} f = \L_v\L_u f - \L_u\L_v f \in I_N$
- \item
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Singular reduction}
-	\begin{defpropblock}[Reducible $L_\infty$-observables]
-		Is the {\color{blue!70!black}$L_\infty$-subalgebra} of $L_\infty(M,\omega)$ given by
-		\begin{displaymath}
-			L_\infty(M,\omega)_{[N]}^k :=
-			\begin{cases}
-				\Omega^{n-1-k}(M)_{[N]} 
-				\qquad\text{\color{gray}\small (reducible forms) }
-				& \text{if } n-1\leq k < 0 \\
-				(\Omega(M)_{ham}^{n-1})_{[N]} 
-				\quad
-				\text{\color{gray}\small (reducible hamiltonians) }
-				& \text{if } k = 0 \\
-				0 & \text{if } k > 0
-			\end{cases}
-		\end{displaymath}
-	\end{defpropblock}
-	%
-	\pause
-	%
-	\begin{defpropblock}[Vanishing $L_\infty$-observables]
-		Is the {\color{blue!70!black}$L_\infty$-ideal} of $L_\infty(M,\omega)_{[N]}$ given by
-		\begin{displaymath}
-			I_{L_\infty(M,\omega)} :=
-			\left\lbrace
-				\alpha \in L_\infty(M,\omega)_{[N]}
-			~\left\vert~
-				\begin{array}{l l}
-					\alpha(v_1,\dots,v_k) \in I_N  \quad \forall v_i \in \X_N &
-					\text{if}~ \alpha \in \Omega^k \\
-					\vHam_\alpha \in \X_\g + I_\X &
-					\text{if}~ \alpha \in \Omega^{n-1}
-				\end{array}
-			\right\rbrace\right.
-		\end{displaymath}
-	\end{defpropblock}
-	%
-	\pause
-	%
-	\begin{defblock}[Reduced $L_\infty$-algebra of observables]
-		Is the $L_\infty$-quotient : \quad
-		$\dfrac{L_\infty(M,\omega)_{[N]}^k}{I_{L_\infty(M,\omega)}}$
-	\end{defblock}
-
-\end{frame}
-\note[itemize]{
- \item The graded vector space underlying the reduced $L_\infty$-algebra $\Ham_\infty(M,\omega)_N$ is explicitly given by
-\begin{displaymath}
-	\Ham_\infty(M,\omega)_N =
-	\frac{
-		\left\lbrace
-			(\alpha,v) \in \Omega(M){[n{-}1]}\oplus\X(M)
-		~\left\vert~
-			\begin{array}{l l}
-				\iota_v \omega = -\d \alpha^{(0)} &
-				\\
-				\iota_\xi \alpha \in I_{\Omega}(N) &
-				\\
-				\L_\xi\alpha \in I_{\Omega}(N)
-				&
-				\\
-				\L_\xi v \in \fgmodule +\vanvf
-				&~\forall \xi \in \g 
-				\\
-				v \in \X_N(M)
-				&
-			\end{array}
-		\right.
-		\right\rbrace
-	}{
-		\left\lbrace
-			(\alpha,v) \in \Omega(M){[n{-}1]}\oplus\X(M)
-		~\left\vert~
-			\begin{array}{l}
-				\alpha \in I_{\Omega}(N)
-				\\
-				v \in \fgmodule +\vanvf
-			\end{array}
-		\right.
-		\right\rbrace
-	}~.
-\end{displaymath}
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Singular reduction (Upshot and conclusions)}
-
-	\begin{itemize}
-		\item Consider $N=\mu^{-1}(0)$ to be regular (smooth embedding)
-		\vspace{.5em}
-		\begin{table}[]
-			\begin{tabular}{ccc}
-			Multisymplectic               &                      & Multisymplectic                  \\
-			regular                       & $\equiv$             & singular                \\
-			reduction & & reduction
-			\end{tabular}
-		\end{table}	
-		
-		\pause
-		\item
-			Consider $\omega$ to be $1$-plectic
-			\vspace{.5em}
-			\begin{table}[]
-				\begin{tabular}{ccc}
-				Multisymplectic               &                      &  Sniaticky--Weinstein                  \\
-				singular                       & $\cancel\equiv$             & singular                \\
-				reduction & & reduction
-				\end{tabular}
-			\end{table}	
-
-			(but $\exists$ a canonical Poisson algebra morphism)
-	\end{itemize}
-	
-	\pause
-			\vfill
-		  \centering 
-		  {\Huge\color{red} 
-		  \emph{Thank you for your attention!}}
-			\vfill
-\end{frame}
-\note[itemize]{
- \item
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-\begin{frame}\frametitle{The $L_\infty$-algebra of observables}
-	\begin{itemize}
-		\item $(M,\omega)$ $k$-plectic manifold
-	\end{itemize}
-
-	\[
-		L_\infty(M,\omega) = \Omega_{\Ham}^{k-1}(M,\omega) \oplus \Omega^{\leq k-2}(M)
-	\]
-
-	The \emph{higher brackets} $\{l_i\}_{i\geq0}$ are given by
-	\[
-		l_i:\underbrace{L_\infty(M,\omega)\times\cdots\times L_\infty(M,\omega)}_{i \text{ times}} \to L_\infty(M,\omega)
-	\]
-	where
-	\begin{align*}
-		l_1(\alpha)		&=	\d\omega						\\
-		l_2(\alpha,\beta)	&=	\iota_{X_\beta}\iota_{X_\alpha}\omega\hspace{1cm}\text{($X_\alpha=0$ if $\deg\alpha\leq n-1$)}			\\
-		l_3(\alpha,\beta,\gamma)&=	\iota_{X_\gamma}\iota_{X_\beta}\iota_{X_\alpha}\omega	\\[-3pt]
-					&\hspace{6pt}\vdots
-	\end{align*}
-\end{frame}
-
-\begin{frame}\frametitle{Reduction of states vs.\ reduction of observables}
-	\begin{minipage}{\textwidth}
-	\hspace{-.4cm}
-	\begin{tikzpicture}
-		\draw (-4,-2.5) rectangle (4,2.5);
-		\draw (-4,0) -- (4,0);
-		\draw (0,-2.5) -- (0,2.5);
-
-		\draw node[align=center] at (-2,1.25) {symplectic\\ reduction};
-		\draw node[align=center] at (2,1.25) {multisymplectic\\ reduction};
-		\draw node[align=center] at (-2,-1.25) {\'{S}niatycki--Weinstein,\\Dirac,\\Arms--Gotay--Jennings\\ reduction};
-		\draw node[align=center] at (2,-1.25) {\color{UniGreen}$L_\infty$ reduction};
-
-		\draw node[align=center] at (2,2.85) {\color{UniGreen}\emph{higher}};
-		\draw node[align=center] at (-2,2.85) {\emph{lower}};
-
-		\draw node[align=right] at (-4.7,1.25) {\emph{states}};
-		\draw node[align=right] at (-5.13,-1.25) {\color{UniGreen}\emph{observables}};
-	\end{tikzpicture}
-	\end{minipage}
-\end{frame}
-
-\begin{frame}\frametitle{\'Sniatycki--Weinstein reduction}
-	Let $(M,\omega,G,\mu)$ be a symplectic Hamiltonian $G$-space.
-
-	\begin{definition}[momentum ideal]
-		The \emph{momentum ideal} is the associative ideal $I_\mu\subset C^\infty(M)$ generated by the momenta $\mu_{\xi}$ for any $\xi\in \mathfrak{g}$.
-		Namely
-		\[
-			I_\mu 
-			= 
-			\Big\langle \mu_\xi \Big\rangle_{\xi \in \mathfrak{g}}^{\text{\tiny asso.}} 
-			=
-			\left\{
-				\left.
-					\sum_{i=1}^n f_i ~ \mu_{\xi_i}
-				\right|~
-					f_i \in C^\infty(M),~ \xi_i\in \mathfrak{g},~  1 \leq i \leq n
-			\right\}
-		\]
-	\end{definition}
-
-	\vspace{3pt}
-	\begin{definition}
-		The \emph{\'Sniatycki--Weinstein reduction} is the Poisson algebra
-		\[
-			\left(C^\infty(M)/I_\mu\right)^G.
-		\]
-	\end{definition}
-\end{frame}
-
-
-\begin{frame}\frametitle{$L_\infty$-reduction: main construction}
-	$(M,\omega)$ a $k$-plectic manifold $\implies$ $\Ham_\infty(M,\omega) := L_\infty(M,\omega)$.\\[2pt]
-
-	Let $\g\curvearrowright M$ be a Lie algebra action preserving $\omega$ and $N\subset M$.\\[5pt]
-
-	\begin{itemize}
-		\item $\Ham_\infty(M,\omega)_{[N]}$ observables \textbf{reducible} along $N$,
-		\item $I_{\Ham_\infty}(N)$ observables \textbf{vanishing} along $N$.
-	\end{itemize}
-
-	\begin{theorem}[B.--Miti--Ryvkin]
-		The \emph{reduction} of $\Ham_\infty(M,\omega)$ with respect to $\g\curvearrowright (N\subset M)$ is the $L_\infty$-algebra
-		\[
-		\Ham_\infty(M,\omega)_N = \frac{\Ham_\infty(M,\omega)_{[N]}}{I_{\Ham_\infty}(N)}~.
-		\]
-	\end{theorem}
-\end{frame}
-
-\begin{frame}\frametitle{Auxiliary constructions}
-	\begin{minipage}{\textwidth}
-	\centering
-	\scalebox{.65}{
-	\begin{tikzpicture}
-		\node (A) at (0,10.0) {\fbox{\parbox{5.6cm}{\centering Ideal of functions vanishing on $N$ \\ $I_N$}}};
-		\node (B) at (0,8.3) {\fbox{\parbox{4.4cm}{\centering Vector fields tangent to $N$ \\ $\X_N(M)$}}};
-		\node (C) at (3,6.5) {\fbox{\parbox{4.2cm}{\centering Forms vanishing along $N$ \\ $I_\Omega(N)$}}};
-		\node (D) at (3,4.2) {\fbox{\parbox{2.7cm}{\centering Reducible forms \\ $\Omega(M)_{[N]}$}}};
-		\node (E) at (-3,6.3) {\fbox{\parbox{5.3cm}{\centering Fundamental $C^\infty$-module \emph{plus} \\ vector fields vanishing along $N$ \\ $\X_\g(M)+I_\X(N)$}}};
-		\node (E') at (-3,4.2) {\fbox{\parbox{3.8cm}{\centering Reducible vector fields \\ $\X(M)_{[N]}$}}};
-		\node (F) at (0,2.4) {\fbox{\parbox{3.7cm}{\centering Reducible observables \\ $\Ham_\infty(M,\omega)_{[N]}$}}};
-		\node (G) at (0,0.6) {\fbox{\parbox{5.0cm}{\centering Vanishing ideal of observables \\ $I_{\Ham_\infty}(N)$}}};
-		\node (H) at (0,-1.05) {\fbox{\parbox{4.3cm}{\centering Observable reduced space \\ $\Ham_\infty(M,\omega)_N$}}};
-
-		\draw[->] (A)-- node[right=1pt]{{\scriptsize used to define}} (B);
-		\draw[->] (B)-- (C);
-		\draw[->] (C)-- node[right=.25cm]{\rotatebox{-90}{\small $\subset$}} (D);
-		\draw[->] (B)-- (E);
-		\draw[->] (D)-- (F);
-		\draw[->] (E)-- node[left=.25cm]{\rotatebox{-90}{\small $\subset$}} (E');
-		\draw[->] (E')-- (F);
-		\draw[->] (F)-- node[right=.25cm]{\rotatebox{90}{\small $\subset$}} (G);
-		\draw[->] (G)-- (H);
-
-		\node[right=2.95cm] at (A) {\scriptsize\emph{associative ideal}};
-		\node[right=2.30cm] at (B) {\scriptsize\emph{Lie algebra}};
-		\node[right=2.25cm] at (C) {\scriptsize\emph{differential ideal}};
-		\node[right=1.5cm] at (D) {\scriptsize\emph{differential graded subalgebra}};
-		\node[left=2cm] at (E') {\scriptsize\emph{Lie subalgebra}};
-		\node[left=2.8cm] at (E) {\scriptsize\emph{Lie ideal}};
-		\node[right=2cm] at (F) {\scriptsize\emph{$L_\infty$-subalgebra}};
-		\node[right=2.65cm] at (G) {\scriptsize\emph{$L_\infty$-ideal}};
-		\node[right=2.3cm] at (H) {\scriptsize\emph{$L_\infty$-algebra}};
-	\end{tikzpicture}
-	}
-	\end{minipage}
-\end{frame}
-
-\begin{frame}\frametitle{Comparison with geometric reduction}
-
-	Let $(M_N,\omega_N)$ be the geometric reduction of $\g\curvearrowright(M,\omega)$ along $N$.
-
-	\vspace{5pt}
-	\begin{theorem}[B.--Miti--Ryvkin]
-		The geometric reduction map
-		\begin{align*}
-			r_N:	\Ham_\infty(M,\omega)_{[N]}	&\to		\Ham_\infty(M_N,\omega_N)		\\
-			(v,\alpha)\;			&\mapsto	\;(v_N,\alpha_N)			\\
-			\alpha\;			&\mapsto	\;\alpha_N
-		\end{align*}
-		is a strict $L_\infty$-morphism with kernel $I_{\Ham_\infty}(N)$. In particular, there is a natural inclusion of $L_\infty$-algebras
-		\[
-		\Ham_\infty(M,\omega)_N = \frac{\Ham_\infty(M,\omega)_{[N]}}{I_{\Ham_\infty}(N)} \;\xhookrightarrow{\;\bar{r}_N\;}\; \Ham_\infty(M_N,\omega_N).
-		\]
-	\end{theorem}
-\end{frame}
 
 
 
@@ -1217,6 +744,162 @@
 
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Observables Algebras in $n$-plectic geometry}
+	%
+	\alert{There are at least two competing notions of "observables" in multisym. geo. :}
+	%
+	\vspace{-1em}
+	\begin{columns}[T]
+		\pause
+		\setlength{\belowdisplayskip}{5pt}
+		\begin{column}{.50\linewidth}
+			%
+			\begin{thmblock}[Observables $L_\infty$-algebra]
+				$\Omega^{n-1}_{ham}(M,\omega)$ endowed with
+				\vspace{-.5em}
+				\begin{displaymath}
+					\lbrace \sigma_1, \sigma_2 \rbrace =			
+					~ - \iota_{\vHam_1}\iota_{\vHam_2} \omega 
+				\end{displaymath}			
+				can be "completed" to a \\ $L_\infty-algebra$.
+			\end{thmblock}
+			%
+			\pause
+			\begin{itemize}
+				\item[\cmark] Skew-symmetric;
+				\item[\xmark] multiplication of observables;
+				\item[\xmark] Jacobi equation;
+				%\\ \hspace*{4.25em} full-fledged Jacobi equation;
+				\item[\smark] Jacobi equation \emph{up to homotopies}.
+			\end{itemize}				
+		\end{column}	
+		%
+		\onslide<1->{\vrule{}}
+		%
+		\pause
+		\begin{column}{.50\linewidth}
+			\begin{thmblock}[Observables Leibniz algebra]
+				$\Omega^{n-1}_{ham}(M,\omega)$ endowed with
+				\vspace{-.5em}
+			\begin{displaymath}
+				\llbracket \sigma_1, \sigma_2 \rrbracket =
+				~ \mathcal{L}_{\vHam_1} \sigma_2
+				~.					
+			\end{displaymath}		
+				can be "completed" to a \\ DG-Leibniz algebra.
+			\end{thmblock}	
+			%
+			\pause
+			\begin{itemize}
+				\item[\xmark] Skew-symmetric;
+				\item[\xmark] multiplication of observables;
+				\item[\cmark] Jacobi equation;
+				\item[\smark] Skew-symmetric \emph{up to homotopies}.
+			\end{itemize}	
+		\end{column}	
+	\end{columns}
+	
+	\vfill
+	
+	\begin{probox}[colbacktitle=yellow!15!white ,colback=yellow!15!white]{ What is the \emph{"correct"} notion of observables?}
+		\begin{itemize}
+			\item[\cmark] Preliminary results on $2$-plectic prequantization due to Sevestre and Wurzbacher:
+			\item[\smark] Does $L_\infty(M,\omega)$ relate with the $L_\infty$-extension of $Leib(M,\omega)$ provided by \cite{Lavau2020} ?
+			\item[\smark] Are they two different aspects of a third, more general, algebraic structure (e.g. \emph{weak $L_\infty$-algebras provided by \cite{Dehling2017})}
+		\end{itemize}
+	\end{probox}		
+	
+\end{frame}
+\note[itemize]{
+ \item See \cite[\S 7.2]{Rogers2010} about the comparison of these two algebraic structures.
+ \item Notice that the failure of skew-symmetricity is measured by
+ \begin{align*}
+ 	A(\sigma_1,\sigma_2) 
+ 	=&~
+ 	 2~\llbracket \sigma_1, \sigma_2\rrbracket +  \llbracket \sigma_2, \sigma_1\rrbracket
+ 	 \\
+ 	 =&~ d \circ\langle\sigma_1,\sigma_2\rangle_+
+ \end{align*}
+ (Compare with the \href{https://en.wikipedia.org/wiki/Courant_bracket\#Dorfman_bracket}{Dorfmann bracket}.)
+ 
+ \item Notice that the antisymmetrization of $\llbracket \cdot, \cdot \rrbracket$ equates $\lbrace \cdot,\cdot \rbrace$ modulo homotopy:
+ \begin{align*}
+  \llbracket \sigma_1,\sigma_2 \rrbracket  \circ 	\mathcal{A}
+  =&~
+  \frac{\mathcal{L}_{\vHam_1}\sigma_2 - \mathcal{L}_{\vHam_2}\sigma_1}{2} 
+  \\
+  =&~ 
+  \frac{1}{2}( d (\iota_{\vHam_1}{\sigma_2} - \iota_{\vHam_2}{\sigma_1} )
+  +\frac{1}{2}(-\iota_{\vHam_1}\iota_{\vHam_2}\omega + \iota_{\vHam_2}\iota_{\vHam_1}\omega) 
+  \\
+  =&~
+  \lbrace \sigma_1, \sigma_2 \rbrace + d \circ \langle\sigma_1,\sigma_2\rangle_-
+  \\
+  =&~
+  [\sigma_1,\sigma_2]_\omega
+ \end{align*}
+ where the last bracket is given by the Vinogradov algebroid Binary bracket.
+ \item GOALS: \textit{
+Explicitly construct a morphism, inside the category of Lie infinity algebras, between $L_\infty(M,\omega)$ and the \emph{$L_\infty$-extension} of $Leib(M,\omega)$.
+Discuss the functoriality of the two $L_\infty$-algebras considered above and the naturality of the sought morphism connecting each other.
+Construct a so-called \emph{weak $L_\infty$-algebra} structure encoding both $L_\infty(M,\omega)$ and $Leib(M,\omega)$.
+Compare the latter construction to other approaches to multisymplectic observables like \cite{Delgado2018b} and \cite{Herman2018a}.
+}
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Open questions on covariant observables (Preliminary)}
+	%
+	\begin{columns}
+		%
+		\begin{column}{.50\linewidth}
+			\begin{center}
+				\includegraphics[width=0.9\linewidth]{../Pictures/Covariant}			
+			\end{center}
+		\end{column}
+		%
+		\begin{column}{.50\linewidth}
+			\begin{itemize}
+				\item[•] Consider a classical field $E\to M$ with I-order Lagrangian $\mathcal{L}$;
+				\item[•]<2-> $\mathcal{L}$ determines  
+					\begin{itemize}
+						\item[(a)] a multisymplectic structure on $J^1 E$,
+						\item[(b)] a symplectic \emph{Diffiety} $(\mathcal{E})$ called \emph{Covariant phase space}\footnote{Suppose E-L operator being \emph{formally integrable}};
+					\end{itemize}
+				\item[•]<3-> two different candidates for the role of \emph{physical observables}:
+					\begin{itemize}
+						\item[(a)] Lie infinity algebra $L_\infty (M,\omega)$;
+						\item[(b)] Cochain complex $\bar{\Omega}^\bullet(\mathcal{E})$.
+					\end{itemize}																
+			\end{itemize}
+		\end{column}
+		%
+	\end{columns}
+	%
+	\vfill
+	%
+	\begin{probox}[colbacktitle=yellow!15!white ,colback=yellow!15!white]{ How to mechanically interpret the previous notion of multisym. observables?}
+		\begin{itemize}
+			\item[\smark] Application to \emph{Multisymplectic PDEs}?
+			\item[\smark] Third actor: the \emph{Space of initial datas}.
+			\item[\smark] Compatibility of moment maps wrt. lifts of a group action $G \curvearrowright M$ on the base manifold to $J^\infty E$ and the field configuration space $\Gamma(E)$.
+			\item[\smark] Is it possible to the latter setting the geometric \cite{Blacker2020} and algebraic \cite{Blacker2022} reduction procedures in terms of the so-called \emph{homotopy zero-locus} \cite{Bernardy2022}?
+		\end{itemize}
+	\end{probox}			
+	
+\end{frame}
+\note[itemize]{
+	\item the two framework yields different candidates to the role of \emph{physical observable}:
+	\item Note that in the classical ordinary case the space of initial data coincides with the phase space
+
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \begin{frame}{Reduction commutes with Prequantization}
@@ -1239,47 +922,6 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Open questions on covariant observables (Preliminary)}
-	%
-	\begin{columns}
-		%
-		\begin{column}{.50\linewidth}
-			\begin{center}
-				\includegraphics[width=0.9\linewidth]{../Pictures/Covariant}			
-			\end{center}
-		\end{column}
-		%
-		\begin{column}{.50\linewidth}
-			\begin{itemize}
-				\item Consider a classical field $E\to M$ with I-order Lagrangian $\mathcal{L}$;
-				\item<2-> $\mathcal{L}$ determines  
-					\begin{itemize}
-						\item[(a)] a multisymplectic structure on $J^1 E$,
-						\item[(b)] a symplectic \emph{Diffiety} $(\mathcal{E})$ called \emph{Covariant phase space}\footnote{Suppose E-L operator being \emph{formally integrable}};
-					\end{itemize}
-				\item<3-> two different candidates for the role of \emph{physical observables}:
-					\begin{itemize}
-						\item[(a)] Lie infinity algebra $L_\infty (M,\omega)$;
-						\item[(b)] Cochain complex $\bar{\Omega}^\bullet(\mathcal{E})$.
-					\end{itemize}
-				\item<4-> Questions:
-					\begin{itemize}
-						\item[-] What is their mutual relationship?
-						\item[-] Application to \emph{Multisymplectic PDEs}?
-						\item[-] Third actor: the \emph{Space of initial datas}.
-					\end{itemize}																		
-			\end{itemize}
-		\end{column}
-		%
-	\end{columns}
-\end{frame}
-\note[itemize]{
-	\item the two framework yields different candidates to the role of \emph{physical observable}:
-	\item Note that in the classical ordinary case the space of initial data coincides with the phase space
-
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1609,7 +1251,422 @@
 %------------------------------------------------------------------------------------------------
 
 
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Multisymplectic singular reduction}
 
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Singular Reduction: Roadmap}
+	%
+	\begin{block}{Data:}
+			\begin{itemize}
+				\item A \emph{constraint set} $N$ (possibly singular),
+				\item An infinitesimal action preserving $N$.
+			\end{itemize}
+	\end{block}
+	%
+	\vfill
+	\pause
+	%
+	\begin{block}{Goal:}
+		\begin{itemize}
+			\item Obtain a "reduced" observables algebra out of the data.
+		\end{itemize}
+	\end{block}
+	%
+	\vfill
+	\pause
+	%
+	\begin{block}{Strategy:}
+		\begin{enumerate}
+			\item Define smooth fields/forms \emph{tangent to $N$},
+			\item define smooth fields/forms \emph{vanishing along $N$},
+			\item define \emph{reducible fields} requiring the preservation of the vanishing objects,
+			\item define \emph{reducible forms} requiring their conservation w.r.t. the infinitesimal action,
+			\item define \emph{reducible and vanishing observables},
+			\item \textbf{quotient}
+		\end{enumerate}
+	\end{block}
+
+
+
+
+
+
+\end{frame}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[shrink]{Smooth objects on a singular set}
+	Consider $N$ closed subset of $M$.
+	\vfill
+	\pause
+	\begin{defblock}
+	 $I_N$ = ideal of smooth functions vanishing over $N$.
+	\end{defblock}
+	\vfill
+	\pause
+
+	\begin{columns}[T]
+		\setlength{\belowdisplayskip}{5pt}
+		\begin{column}{.65\linewidth}
+			%
+			\centering \it
+				\begin{defblock}[v.f tangent to $N$]
+					\begin{displaymath}
+						\X_N(M):=
+						\left\lbrace
+							v \in \X(M)
+						~\Big\vert~
+							\L_v(I_N) \subseteq I_N
+						\right\rbrace
+					\end{displaymath}
+				\end{defblock}
+				\begin{defblock}[v.f vanishing on $N$]
+					\begin{displaymath}
+						I_\X(N):=
+						\left\lbrace
+							v \in \X(M)
+						~\Big\vert~
+							\L_v(C^\infty(M)) \subseteq I_N
+						\right\rbrace
+					\end{displaymath}				
+				\end{defblock}				
+		\end{column}	
+		%
+		%
+		\begin{column}{.35\linewidth}
+			\centering 
+			\includestandalone[width=0.8\textwidth]{Pictures/Figure_VfTangentN}			
+		\end{column}	
+	\end{columns}			
+	%	
+	\pause
+
+				%
+
+				%	
+		\begin{tcolorbox}[
+		enhanced,frame hidden,borderline={0.5pt}{0pt}{blue},
+		arc=5pt,colback=white,
+		colbacktitle=white,]
+			\color{blue}{\textbf{Lem}:} If $N$ is smoothly embedded,  $\X(N)\cong {X_N(M)}/{I_\X}$.
+		\end{tcolorbox}
+
+		\pause
+
+		\begin{defblock}[Differential form vanishing on $N$]
+			\begin{displaymath}
+				I_{\Omega(N)}:=
+				\left\lbrace
+					\alpha\in\Omega^k(M
+				~\left\vert~
+					\begin{array}{l r}
+						k\geq 0,~		\\		
+						\alpha(u_1,\ldots,u_k) \in I_N & \forall u_i \in\X_N(M)
+					\end{array}
+				\right\rbrace\right.
+			\end{displaymath}
+		\end{defblock}
+
+\end{frame}
+\note[itemize]{
+ \item $N$ is not a submanifold in general. An example is $N=\mu^{-1}(0)$ for a certain smooth map $N$.
+ \item observe that if $N$ is a smooth embedded submanifold, one has that $\X(N)\cong \frac{X_N(M)}{I_\X}$  
+
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Reducible smooth objects \quad \small (w.r.t. $N$ and $\g\action M$)}
+	Consider $\g \action M$ by vector fields tangent to $N$ % \hfill( fond. distribution $\underline{\g}\subseteq \X_N(M)$)
+	\\
+	\vfill
+	Denote by :  
+	\hspace{1em} $\underline{\g}\subseteq \X_N(M)$ the fundamental distribution,
+	\\
+	\hspace{6.5em}  $\X_g$ the $C^\infty$-module generated by $\underline{\g}$.
+	\\
+	\vfill
+	\begin{defblock}[Reducible v.fields ]
+			\begin{displaymath}
+				\X(M)_{[N]} :=
+				\left\lbrace
+					v \in \X(M)
+				~\left\vert~
+					\begin{array}{l}
+						\L_v (I_N) \subseteq I_N	\\		
+						\L_v (\X_g) \subseteq \X_g + I_\X
+					\end{array}
+				\right\rbrace\right.
+			\end{displaymath}
+%			\blfootnote{
+%			 $\X_g$ = $C^\infty(M)$-module generated by the fundamental distribution.
+%			}	
+
+	\end{defblock}	
+	%
+	\pause
+	%
+	\begin{defblock}[Reducible forms ]
+		\begin{displaymath}
+			\Omega(M)_{[N]} :=
+			\left\lbrace
+				\alpha \in \Omega(M)
+			~\left\vert~
+				\begin{array}{l r}
+					\L_\underline{\xi} \,\alpha \in I_{\Omega(N)}	\\		
+					\iota_\underline{\xi} \,\alpha \in I_{\Omega(N)}	& \forall \xi \in \g				\end{array}
+			\right\rbrace\right.
+		\end{displaymath}	
+	\end{defblock}	
+	%
+	\pause
+	%
+	\begin{defblock}[Reducible Hamiltonian forms]
+		\begin{displaymath}
+			(\Omega(M)_{ham}^{n-1})_{[N]} :=
+			\left\lbrace
+				\alpha \in \Omega(M)_{ham}^{n-1}
+			~\left\vert~
+				\begin{array}{l r}
+					\alpha \text{ is a reducible form} \\
+					\vHam_\alpha \text{ is a reducible v.field}
+				\end{array}
+			\right\rbrace\right.
+		\end{displaymath}	
+	\end{defblock}		
+
+	
+\end{frame}
+\note[itemize]{
+ \item $\g\action M$ by vector field tangent to $N$ means that $\underline{\xi}\in\X_n(M) \forall \xi \in \g$
+ \item Spelling out the definition: reducible vector fields are 
+ \\i) v.f. tangent to N 
+ \\ii) such that their commutator with any $\underline{\xi}$ lies in $\X_\g$ along $N$.
+ \item more algebraically, they stabilize both $I_N$ and $\X_g + I_\X$.
+ \item observe that $\L_v I_\X \subseteq I_\X$ since , $\forall u \in I_\X$ $\forall f \in C^\infty(M)$ one has\\
+ $(\L_v u) f = \L_{[v,u]} f = \L_v\L_u f - \L_u\L_v f \in I_N$
+ \item
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Singular reduction}
+	\begin{defpropblock}[Reducible $L_\infty$-observables]
+		Is the {\color{blue!70!black}$L_\infty$-subalgebra} of $L_\infty(M,\omega)$ given by
+		\begin{displaymath}
+			L_\infty(M,\omega)_{[N]}^k :=
+			\begin{cases}
+				\Omega^{n-1-k}(M)_{[N]} 
+				\qquad\text{\color{gray}\small (reducible forms) }
+				& \text{if } n-1\leq k < 0 \\
+				(\Omega(M)_{ham}^{n-1})_{[N]} 
+				\quad
+				\text{\color{gray}\small (reducible hamiltonians) }
+				& \text{if } k = 0 \\
+				0 & \text{if } k > 0
+			\end{cases}
+		\end{displaymath}
+	\end{defpropblock}
+	%
+	\pause
+	%
+	\begin{defpropblock}[Vanishing $L_\infty$-observables]
+		Is the {\color{blue!70!black}$L_\infty$-ideal} of $L_\infty(M,\omega)_{[N]}$ given by
+		\begin{displaymath}
+			I_{L_\infty(M,\omega)} :=
+			\left\lbrace
+				\alpha \in L_\infty(M,\omega)_{[N]}
+			~\left\vert~
+				\begin{array}{l l}
+					\alpha(v_1,\dots,v_k) \in I_N  \quad \forall v_i \in \X_N &
+					\text{if}~ \alpha \in \Omega^k \\
+					\vHam_\alpha \in \X_\g + I_\X &
+					\text{if}~ \alpha \in \Omega^{n-1}
+				\end{array}
+			\right\rbrace\right.
+		\end{displaymath}
+	\end{defpropblock}
+	%
+	\pause
+	%
+	\begin{defblock}[Reduced $L_\infty$-algebra of observables]
+		Is the $L_\infty$-quotient : \quad
+		$\dfrac{L_\infty(M,\omega)_{[N]}^k}{I_{L_\infty(M,\omega)}}$
+	\end{defblock}
+
+\end{frame}
+\note[itemize]{
+ \item The graded vector space underlying the reduced $L_\infty$-algebra $\Ham_\infty(M,\omega)_N$ is explicitly given by
+\begin{displaymath}
+	\Ham_\infty(M,\omega)_N =
+	\frac{
+		\left\lbrace
+			(\alpha,v) \in \Omega(M){[n{-}1]}\oplus\X(M)
+		~\left\vert~
+			\begin{array}{l l}
+				\iota_v \omega = -\d \alpha^{(0)} &
+				\\
+				\iota_\xi \alpha \in I_{\Omega}(N) &
+				\\
+				\L_\xi\alpha \in I_{\Omega}(N)
+				&
+				\\
+				\L_\xi v \in \fgmodule +\vanvf
+				&~\forall \xi \in \g 
+				\\
+				v \in \X_N(M)
+				&
+			\end{array}
+		\right.
+		\right\rbrace
+	}{
+		\left\lbrace
+			(\alpha,v) \in \Omega(M){[n{-}1]}\oplus\X(M)
+		~\left\vert~
+			\begin{array}{l}
+				\alpha \in I_{\Omega}(N)
+				\\
+				v \in \fgmodule +\vanvf
+			\end{array}
+		\right.
+		\right\rbrace
+	}~.
+\end{displaymath}
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Singular reduction (Upshot and conclusions)}
+
+	\begin{itemize}
+		\item Consider $N=\mu^{-1}(0)$ to be regular (smooth embedding)
+		\vspace{.5em}
+		\begin{table}[]
+			\begin{tabular}{ccc}
+			Multisymplectic               &                      & Multisymplectic                  \\
+			regular                       & $\equiv$             & singular                \\
+			reduction & & reduction
+			\end{tabular}
+		\end{table}	
+		
+		\pause
+		\item
+			Consider $\omega$ to be $1$-plectic
+			\vspace{.5em}
+			\begin{table}[]
+				\begin{tabular}{ccc}
+				Multisymplectic               &                      &  Sniaticky--Weinstein                  \\
+				singular                       & $\cancel\equiv$             & singular                \\
+				reduction & & reduction
+				\end{tabular}
+			\end{table}	
+
+			(but $\exists$ a canonical Poisson algebra morphism)
+	\end{itemize}
+	
+	\pause
+			\vfill
+		  \centering 
+		  {\Huge\color{red} 
+		  \emph{Thank you for your attention!}}
+			\vfill
+\end{frame}
+\note[itemize]{
+ \item
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}\frametitle{Reduction of states vs.\ reduction of observables}
+	\begin{minipage}{\textwidth}
+	\hspace{-.4cm}
+	\begin{tikzpicture}
+		\draw (-4,-2.5) rectangle (4,2.5);
+		\draw (-4,0) -- (4,0);
+		\draw (0,-2.5) -- (0,2.5);
+
+		\draw node[align=center] at (-2,1.25) {symplectic\\ reduction};
+		\draw node[align=center] at (2,1.25) {multisymplectic\\ reduction};
+		\draw node[align=center] at (-2,-1.25) {\'{S}niatycki--Weinstein,\\Dirac,\\Arms--Gotay--Jennings\\ reduction};
+		\draw node[align=center] at (2,-1.25) {\color{UniGreen}$L_\infty$ reduction};
+
+		\draw node[align=center] at (2,2.85) {\color{UniGreen}\emph{higher}};
+		\draw node[align=center] at (-2,2.85) {\emph{lower}};
+
+		\draw node[align=right] at (-4.7,1.25) {\emph{states}};
+		\draw node[align=right] at (-5.13,-1.25) {\color{UniGreen}\emph{observables}};
+	\end{tikzpicture}
+	\end{minipage}
+\end{frame}
+%------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}\frametitle{Auxiliary constructions}
+	\begin{minipage}{\textwidth}
+	\centering
+	\scalebox{.65}{
+	\begin{tikzpicture}
+		\node (A) at (0,10.0) {\fbox{\parbox{5.6cm}{\centering Ideal of functions vanishing on $N$ \\ $I_N$}}};
+		\node (B) at (0,8.3) {\fbox{\parbox{4.4cm}{\centering Vector fields tangent to $N$ \\ $\X_N(M)$}}};
+		\node (C) at (3,6.5) {\fbox{\parbox{4.2cm}{\centering Forms vanishing along $N$ \\ $I_\Omega(N)$}}};
+		\node (D) at (3,4.2) {\fbox{\parbox{2.7cm}{\centering Reducible forms \\ $\Omega(M)_{[N]}$}}};
+		\node (E) at (-3,6.3) {\fbox{\parbox{5.3cm}{\centering Fundamental $C^\infty$-module \emph{plus} \\ vector fields vanishing along $N$ \\ $\X_\g(M)+I_\X(N)$}}};
+		\node (E') at (-3,4.2) {\fbox{\parbox{3.8cm}{\centering Reducible vector fields \\ $\X(M)_{[N]}$}}};
+		\node (F) at (0,2.4) {\fbox{\parbox{3.7cm}{\centering Reducible observables \\ $\Ham_\infty(M,\omega)_{[N]}$}}};
+		\node (G) at (0,0.6) {\fbox{\parbox{5.0cm}{\centering Vanishing ideal of observables \\ $I_{\Ham_\infty}(N)$}}};
+		\node (H) at (0,-1.05) {\fbox{\parbox{4.3cm}{\centering Observable reduced space \\ $\Ham_\infty(M,\omega)_N$}}};
+
+		\draw[->] (A)-- node[right=1pt]{{\scriptsize used to define}} (B);
+		\draw[->] (B)-- (C);
+		\draw[->] (C)-- node[right=.25cm]{\rotatebox{-90}{\small $\subset$}} (D);
+		\draw[->] (B)-- (E);
+		\draw[->] (D)-- (F);
+		\draw[->] (E)-- node[left=.25cm]{\rotatebox{-90}{\small $\subset$}} (E');
+		\draw[->] (E')-- (F);
+		\draw[->] (F)-- node[right=.25cm]{\rotatebox{90}{\small $\subset$}} (G);
+		\draw[->] (G)-- (H);
+
+		\node[right=2.95cm] at (A) {\scriptsize\emph{associative ideal}};
+		\node[right=2.30cm] at (B) {\scriptsize\emph{Lie algebra}};
+		\node[right=2.25cm] at (C) {\scriptsize\emph{differential ideal}};
+		\node[right=1.5cm] at (D) {\scriptsize\emph{differential graded subalgebra}};
+		\node[left=2cm] at (E') {\scriptsize\emph{Lie subalgebra}};
+		\node[left=2.8cm] at (E) {\scriptsize\emph{Lie ideal}};
+		\node[right=2cm] at (F) {\scriptsize\emph{$L_\infty$-subalgebra}};
+		\node[right=2.65cm] at (G) {\scriptsize\emph{$L_\infty$-ideal}};
+		\node[right=2.3cm] at (H) {\scriptsize\emph{$L_\infty$-algebra}};
+	\end{tikzpicture}
+	}
+	\end{minipage}
+\end{frame}
+%------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}\frametitle{Comparison with geometric reduction}
+
+	Let $(M_N,\omega_N)$ be the geometric reduction of $\g\curvearrowright(M,\omega)$ along $N$.
+
+	\vspace{5pt}
+	\begin{theorem}[B.--Miti--Ryvkin]
+		The geometric reduction map
+		\begin{align*}
+			r_N:	\Ham_\infty(M,\omega)_{[N]}	&\to		\Ham_\infty(M_N,\omega_N)		\\
+			(v,\alpha)\;			&\mapsto	\;(v_N,\alpha_N)			\\
+			\alpha\;			&\mapsto	\;\alpha_N
+		\end{align*}
+		is a strict $L_\infty$-morphism with kernel $I_{\Ham_\infty}(N)$. In particular, there is a natural inclusion of $L_\infty$-algebras
+		\[
+		\Ham_\infty(M,\omega)_N = \frac{\Ham_\infty(M,\omega)_{[N]}}{I_{\Ham_\infty}(N)} \;\xhookrightarrow{\;\bar{r}_N\;}\; \Ham_\infty(M_N,\omega_N).
+		\]
+	\end{theorem}
+\end{frame}
+%------------------------------------------------------------------------------------------------
 
 
 
