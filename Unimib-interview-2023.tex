@@ -17,7 +17,7 @@
 %- D0cum3nt ----------------------------------------------------------------------------------------------
 \ifHandout
 	\documentclass[handout,10pt]{beamer}   
-	\setbeameroption{show notes} %print notes   
+	% \setbeameroption{show notes} %print notes   
 \else
 	\documentclass[10pt]{beamer}
 \fi
@@ -36,6 +36,13 @@
 %- Macros -------------------------------------------------------------------------------------------
 \providecommand{\vHam}{\mathscr{v}}
 
+\newcommand{\extrarule}{
+		{
+			\color{UniGreen}
+			\par\hspace*{-\dimexpr0.5\paperwidth-0.5\textwidth}\rule[0.5\baselineskip]{\paperwidth}{0.4pt}
+			\vspace{-2em}
+		}
+}
 
 \renewcommand{\checkpoint}[0]{
 	\setcounter{tocdepth}{2}
@@ -102,18 +109,18 @@
 \tikzstyle{every picture}+=[remember picture]
 	\begin{columns}
     	\begin{column}{.45\textwidth}
-    		\onslide<4->{
+    		\onslide<2->{
 			\tikz[baseline]{
 		            \node[draw=orange!40,anchor=base,text width=5cm] (s1)
-		            {Group of transformations preserving the prescribed geometric structures.};
+		            {Generalization of symplectic geometry in which the symplectic form is generalized from a closed $2$-form to a closed $n+1$-form.};
 			}
 		}
 	\end{column}
     	\begin{column}{.45\textwidth}
-    		\onslide<5->{
+    		\onslide<3->{
 			 \tikz[baseline]{
 		            \node[draw=blue!40,anchor=base, text width=5cm] (s2)
-		            {Procedure providing another manifold of reduced dimension encoding the relevant geometrical information.};
+		            {Higher analogue of moment maps in the context of group actions preserving the multisymplectic form.};
 			}
 		}
 	\end{column}
@@ -149,28 +156,28 @@
 
 	\begin{columns}
     	\begin{column}{.45\textwidth}
-    		\onslide<3->{
+    		\onslide<4->{
 	 		 \tikz[baseline]{
 	            \node[draw=green!40,anchor=base,text width=5cm] (s3)
-	            {A certain higher version \\(involving differential forms in degree $\geq 2$)};
+	            {Higher generalization of Lie algebras where the Jacobi identity is allowed only "up to homotopies".};
 	         }
 		}		   	
 		\end{column}
     	\begin{column}{.45\textwidth}
-    		\onslide<2->{
+    		\onslide<5->{
 				\tikz[baseline]{
 	            \node[draw=red!40,anchor=base,text width=5cm] (s4)
-	            {Geometric structure providing a prescription on how to measure the area of 2-dimensional surface elements embedded in the manifold.};
+	            {Classical field theories, \\prequantization, \\geometric approach to Pdes, \\variational calculus, \\integrators ...};
 	           }	
 			}
 		\end{column}
 	\end{columns}
 
 	\begin{tikzpicture}[overlay]
-        \path[->,draw=orange!40]<4-> (s1) edge [bend right] (t1);
-        \path[->,draw=blue!40]<5-> (s2) edge [bend left] (t2);
-        \path[->,draw=green!40]<3-> (s3) edge [bend left] (t3);
-        \path[->,draw=red!40]<2-> (s4) edge [bend right] (t4);
+        \path[->,draw=orange!40]<2-> (s1) edge [bend right] (t1);
+        \path[->,draw=blue!40]<3-> (s2) edge [bend left] (t2);
+        \path[->,draw=green!40]<4-> (s3) edge [bend left] (t3);
+        \path[->,draw=red!40]<5-> (s4) edge [bend right] (t4);
 	\end{tikzpicture}
 
 
@@ -409,252 +416,91 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{JW Mauro}
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\begin{frame}{Results}
+	\begin{frame}[t]{Applications to hydrodynamics and knot theory \small(J.w. M.Spera)}
+
 		\begin{columns}
-			\begin{column}[T]{0.3\textwidth}
+			\begin{column}[T]{0.2\textwidth}
 				\centering
 					\fbox{\includegraphics[width=.9\textwidth]{./Pictures/cover-JAMS}}
 			\end{column}		
-			\begin{column}[T]{0.7\textwidth}
-				\begin{itemize}
-					\item[-] Explicit \emph{Homotopy comomentum map} coming from hydrodynamics ( ideal fluid configurations as Lie algebra action)
-					\item[-] Relations with \emph{knot theory} (hydrodinamics interpretation: links as concentrated vortices).
-				\end{itemize}
+			\begin{column}[T]{0.8\textwidth}
+				\vspace{-.25em}
+				\begin{center}
+					\textbf{On some (multi)symplectic aspects of link invariants}, \\ 
+					\emph{AMM, Mauro Spera}, \href{https://arXiv.org/abs/1805.01696}{arxiv:1805.01696};\\
+					(Appeared in \emph{Journal of the Australian Mathematical Society})	
+				\end{center}			
 			\end{column}		
 		\end{columns}	
+		\extrarule
+	
 		\vfill
-\end{frame}
-%---------------------------------------------------------------------------------------------------------------------------------------------------
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Applications to hydrodynamics and knot theory (Joint with M.Spera)}
-	\begin{columns}
-		\begin{column}{.3\linewidth}
-			$G~=~SDiff_0(\mathbb{R}^3)$
-			\\
-			(volume-preserving diffeomorphisms)
-		\end{column}	
+		\begin{columns}
+			\begin{column}{.3\linewidth}
+				$G~=~SDiff_0(\mathbb{R}^3)$
+				\\
+				(volume-preserving diffeomorphisms)
+			\end{column}	
+			\pause
+			\begin{column}{.7\linewidth}
+				\begin{itemize}
+					\item Configuration space of an \emph{ideal fluid},
+					\item (Determining) ambient isotopies of knotted links (interpreted as singular vortices)
+				\end{itemize}
+			\end{column}
+		\end{columns}
+		%
 		\pause
-		\begin{column}{.7\linewidth}
-			\begin{itemize}
-				\item Configuration space of an \emph{ideal fluid},
-				\item (Determining) ambient isotopies of knotted links (interpreted as singular vortices)
-			\end{itemize}
-		\end{column}
-	\end{columns}
-	%
-	\vfill
-	\pause
-	\begin{columns}
-		\begin{column}{.45\linewidth}
-		  	\begin{displaymath}
-		  		\begin{split}
-		  		&\mathfrak{g}:= sdiff_0(\mathbb{R}^3) = \\
-		  		&\left\lbrace  X \in \mathfrak{X}(\mathbb{R}^3) ~\left\vert~ 
-		  		\substack{ div X = 0, \\ \textrm{\emph{ rapidly vanishing at }}\infty} \right\rbrace \right.
-		  		\end{split}
-		  	\end{displaymath}
-		\end{column}	
-		\begin{column}{.55\linewidth}
-			\begin{itemize}
-				\item Fluid velocities
-				\item Subalgebra of the  $\infty$-dim. "Lie algebra" of a $\infty$-dim "Lie group" $G$.
-			\end{itemize}
-		\end{column}
-	\end{columns}
-	\pause
-	\vfill
-	\begin{columns}
-		\begin{column}{.3\linewidth}
-			$\mathfrak{g}= sdiff_0 \hookrightarrow  \mathfrak{X}(\mathbb{R}^3)$
-		\end{column}
-		\begin{column}{.7\linewidth}
-			\begin{itemize}
-				\item Multisymplectic Lia algebra action
-				\item[] w.r.t $(\mathbb{R}^3,\nu = dx\wedge dy\wedge dz)$ 2-plectic mfd.
-			\end{itemize}
-		\end{column}
-	\end{columns}
-	\pause
-	\vfill
-	\begin{center}
-		\alert{
-		\faQuestionCircle \qquad
-			{Does $sdiff_0 \circlearrowleft (\mathbb{R}^3,\nu = dx\wedge dy\wedge dz)$ admit an HCMM?}	
-		\qquad \faQuestionCircle		
-		}
-	\end{center}
-	\pause
-\tcbset{colback=white,
-	colbacktitle=white,
-	colframe=blue!70!black,
-	boxrule=1pt,
-	colupper=blue!70!black,
-	arc=15pt,
-	}
-\begin{tcolorbox}[sidebyside,righthand width=.75\linewidth]
-	Thm: \cite{Miti2018}
-	\tcblower
-	\vspace{-1.5em}
-	\begin{align*}
-	f_1 &= \flat \circ \text{curl}^{-1} ~:~ \mathfrak{g} \to \Omega^{1}_{Ham}(\mathbb{R}^3)
-	\qquad \text{\small ("Biot-Savart law")}
-	%\tag{\small"Biot-Savart law"}
-	\\
-	f_2 &= \Delta^{-1} \circ \delta \circ (f_1 \circ \partial_{CE} +\iota(\cdot)\omega) ~:~ \wedge^2\mathfrak{g} \to C^{\infty}(\mathbb{R}^3)
-	%\tag{\small"Coulomb law"}
-	\end{align*}
-\end{tcolorbox}
-	
-	
-	
+		\begin{columns}
+			\begin{column}{.45\linewidth}
+			  	\begin{displaymath}
+			  		\begin{split}
+			  		&\mathfrak{g}:= sdiff_0(\mathbb{R}^3) = \\
+			  		&\left\lbrace  X \in \mathfrak{X}(\mathbb{R}^3) ~\left\vert~ 
+			  		\substack{ div X = 0, \\ \textrm{\emph{ rapidly vanishing at }}\infty} \right\rbrace \right.
+			  		\end{split}
+			  	\end{displaymath}
+			\end{column}	
+			\begin{column}{.55\linewidth}
+				\begin{itemize}
+					\item Fluid velocities
+					\item Subalgebra of the  $\infty$-dim. "Lie algebra" of a $\infty$-dim "Lie group" $G$.
+				\end{itemize}
+			\end{column}
+		\end{columns}
+		\pause
 
-	\pause
-	\vfill
-	Applications:
-	\begin{itemize}[<+->]%[<alert@+>]
-		\item[\CheckedBox]  Hydrodynamics interpretation: Rasetti-Regge currents as "momenta".
-		% is exhibited upon resorting to the Euler equation for perfect fluids.
-		\item[\CheckedBox]  Knot theory: reinterpretation of the (Massey) higher order linking numbers in terms of conserved quantities.
-		\item[\CheckedBox]  Semiclassical interpretation of the HOMFLYPT polynomial.
-	\end{itemize}
+		\vfill
+		\tcbset{colback=white,
+			colbacktitle=white,
+			colframe=blue!70!black,
+			boxrule=1pt,
+			colupper=blue!70!black,
+			arc=15pt,
+			}
+		\begin{tcolorbox}[sidebyside,righthand width=.75\linewidth]
+			Thm: \cite{Miti2018}
+			\tcblower
+			%
+			\centering
+			\vspace{-.5em}
+			Multisymplectic Lie algebra action $\mathfrak{g}= sdiff_0 \hookrightarrow  \mathfrak{X}(\mathbb{R}^3)$, \\
+			w.r.t $(\mathbb{R}^3,\nu = dx\wedge dy\wedge dz)$ 2-plectic mfd, \\
+			\alert{admits an HCMM}.
+			\vspace{-.5em}
+		\end{tcolorbox}	
 
-\end{frame}
-\note[itemize]{
-	\item relation with knot theory: looking at the knot as a fluid configuration with singular vorticity along a knotted tube,
-	\item subalgebra of the infinitesimal action of $SDiff(\mathbb{R}^3)$
-	\item observe how elements from Riemannian geometry and hodge theory appear in the construction
-		\begin{itemize}
-			\item $\delta$ codifferential
-			\item $\Delta$ Laplacian
-			\item $\flat$ $\sharp$  musical isomorphisms
+		%
+		\vfill
+		\begin{itemize}[<+->]%[<alert@+>]
+			\item[\CheckedBox]  Hydrodynamics interpretation: Rasetti-Regge currents as "momenta".
+			% is exhibited upon resorting to the Euler equation for perfect fluids.
+			\item[\CheckedBox]  Knot theory: reinterpretation of the (Massey) higher order linking numbers in terms of conserved quantities.
+			%\item[\CheckedBox]  Semiclassical interpretation of the HOMFLYPT polynomial.
 		\end{itemize}
-	\item other results of the paper: 	
-	\begin{itemize}
-		\item[\CheckedBox]  Explicit construction of an HCMM for $SDiff_0 \circlearrowright (\mathbb{R}^3,\nu)$ (and generalization to Riemannian homological spheres);
-		\item[\CheckedBox]  Hydrodynamics interpretation: proved that this HCMM trasgresses to the standard hydrodynamical co-momentum map of  Arnol'd, Marsden and Weinstein and others;
-		% is exhibited upon resorting to the Euler equation for perfect fluids.
-		\item[\CheckedBox]  Application to knot theory: reinterpretation of the (Massey) higher order linking numbers in terms of conserved quantities and determined the knot theoretic analogues of first integrals in involution.
-	\end{itemize}
-	
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
+		%	
+	\end{frame}
 %---------------------------------------------------------------------------------------------------------------------------------------------------
-  \begin{frame}{Hydrodynamical $\mathfrak{g}$- action (joint work with M. Spera)}
-	\begin{columns}[T] % align columns
-	\begin{column}{.4\textwidth}
-			\includegraphics[width=\linewidth]{../Pictures/Continuum_body_deformation}
-	\end{column}
-	%
-	\hfill
-	%
-	\begin{column}{.6\textwidth}
-		\begin{tikzpicture}[
-			text width=0.4\linewidth,
-			node distance=0.55\linewidth,
-			]
-			\node [rectangle,draw] (lhs) {Conf. space of\\ continuous medium};
-			\node [rectangle,draw,right of=lhs] (rhs) {Lie subgroup \\$G \subset Diff(M)$};
-			\draw[-stealth,decorate,decoration={snake}] (lhs) -- (rhs);
-		\end{tikzpicture}
-
-		Examples:
-		\begin{tikzpicture}[
-			text width=0.4\linewidth,
-			node distance=0.55\linewidth,
-			]
-			\node [rectangle,draw] (lhs) {Conf. space of\\ rigid body};
-			\node [rectangle,draw,right of=lhs] (rhs) {$G=ISO(\mathbb{R}^3)=$\\ $\{$
-				Euclidean space isometries$\}$};
-			\draw[-stealth,decorate,decoration={snake}] (lhs) -- (rhs);
-		\end{tikzpicture}
-		\begin{tikzpicture}[
-			text width=0.4\linewidth,
-			node distance=0.55\linewidth,
-			]
-			\node [rectangle,draw] (lhs) {Conf. space of\\ incompressible fluid};
-			\node [rectangle,draw,right of=lhs] (rhs) {$G= SDiff(\mathbb{R}^3)=$\\ $\{$
-				volume preserving diffeos$\}$};
-			\draw[-stealth,decorate,decoration={snake}] (lhs) -- (rhs);
-		\end{tikzpicture}
-	\end{column}%
-	\end{columns}
-	\pause
-%  	\begin{lemblock}[$(\mathbb{R}^3,\nu = dx\wedge dy\wedge dz)$ is 2-plectic]
-%  		\vspace{-2em}
-%  		\begin{itemize}
-%  			\item \emph{(Easy proof)} 
-%  			$\quad \iota_v \nu = \frac{1}{2}\epsilon_{i j k} v^i dx^j \wedge dx^k = 0 \; \Leftrightarrow \; v=0 $;
-%  			\item \emph{(Conceptual proof)} 
-%  			$\quad \alpha^{(1)} = \ast \circ \flat$ is invertible.
-%  		\end{itemize}
-%  	\end{lemblock}
-	\begin{itemize}[<+->]
-		\item Consider the 2-plectic manifold $(\mathbb{R}^3,\nu = dx\wedge dy\wedge dz)$
-		\item Consider a subalgebra of the infinitesimal action of $SDiff(\mathbb{R}^3)$:
-		  	\begin{displaymath}
-		  		\mathfrak{g} = sdiff_0(M) = 
-		  		\lbrace  X \in \mathfrak{X} \quad\vert\quad 
-		  		div X = 0, \textrm{\emph{ rapidly vanishing at }}\infty \rbrace
-		  	\end{displaymath}
-		\item \alert{Does this $\infty$-dim. Lie algebra admit an HCMM?}	
-	\end{itemize}
-  
-  \end{frame}
-  \note[itemize]{
-	%\item  Now we are ready to get to the real business. Namely, give an explicitly construction of a HCMM related to hydrodynamics.
-	\item We are working in the setting of \emph{geometric continuum mechanics} .\\
-		Recall that the configuration space of a continuum object is encoded via diffeomorphisms. In the case of an incompressible fluid is encoded via volume-preserving diffeomorphisms.
-	\item (Configution space is the set of spatial displacement of a mechanical systems. These are different from the \emph{physical states}.
-	\item Such manifolds are infinite dimensional. Particular caution has to be taken in defining the smooth structure in this case.
-	\item However, what really matters in the construction of a moment map is the infinitesimal action, i.e. the Lie algebra. In our case, the infinitesimal action to be considered is via divergence-free vector fields.
-	\item (Notation): In the following M will be the 3 dimensional Euclidean Space.
-	\item The simple but crucial observation is that the standard volume form on the euclidean space is a multisymplectic form.
-	\item In the following, we will see that the standard Riemannian structure takes a role in our construction. 
-	That was the reason to show also a "conceptual proof".
-	\item Notation: $\ast = $ and $\sharp = $ are respectively the Hodge operator and the Riemannian sharp operator pertaining to the standard metric in $\mathbb{R}^3$.	
-  }
-%------------------------------------------------------------------------------------------------
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[fragile]{Results (joint work with M. Spera)}
-	\begin{itemize}[<+->]%[<alert@+>]
-		\item[\CheckedBox]  Explicit construction of an HCMM for $SDiff_0 \circlearrowright (\mathbb{R}^3,\nu)$ (and generalization to Riemannian homological spheres);
-		\item[\CheckedBox]  Hydrodynamics interpretation: proved that this HCMM trasgresses to the standard hydrodynamical co-momentum map of  Arnol'd, Marsden and Weinstein and others;
-		% is exhibited upon resorting to the Euler equation for perfect fluids.
-		\item[\CheckedBox]  Application to knot theory: reinterpretation of the (Massey) higher order linking numbers in terms of conserved quantities and determined the knot theoretic analogues of first integrals in involution.
-	\end{itemize}
-	%
-	\pause
-	\begin{center}
-		\includegraphics{beamericonarticle} 
-		\textbf{On some (multi)symplectic aspects of link invariants},
-		\includegraphics{beamericonarticle} \\ 
-		\emph{AMM, Mauro Spera}, \href{https://arXiv.org/abs/1805.01696}{arxiv:1805.01696};\\
-		(To appear in \emph{Journal of the Australian Mathematical Society})	
-	\end{center}		
-	\vfill \pause
-	\begin{itemize}
-		\item[\CheckedBox]  Aside: a semiclassical interpretation of the HOMFLYPT polynomial.
-	\end{itemize}
-	%
-	\pause
-	\begin{center}
-		\includegraphics{beamericonarticle} 
-		\textbf{Derivation of the HOMFLYPT knot polynomial via helicity and geometric quantization},
-		\includegraphics{beamericonarticle} \\ 
-		\emph{AMM, Mauro Spera}, \href{https://arxiv.org/abs/1910.13400}{arXiv:1910.13400};\\
-		(To appear in \emph{Bollettino dell'Unione Matematica Italiana})	
-	\end{center}			
-	
-\end{frame}
-\note[itemize]{
-	\item About the explicit construction see frame \ref{frame:explicithcmm} in appendix.
-	\item About the hydrodynamical interpretation see frame \ref{frame:hydrointerpretation} 	%\item About the Riemmanian generalization see \ref{frame:riemannianhcmm}
-	\item About the application to knots theory see frame \ref{frame:msknots1} and \ref{frame:msknots2} in appendix.
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -663,260 +509,91 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{JW Leonid}
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\begin{frame}{Results}
+	\begin{frame}[t]{Compact multisymp. actions on spheres \small (J.w. L.Ryvkin)}
+		%
 		\begin{columns}[T]
-			\begin{column}{0.3\textwidth}
+			\begin{column}{0.2\textwidth}
 				\centering
 					\fbox{\includegraphics[width=.9\textwidth]{./Pictures/cover-JSG}}
-
 			\end{column}		
-			\begin{column}{0.7\textwidth}
-				\begin{itemize}
-					\item[-] Complete classification of Hamiltonian actions on spheres (multisymplectic w.r.t. the canonical volume form).
-					\item[-] Explicit expression of momenta for $SO(n)\circlearrowleft S^n$ and other cases.
-				\end{itemize}
+			\begin{column}{0.8\textwidth}
+				\begin{center}
+					\textbf{Multisymplectic actions of compact Lie groups on spheres}, \\
+					\emph{AMM, Leonid Ryvkin}, \href{https://arxiv.org/abs/1906.08790}{arXiv:1906.08790};\\
+					(Appeared in \emph{Journal of Symplectic Geometry})	
+				\end{center}		
 			\end{column}		
 		\end{columns}				
+		\extrarule
+		\pause
+		\vspace{1em}
+		%
+		
+		Consider the multisymplectic manifold $(S^n,\omega)$ given by the $n$-dimensional sphere together with the standard volume.
+		
+		\tcbset{colback=white,
+			colbacktitle=white,
+			colframe=blue!70!black,
+			boxrule=1pt,
+			colupper=blue!70!black,
+			arc=15pt,
+			}
+		\begin{tcolorbox}[sidebyside,righthand width=.75\linewidth]
+			Thm: \cite{Miti2019}
+			\tcblower
+			%
+			\centering
+			\vspace{-.5em}
+			Let $\vartheta:G\times S^n \to S^n$ be an effective, compact, multisymplectic action,
+				\begin{center}
+					\alert{$\vartheta$ admits HCMM $~\Leftrightarrow~$ $n$ is even or $\vartheta$ is not transitive}.
+				\end{center}
+			\vspace{-.5em}
+		\end{tcolorbox}	
+		%
+		\vfill
+		\pause
+	%
+	\begin{itemize}
+		\item[\CheckedBox]  Complete classification of Hamiltonian actions on spheres (multisymplectic w.r.t. the canonical volume form);
+		\item[\CheckedBox]  	Explicit construction for 
+	$SO(n)~\circlearrowleft~S^{n}$ and
+	$G_2~\circlearrowleft~(S^6,\phi)$;
+		\item[\CheckedBox]   Explicit expression for the first 2 components of HCMM for 
+			$SO(n+1)~\circlearrowleft~S^{n}$.
+		 %(Going higher can be set up as a computational problem. We sketched a prototype code in python.)
+	\end{itemize}	
+		
 \end{frame}
 %---------------------------------------------------------------------------------------------------------------------------------------------------
 
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[fragile]{Cohomological obstruction to HCMM}
-A HCMM is a sequence of linear maps:
-			\begin{displaymath}
-				(f)  = \big\lbrace f_k: \; \Lambda^k{\mathfrak g} \to L_{k-1} \subseteq \Omega^{n-k} 
-				\;\big\vert\; 0\leq k \leq n+1  \big\rbrace
-			\end{displaymath}
-it can be interpreted as a primitive of a certain cocycle in the total complex of 
-	\begin{displaymath}
-		(C_\mathfrak{g}^{\bullet,\bullet} = \Lambda^{\geq 1} 
-		\mathfrak{g}^*\otimes \Omega^\bullet(M), \delta_\text{CE},d),	
-	\end{displaymath}
-	%
-	\pause
-	\begin{propblock}[$\exists$ HCMM 
-		$\Leftrightarrow ~ \lbrack\tilde{\omega}\rbrack=0\in H^{n+1}(C_\mathfrak g^\bullet,d_ {tot})$	
-	]
-		\begin{columns}
-		\begin{column}{.5\textwidth}
-			\begin{displaymath}
-				\tilde{\omega} = \sum_{k=1}^{n+1} (-1)^{k-1} \iota^k_\mathfrak{g} \omega \in C_\mathfrak{g}^{n+1},
-			\end{displaymath}		
-		\end{column}
-		\begin{column}{.5\textwidth}
-			\begin{align*}
-				\iota^k_\mathfrak{g} \colon \Omega^\bullet(M)
-				&\to \Lambda^k \mathfrak{g}^\ast \otimes \Omega^{\bullet-k}(M)
-				\\ \omega&\mapsto \omega_k = 
-				\left(p \mapsto \iota_{v_p} \omega  \right) ,
-			\end{align*}
-		\end{column}		
-		\end{columns} 
-	\end{propblock}
-	%
-	\pause
-	\begin{corblock}[Cohomological condition for $\vartheta:G\times M\to M$ compact Lie group action]
-	$$\exists \text{ HCMM} 
-		\Leftrightarrow ~[\vartheta^*\omega-\pi^*\omega]=0\in H^{n+1}(G\times M)$$ 
-	\end{corblock}
-
-\end{frame}
-\note[itemize]{
-	\item 
-	The  corresponding total complex is given by
-	\begin{displaymath}
-		(C_\mathfrak{g}^{\bullet}, d_\text{tot} = 
-		\delta_\text{CE}\otimes \text{id} + \text{id}\otimes d),
-	\end{displaymath}
-	where $d$ denotes the de Rham differential and $\delta_{CE}:\Lambda^k\mathfrak g^*\to \Lambda^{k+1}\mathfrak g^*$ the Lie algebra cohomology differential.
-	According to the Koszul sign convention, $d_{\text{tot}}$ acts on an element of $\Lambda^k \mathfrak{g}^*\otimes \Omega^\bullet(M)$ as $\delta_\text{CE} + (-1)^k d$.
-
-	\item PROP: the primitives of the natural cocycle $\tilde{\omega}$ are in one-to-one correspondence with comoments of $v$.
-	
-	\item COR: Let $\vartheta:G\times M\to M$ be a compact Lie group acting on a pre-multisymplectic manifold, preserving the pre-multisymplectic form $\omega$. 
-A comoment exists if and only if $[\vartheta^*\omega-\pi^*\omega]=0\in H^{n+1}(G\times M)$.
-	\item Note that here we employ the deRham cohomology of the product. This is different from the equivariant cohomology
-	\item some more details in \ref{frame:cohomologicalproposition} of the appendix.
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[fragile]{Results (Joint work with L. Ryvkin)}
-	Let $G\times M\to M$ be a compact Lie group preserving a pre-multisymplectic form $\omega$.
-	\begin{itemize}
-		\item[\CheckedBox]  Proved, without resorting on a specific model, that if $[\omega]\in H^\bullet(M)$ lies in the image of $q^*:H^\bullet_G(M)\to H^\bullet(M)$, then $\vartheta$ admits a comoment.
-	\end{itemize}
-	%\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
-	\pause
-	\vspace{1em}
-	Consider now $(M,\omega)$ to be a $n$-dimensional sphere together with the standard volume:
-	%
-			\begin{claimblock}
-				Let $\vartheta:G\times S^n \to S^n$ be an effective,compact multisymplectic action,
-				\begin{center}
-					$\vartheta$ admits HCMM $~\Leftrightarrow~$ $n$ is even or $\vartheta$ is not transitive.
-				\end{center}
-			\end{claimblock}
-	%
-	\begin{itemize}
-		\item[\CheckedBox]  	Explicit construction for 
-	$SO(n)~\circlearrowleft~S^{n}$ and
-	$G_2~\circlearrowleft~(S^6,\phi)$
-		\item[\CheckedBox]   Explicit expression for the first 2 components of HCMM for 
-			$SO(n+1)~\circlearrowleft~S^{n}$.
-		 (Going higher can be set up as a computational problem. We sketched a prototype code in python.)
-		 	\end{itemize}
-
-	\pause
-	\begin{center}
-		\includegraphics{beamericonarticle} 
-		\textbf{Multisymplectic actions of compact Lie groups on spheres},
-		\includegraphics{beamericonarticle} \\ 
-		\emph{AMM, Leonid Ryvkin}, \href{https://arxiv.org/abs/1906.08790}{arXiv:1906.08790};\\
-		(To appear in \emph{Journal of Symplectic Geometry})	
-	\end{center}		
-
-
-\end{frame}
-\note[itemize]{
-	\item 	Let a compact Lie group $G$ act on a manifold $M$. Let $EG$ be a contractible space on which $G$ acts freely by $\vartheta^{EG}$. Then we define the equivariant cohomology of $M$ as $H^\bullet_G(M):=H^\bullet((M\times EG)/G)$, where $G$ acts on $M\times EG$ diagonally.
-
-	\item As $EG$ might not be a manifold, we have to interpret $H^\bullet(\cdot)$ as a suituable cohomology theory (e.g. singular cohomology with real coefficients) in the above definition.
-	
-	\item As $G$ is compact, when $\vartheta:G\times M\to M$ is a free action, we have $H_G^\bullet(M)=H^\bullet_{dR}(M/G)$. For a not necessarily free action $\vartheta$, we still have the following diagram
-	$$
-		G\times (M\times EG) \xrightarrow{\vartheta\times \vartheta^{EG}}
-		M\times EG \xrightarrow{q} (M\times EG)/G
-	$$
-	where $q$ is the projection to the orbits, which induces $q^*$ in cohomology.
-
-	\item We gave	an intrinsic proof of Theorem which does not depend on the choice of a model for equivariant cohomology. 
-	
-	\item	
-	Unlike the symplectic case, the converse statement does not hold in general. 
-	Even if a (pre-)multisymplectic action of $G$ on $(M,\omega)$ admits a comoment, $[\omega]$ does not need to come from an equivariant cocycle. 
-	
-	\item 	
-	First 2 component of HCMM for $SO(n+1)$ on $S^{n}$ (Going higher can be set up as a computational problem - we have a sketch of code in Python -, the first 2 component are easier due to the vanishing of the first two CE cohomology group of $G$)
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{JW Marco}
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\begin{frame}{Results}
+	\begin{frame}[t]{Multisymp. observables and Vinogradov algebroids \small (Jw. M.Zambon)}
 		\begin{columns}[T]
-			\begin{column}{0.3\textwidth}
+			\begin{column}{0.2\textwidth}
 				\centering
-					\fbox{\includegraphics[width=.9\textwidth]{./Pictures/cover-Thesis}}
-					
-					\vspace{1em}
 					\fbox{\includegraphics[width=.9\textwidth]{./Pictures/cover-Selecta-honest}}
 			\end{column}		
-			\begin{column}{0.7\textwidth}
-				\begin{itemize}
-					\item<1->[-] Compatibility of \emph{Homotopy comomentum maps} w.r.t. gauge-related multisymplectic manifolds.
-					\item<1->[-] Relationship between the $L_\infty$-algebra of observables and \emph{higher courant algebroids.} 				
-				\end{itemize}	
+			\begin{column}{0.8\textwidth}
+				%
+				\centering
+				\textbf{Observables of multisymplectic manifolds\\ and higher Courant algebroids},
+				\\
+				\emph{AMM, Marco Zambon}; \href{https://arxiv.org/abs/2209.05836}{arxiv:2209.05836};\\
+				(Submitted to \emph{Selecta Mathematica}.)	
 			\end{column}		
 		\end{columns}
-\end{frame}
-%---------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[fragile]{Relation to higher Courant algebroids (Joint with M. Zambon)}
-	%
-	Consider $(M,\omega)$ \alert{symplectic mfd.}
-	\only<3-11>{ and \alert{prequantizable} ($S^1$-bundle $P$, connection $\theta$)}
-	\vfill
-	\includestandalone[width=\textwidth]{../Pictures/Frame_BigDiagram_symplectic}
-	%
-	\begin{minipage}[t][2cm][t]{\textwidth}
-	\begin{itemize}
-		\only<1-6>{
-			\item<2-> Given a Symp. mfd. $(M,\omega)$ there is a naturally associated Poisson algebra ...
-			\item<4-> .\alert<+>{... and also a Lie Algebroid}.
-			\item<5-> A Lie algebroid is a "controlled" $\infty$-dimensional Lie algebra;
-		}
-		\only<7-11>{
-		\item<7-> Consider a deformed structure $\tilde{\omega}= \omega + d B$ with $B\in C^\infty(M)$;
-		\item<9-> There is a natural isomorphism in the Lie Alg.oids category,
-		\item<11-> Considering $\mathfrak{g}\circlearrowleft M$ preserving $\omega$ and $\tilde{\omega}$ ...
-		}
-		\item<12-> Neglect the prequantization...
-		\vspace{-1em} 
-			\begin{displaymath}
-				\begin{tikzcd}
-					\Psi~:&[-1em] C^{\infty}(M)_\omega \ar[r,"\Psi"]& \Gamma(TM\oplus \mathbb{R})_\omega
-					\\[-2em]
-					& f \ar[r,mapsto] & \binom{\mathscr{v}_f}{f}
-				\end{tikzcd}
-			\end{displaymath}
-	\end{itemize}
-	\end{minipage}
-	\vfill
-	\tcbset{colback=white,
-	colbacktitle=white,
-	colframe=red!70!black,
-	boxrule=1pt,
-	colupper=red!70!black,
-	arc=15pt,
-	}
-	\begin{minipage}[t][2cm][t]{\textwidth}
-	\only<6>{ 
-		\begin{tcolorbox}
-			There is a natural embedding $C^\infty \to \Gamma(TM\oplus\mathbb{R})$\\
-			\underline{independent from the prequantization $(P,\theta)$}.
-		\end{tcolorbox}
-	}
-	\only<11>{ 
-		\begin{tcolorbox}
-			\centering The central diagram commutes!
-		\end{tcolorbox}
-	}
-	\only<12>{
-		\begin{tcolorbox}	
-			\centering The central pentagon commutes!
-		\end{tcolorbox}	
+		\extrarule
+		\vspace{1em}
 		
-	\begin{center}
-		\alert{
-		\faQuestionCircle \qquad
-			{What happens in the higher (n-plectic) case?}	
-		\qquad \faQuestionCircle		
-		}
-	\end{center}		
+		\includestandalone[width=.95\textwidth]{../Pictures/Frame_BigDiagram_k-plectic}
 		
-	}
-	\end{minipage}
-	%
-\end{frame}
-\note[itemize]{
-	\item The horizontal embedding is  $f \mapsto (v_f,f)$;
-	\item Vertical maps are also known as \emph{Gauge transformations}
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Relation to higher Courant algebroids (Joint with M. Zambon)}
-	Consider now $\omega$ \alert{multisymplectic}
-	\vfill
-	%
-	\includestandalone[width=\textwidth]{../Pictures/Frame_BigDiagram_k-plectic}
-	%
-	\vfill
-	%
-	
-	\onslide<1->{
-	\begin{itemize}
-		\item<3-> Higher analogue of the Courant algebroid $\rightsquigarrow$ \emph{Vinogradov algebroid} $\mathbb{T}M =(TM\oplus\bigwedge^{k-1}T^\ast M)$
-		\item<4->  Vin. alg.oids are $NQ$-manifolds, there's associated $L_\infty$-algebra
-	\end{itemize}
-	
-	
-	}
-	\vfill
+		\vfill
 	\tcbset{colback=white,
 		colbacktitle=white,
 		colframe=blue!70!black,
@@ -928,16 +605,29 @@ A comoment exists if and only if $[\vartheta^*\omega-\pi^*\omega]=0\in H^{n+1}(G
 	\begin{tcolorbox}[sidebyside,righthand width=.75\linewidth]
 		Thm: \cite{Miti2021}
 		\tcblower
+		\vspace{-.5em}
 		\begin{itemize}
-			\item<.-|alert@.>
+			\item[-]<.-|alert@.>
 				There is an embedding of $L_\infty$-algebras  $L_\infty(M,\omega)\hookrightarrow L_{\infty}(\mathbb{T}M,\omega)$.
-			\item<8-|alert@+> The central square commutes.
+			\item[-]<8-|alert@+> The central square commutes. 		\vspace{-.5em}
 		\end{itemize}
 	\end{tcolorbox}	}
-	
-
+		
+		
 \end{frame}
 \note[itemize]{
+	\item Compatibility of \emph{Homotopy comomentum maps} w.r.t. gauge-related multisymplectic manifolds.
+	\item 	Relationship between the $L_\infty$-algebra of observables and \emph{higher courant algebroids.} 
+	\item Given a Symp. mfd. $(M,\omega)$ there is a naturally associated Poisson algebra ...
+	\item {... and also a Lie Algebroid}.
+	\item A Lie algebroid is a "controlled" $\infty$-dimensional Lie algebra;
+	\item Consider a deformed structure $\tilde{\omega}= \omega + d B$ with $B\in C^\infty(M)$;
+	\item There is a natural isomorphism in the Lie Alg.oids category,
+	\item Considering $\mathfrak{g}\circlearrowleft M$ preserving $\omega$ and $\tilde{\omega}$ ...
+	\item The horizontal embedding is  $f \mapsto (v_f,f)$;
+	\item Vertical maps are also known as \emph{Gauge transformations}
+	\item Higher analogue of the Courant algebroid $\rightsquigarrow$ \emph{Vinogradov algebroid} $\mathbb{T}M =(TM\oplus\bigwedge^{k-1}T^\ast M)$
+	\item Vin. alg.oids are $NQ$-manifolds, there's associated $L_\infty$-algebra
 	\item Our results can be seen as a tiny step toward  undestanding the analogue of prequantization in the setting of multisymplectic geometry (hence field theory).
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -947,19 +637,23 @@ A comoment exists if and only if $[\vartheta^*\omega-\pi^*\omega]=0\in H^{n+1}(G
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{JW LeoCas}
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\begin{frame}{Results}
+	\begin{frame}[t]{Results}
 		\begin{columns}[T]
-			\begin{column}{0.3\textwidth}
+			\begin{column}{0.2\textwidth}
 				\centering
 					\fbox{\includegraphics[width=.9\textwidth]{./Pictures/cover-PJM-honest}}
 			\end{column}		
-			\begin{column}{0.7\textwidth}
-				\begin{itemize}
-					\item<1->[-] .
-					\item<1->[-] .			
-				\end{itemize}	
+			\begin{column}{0.8\textwidth}
+				\centering
+				\textbf{Reduction of $L_\infty$-algebras of observables\\ on multisymplectic manifolds},
+				\\
+				\emph{Casey Blacker, AMM, Leonid Ryvkin}; \href{https://arxiv.org/abs/2206.03137}{arxiv:2206.03137};\\
+				(Submitted to \emph{Pacific Journal of Mathematics}.)	
 			\end{column}		
 		\end{columns}
+		\extrarule
+
+		
 		\vfill
 \end{frame}
 %---------------------------------------------------------------------------------------------------------------------------------------------------
