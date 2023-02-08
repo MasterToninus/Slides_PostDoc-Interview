@@ -11,7 +11,7 @@
 
 %- HandOut Flag -----------------------------------------------------------------------------------------
 \newif\ifHandout
-	\Handouttrue  %uncomment for the printable version
+%	\Handouttrue  %uncomment for the printable version
 
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
@@ -462,6 +462,7 @@
 			  		\end{split}
 			  	\end{displaymath}
 			\end{column}	
+			\pause
 			\begin{column}{.55\linewidth}
 				\begin{itemize}
 					\item Fluid velocities
@@ -492,6 +493,7 @@
 		\end{tcolorbox}	
 
 		%
+		\pause
 		\vfill
 		\begin{itemize}[<+->]%[<alert@+>]
 			\item[\CheckedBox]  Hydrodynamics interpretation: Rasetti-Regge currents as "momenta".
@@ -531,6 +533,7 @@
 		%
 		
 		Consider the multisymplectic manifold $(S^n,\omega)$ given by the $n$-dimensional sphere together with the standard volume.
+		\pause
 		
 		\tcbset{colback=white,
 			colbacktitle=white,
@@ -638,7 +641,7 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{JW LeoCas}
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\begin{frame}[t,fragile]{Results}
+	\begin{frame}[t,fragile]{Algebraic multisym. reduction (Jw. C.Blacker, L.Ryvkin)}
 	%
 	\tikzstyle{every picture}+=[remember picture]
 	%
@@ -735,15 +738,15 @@
 \checkpoint
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Observables quantities in multisymplectic geometry}
-
-\end{frame}
-\note[itemize]{
-	\item  Research Line A
-
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
+%%-------------------------------------------------------------------------------------------------------------------------------------------------
+%\begin{frame}{Observables quantities in multisymplectic geometry}
+% Menziono i diversi workpackages e la timeline
+%\end{frame}
+%\note[itemize]{
+%	\item  Research Line A
+%
+%}
+%%-------------------------------------------------------------------------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \begin{frame}{Observables Algebras in $n$-plectic geometry}
@@ -802,10 +805,11 @@
 	\end{columns}
 	
 	\vfill
+	\pause
 	
 	\begin{probox}[colbacktitle=yellow!15!white ,colback=yellow!15!white]{ What is the \emph{"correct"} notion of observables?}
 		\begin{itemize}
-			\item[\cmark] Preliminary results on $2$-plectic prequantization due to Sevestre and Wurzbacher:
+			\item[\cmark] How does $Leib(M,\omega)$ in the previous pentagonal diagram?
 			\item[\smark] Does $L_\infty(M,\omega)$ relate with the $L_\infty$-extension of $Leib(M,\omega)$ provided by \cite{Lavau2020} ?
 			\item[\smark] Are they two different aspects of a third, more general, algebraic structure (e.g. \emph{weak $L_\infty$-algebras provided by \cite{Dehling2017})}
 		\end{itemize}
@@ -868,7 +872,8 @@ Compare the latter construction to other approaches to multisymplectic observabl
 				\item[•]<2-> $\mathcal{L}$ determines  
 					\begin{itemize}
 						\item[(a)] a multisymplectic structure on $J^1 E$,
-						\item[(b)] a symplectic \emph{Diffiety} $(\mathcal{E})$ called \emph{Covariant phase space}\footnote{Suppose E-L operator being \emph{formally integrable}};
+						\item[(b)] a symplectic \emph{Diffiety} $(\mathcal{E})$ called \emph{Covariant phase space}
+						\onslide<2->{\footnote{Suppose E-L operator being \emph{formally integrable}}};
 					\end{itemize}
 				\item[•]<3-> two different candidates for the role of \emph{physical observables}:
 					\begin{itemize}
@@ -882,14 +887,16 @@ Compare the latter construction to other approaches to multisymplectic observabl
 	%
 	\vfill
 	%
-	\begin{probox}[colbacktitle=yellow!15!white ,colback=yellow!15!white]{ How to mechanically interpret the previous notion of multisym. observables?}
-		\begin{itemize}
-			\item[\smark] Application to \emph{Multisymplectic PDEs}?
-			\item[\smark] Third actor: the \emph{Space of initial datas}.
-			\item[\smark] Compatibility of moment maps wrt. lifts of a group action $G \curvearrowright M$ on the base manifold to $J^\infty E$ and the field configuration space $\Gamma(E)$.
-			\item[\smark] Is it possible to the latter setting the geometric \cite{Blacker2020} and algebraic \cite{Blacker2022} reduction procedures in terms of the so-called \emph{homotopy zero-locus} \cite{Bernardy2022}?
-		\end{itemize}
-	\end{probox}			
+	\onslide<4->{
+		\begin{probox}[colbacktitle=yellow!15!white ,colback=yellow!15!white]{ How to mechanically interpret the previous notion of multisym. observables?}
+			\begin{itemize}
+				\item[\smark] Application to \emph{Multisymplectic PDEs}?
+				\item[\smark] Third actor: the \emph{Space of initial datas}.
+				\item[\smark] Compatibility of moment maps wrt. lifts of a group action $G \curvearrowright M$ on the base manifold to $J^\infty E$ and the field configuration space $\Gamma(E)$.
+				\item[\smark] Is it possible to the latter setting the geometric \cite{Blacker2020} and algebraic \cite{Blacker2022} reduction procedures in terms of the so-called \emph{homotopy zero-locus} \cite{Bernardy2022}?
+			\end{itemize}
+		\end{probox}			
+	}
 	
 \end{frame}
 \note[itemize]{
@@ -902,114 +909,62 @@ Compare the latter construction to other approaches to multisymplectic observabl
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Reduction commutes with Prequantization}
-
-\end{frame}
-\note[itemize]{
-	\item  Research Line B
-
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Multisymplectic PDEs and Integrators}
-
-\end{frame}
-\note[itemize]{
-	\item  Research Line C
-
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-%---------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Research proposal context: (multi)symplectic reduction}
+\begin{frame}{Multicotangent bundle reduction}
 	\textbf{\color{UniGreen}Symplectic reduction:}~~
-	Procedure associating to any (suitably regular) pair of symplectic manifold and Hamiltonian action another symplectic manifold of smaller dimension.
+	 Procedure associating to any (suitably regular) pair of symplectic manifold and Hamiltonian action another symplectic manifold of smaller dimension.
 	\vfill
 	\pause
-	\begin{thmblock}[Marsden-Weinstein reduction]
-		\vspace{-.4em}
-		\begin{tabular}{l p{12cm}}
-		    Given: & $(M,\omega)$ symplectic
-		    \\
-		    & $G\curvearrowright M$ symplectic with equivariant momap. $J:M\to \mathfrak{g}^*$
-		    \\[.2em]
-		    Assume: & $\mu \in \mathfrak{g}^*$ regular value of $J$ 
-		    \qquad\quad \footnotesize \textcolor{gray}{($\Rightarrow$ $J^{-1}(\mu)\hookrightarrow M$ smooth embedding)}
-		    \\
-			& $G_\mu\action J^{-1}(\mu)$ free and proper
-			\quad \footnotesize \textcolor{gray}{($\Rightarrow$ $J^{-1}(\mu)/G_\mu$ smooth manifold)}
-			\\[.4em]
-			Then: & $\exists!$ symplectic structure $\omega_\mu$ in $M_\mu:= J^{-1}(\mu)/G_\mu$ \\
-			& s.t. $\pi^\ast \omega_\mu = j^\ast \omega$ with $j:M_\mu \hookrightarrow M$ and $\pi:M\twoheadrightarrow M_\mu$
-		\end{tabular}
-		\vspace{-.4em}
-	\end{thmblock}
+
+	\begin{columns}
+		\begin{column}{0.65\textwidth}
+				\textbf{\color{UniGreen}Cotangent reduction:}~~
+				\\- given $G\action Q$ free and proper
+				\\- lift $G\action T^\ast Q$ Hamiltonian with moment map $f$
+				\\- then $$ \frac{f^{-1}(0)}{G}\cong T^\ast(\frac{Q}{G})~.$$
+		\end{column}	
+		%
+		\begin{column}{0.350\textwidth}
+			\includegraphics[width=\textwidth]{./Pictures/Reduction}
+		\end{column}	
+		%		
+	\end{columns}	
+	\vfill
+	\pause
+	%
+	
+			\alert{ The	\emph{multicotangent bundle} $\wedge^n T^\ast Q$ 	is naturally $n$-plectic wrt the differential of the \emph{tautological $n$-form} $\theta$ }
+				\tiny \color{gray}
+				(given by: $\theta \big\vert_\eta (u_1,\dots u_n) =  \pi^\ast \theta (u_1,\dots u_n)$)
+				
+	
 	%
 	\vfill
 	\pause
-	\begin{columns}
-		\begin{column}{0.40\textwidth}
-			\includegraphics[width=\textwidth]{./Pictures/Reduction}
-		\end{column}	
-		
-		\begin{column}{0.6\textwidth}
-				\textbf{\color{UniGreen}In mechanics:}~~
-			it embodies the process of restricting the dynamics of the system to the level sets of the conserved quantities pertaining to the symmetry group.		
-			\\
-			\color{gray}\small( e.g. restricting to studying a point-like particle in a central potential by studying it in radial coordinates only)
-		\end{column}	
-	\end{columns}	
-
-
-<\end{frame}
-%---------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-%---------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Research goals (2022-2023)}
-  	%
-	\begin{probox}[colback=white]{Multisymplectic regular reduction}
+	%
+	\begin{probox}[colbacktitle=yellow!15!white ,colback=yellow!15!white]{ How the cotangent reduction results extends to the multisymplectic framework?}
 		\begin{itemize}
-			\item[\cmark] Recent definition by Blacker:
-			\item[\smark] it involves a different notion of \emph{observables};
-			\item[\smark] reconcile with the $L_\infty$/homotopy framework.
-		\end{itemize}
-	\end{probox}
-	
-	\pause
-	\begin{probox}[]{Multisymplectic singular reduction}
-		\begin{itemize}
-			\item[\cmark] On-going collaboration with Blacker and Ryvkin:
-			\item[\smark] complete comparison with other known reduction schemes;
-			\item[\smark] higher analogue of \emph{cotangent reduction} theorems;
-			\item[\smark] relevant examples.
-		\end{itemize}
-	\end{probox}
 
- 	\pause
-	\begin{probox}[colback=white]{Geometric mechanics perspective}
-		\begin{itemize}
-			\item[\cmark] MS. geometry stemmed from a geometric formulation of classical field theories:
-			\item[\smark] modern development yet to be %fruitfully
-			reconciled with physics;
-			\item[\smark] reduction of scalar field w.r.t. Poincarè yields the usual field momenta?
-			\item[\smark] Streamlined procedure to retrieve ordinary field observables from the multisym. framework.
-		\end{itemize}
-	\end{probox}  
-
-	\pause
-	\begin{probox}[colbacktitle=yellow!15!white ,colback=yellow!15!white]{{[Reduction, Quantization]=0} ?}
-		\begin{itemize}
+			\item[\smark] higher analogue of \emph{cotangent reduction} theorems?
+			\item[\cmark] MS. geometry stemmed from a geometric formulation of classical field theories, procede through examples: 
+			\item[\smark] reduction of scalar field (e.g. sine-gordon) w.r.t. Poincarè yields the usual field momenta?
+			%\item[\smark] Streamlined procedure to retrieve ordinary field observables from the multisym. framework.
 			\item[\cmark] Preliminary results on $2$-plectic prequantization due to Sevestre and Wurzbacher:
 			\item[\smark] Investigate compatibility of reduction and prequantization schemes in the multisym. framework.
 		\end{itemize}
 	\end{probox}	
+
 \end{frame}
-%---------------------------------------------------------------------------------------------------------------------------------------------------
+\note[itemize]{
+	\item "The general symplectic reduction theory presented in becomes much richer and has many applications if the symplectic manifold is the cotangent bundle"
+	\item  Cotangent Reduction embodies the process of restricting the dynamics of the system to the level sets of the conserved quantities pertaining to the symmetry group.		
+	\item 	\color{gray}\small( e.g. restricting to studying a point-like particle in a central potential by studying it in radial coordinates only)
+
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 
 %------------------------------------------------------------------------------------------------
@@ -1667,6 +1622,75 @@ Compare the latter construction to other approaches to multisymplectic observabl
 	\end{theorem}
 \end{frame}
 %------------------------------------------------------------------------------------------------
+
+
+
+\subsection{Old Scraps}
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Research proposal context: (multi)symplectic reduction}
+
+	\pause
+	\begin{thmblock}[Marsden-Weinstein reduction]
+		\vspace{-.4em}
+		\begin{tabular}{l p{12cm}}
+		    Given: & $(M,\omega)$ symplectic
+		    \\
+		    & $G\curvearrowright M$ symplectic with equivariant momap. $J:M\to \mathfrak{g}^*$
+		    \\[.2em]
+		    Assume: & $\mu \in \mathfrak{g}^*$ regular value of $J$ 
+		    \qquad\quad \footnotesize \textcolor{gray}{($\Rightarrow$ $J^{-1}(\mu)\hookrightarrow M$ smooth embedding)}
+		    \\
+			& $G_\mu\action J^{-1}(\mu)$ free and proper
+			\quad \footnotesize \textcolor{gray}{($\Rightarrow$ $J^{-1}(\mu)/G_\mu$ smooth manifold)}
+			\\[.4em]
+			Then: & $\exists!$ symplectic structure $\omega_\mu$ in $M_\mu:= J^{-1}(\mu)/G_\mu$ \\
+			& s.t. $\pi^\ast \omega_\mu = j^\ast \omega$ with $j:M_\mu \hookrightarrow M$ and $\pi:M\twoheadrightarrow M_\mu$
+		\end{tabular}
+		\vspace{-.4em}
+	\end{thmblock}
+	%
+	\vfill
+	\pause
+	\begin{columns}
+		\begin{column}{0.40\textwidth}
+			\includegraphics[width=\textwidth]{./Pictures/Reduction}
+		\end{column}	
+		
+		\begin{column}{0.6\textwidth}
+				\textbf{\color{UniGreen}In mechanics:}~~
+			it embodies the process of restricting the dynamics of the system to the level sets of the conserved quantities pertaining to the symmetry group.		
+			\\
+			\color{gray}\small( e.g. restricting to studying a point-like particle in a central potential by studying it in radial coordinates only)
+		\end{column}	
+	\end{columns}	
+
+
+\end{frame}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Multisymplectic prequantization}
+
+
+	\vfill
+	%
+	\begin{probox}[colbacktitle=yellow!15!white ,colback=yellow!15!white]{ Goals?}
+		\begin{itemize}
+			\item[\smark] Reduction commutes with Prequantization ?
+		\end{itemize}
+	\end{probox}	
+
+\end{frame}
+\note[itemize]{
+	\item  Research Line C
+
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
