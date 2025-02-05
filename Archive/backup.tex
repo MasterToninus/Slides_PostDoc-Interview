@@ -1,10 +1,18 @@
+
+
+
 %- HandOut Flag -----------------------------------------------------------------------------------------
 \newif\ifHandout
 	\Handouttrue  %uncomment for the printable version
 
+
 %- D0cum3nt ----------------------------------------------------------------------------------------------
-\documentclass[beamer,10pt]{standalone}
-	%\setbeameroption{show notes}
+\ifHandout
+	\documentclass[handout,10pt]{beamer}   
+	\setbeameroption{show notes} %print notes   
+\else
+	\documentclass[10pt]{beamer}
+\fi
 	
 
 
@@ -56,18 +64,18 @@
 		\begin{columns}
 			\begin{column}{.50\linewidth}
 				\begin{center}
-					\includegraphics[width=0.8\linewidth]{Pictures/pendulum13}			
+					\includegraphics[width=0.8\linewidth]{../Pictures/pendulum13}			
 				\end{center}
 			\end{column}	
 			\begin{column}{.50\linewidth}
 				\begin{center}
-					\includegraphics[width=0.45\linewidth]{Pictures/pendulum-phase-space}			
+					\includegraphics[width=0.45\linewidth]{../Pictures/pendulum-phase-space}			
 				\end{center}
 			\end{column}	
 		\end{columns}
 		%
 		\begin{defblock}[Symplectic Manifold]
-			\includestandalone[width=0.95\textwidth]{Pictures/Figure_sym}	
+			\includestandalone[width=0.95\textwidth]{../Pictures/Figure_sym}	
 		\end{defblock}
 		%
 		\begin{exblock}[$M = T^\ast Q$ is symplectic]
@@ -282,7 +290,7 @@
 				\;\big\vert\; 0\leq k \leq n+1  \big\rbrace
 			\end{displaymath}
 			%
-			\includestandalone[width=0.95\textwidth]{Pictures/Frame_HCMM}			
+			\includestandalone[width=0.95\textwidth]{../Pictures/Frame_HCMM}			
 			\emph{such that:}
 			\begin{itemize}
 				\item $f_0 = 0 $, $f_{n+1} = 0$ %(we have tacitly set $\Lambda^{-1}(M) = 0$)
@@ -339,7 +347,7 @@
 			\end{block}
     \end{column}
     \begin{column}{.4\textwidth}	
-			\includegraphics[width=\textwidth]{Pictures/Reduction} 
+			\includegraphics[width=\textwidth]{../Pictures/Reduction} 
   	\end{column}
 	\end{columns}			
 \end{frame}
@@ -364,7 +372,7 @@
 		\end{column}	
 	  	\hfill  	
 		\begin{column}[c]{.5\linewidth}
-  		\includestandalone[width=\textwidth]{./Pictures/Figure_Euclid_Trigger}
+  		\includestandalone[width=\textwidth]{../Pictures/Figure_Euclid_Trigger}
  	 	\end{column}
  	 \end{columns}
  	\begin{columns}
@@ -466,7 +474,7 @@
 		\end{column}
 		\begin{column}[c]{.25\linewidth}	
 			\centering{
-			\includegraphics[width=0.75\linewidth]{./Pictures/Whiteheadlink}
+			\includegraphics[width=0.75\linewidth]{../Pictures/Whiteheadlink}
 			}
 		\end{column}
   	\end{columns}
@@ -499,7 +507,7 @@
   		\onslide<2->{
   			\center
   			\vspace{-4ex}
-				\includegraphics[width=0.6\linewidth]{./Pictures/tubes}
+				\includegraphics[width=0.6\linewidth]{../Pictures/tubes}
 	  	}			
 		\end{column}
 		\begin{column}[t]{.7\linewidth}	
@@ -586,7 +594,7 @@ $$
 		\end{column}
 		\begin{column}[c]{.25\linewidth}	
 			\centering{
-			\includegraphics[width=0.75\linewidth]{./Pictures/GaussLink}
+			\includegraphics[width=0.75\linewidth]{../Pictures/GaussLink}
 			}
 		\end{column}
   	\end{columns}
@@ -604,12 +612,12 @@ $$
   	\begin{columns}
 		\begin{column}[c]{.5\linewidth}	
 			\centering{
-			\includegraphics[width=0.5\linewidth]{./Pictures/UnknotsGauss}
+			\includegraphics[width=0.5\linewidth]{../Pictures/UnknotsGauss}
 			}
 		\end{column}
 		\begin{column}[c]{.5\linewidth}	
 			\centering{
-			\includegraphics[width=0.35\linewidth]{./Pictures/WhiteheadGauss}
+			\includegraphics[width=0.35\linewidth]{../Pictures/WhiteheadGauss}
 			}
 		\end{column}
   	\end{columns}	
